@@ -65,15 +65,19 @@ def split_briefkopf(md: str) -> tuple[str, str]:
 
 def briefkopf_to_latex(text: str) -> str:
     """Konvertiert Briefkopf-Zeilen zu LaTeX:
-    - Datum (enthält 'den \\d') → rechtsbündig
-    - Aktenzeichen: → fett
+    - Leerzeilen          → \\medskip (Abstand zwischen Adressblöcken)
+    - Datum (den \\d)     → rechtsbündig via \\hfill
+    - Aktenzeichen:       → fett
     - Erwiderung / Antrag / Stellungnahme → fett + unterstrichen
     - Alle anderen Zeilen → linksbündig mit explizitem Zeilenumbruch
     """
-    lines = [l.rstrip() for l in text.split('\n') if l.strip()]
+    lines = [l.rstrip() for l in text.split('\n')]
     out = []
     for line in lines:
         if line.startswith('#') or line.startswith('>'):
+            continue
+        if not line.strip():
+            out.append('\\medskip')
             continue
         # Markdown Bold → LaTeX
         line = re.sub(r'\*\*(.*?)\*\*', r'\\textbf{\1}', line)

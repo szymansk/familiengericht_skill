@@ -1,13 +1,25 @@
-An das
-Amtsgericht Musterstadt
-— Familiengericht —
-Musterstraße 1
+Thomas Musterann
+
+Gartenstraße 4
+
 12345 Musterstadt
+
+An das
+
+Amtsgericht Musterstadt
+
+— Familiengericht —
+
+Musterstraße 1
+
+12345 Musterstadt
+
+Musterstadt, den 15. März 2026
+
+**Aktenzeichen: 3 F 24/26**
 
 **Antragsgegner:** Thomas Musterann, Gartenstraße 4, 12345 Musterstadt
 **Antragstellerin:** Sandra Musterfrau, Hauptstraße 7, 12345 Musterstadt
-
-Musterstadt, den 15. März 2026
 
 Aktenzeichen: 4 F 99/25
 
