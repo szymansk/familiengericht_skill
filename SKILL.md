@@ -140,7 +140,10 @@ Jedes Verfahren liegt in einem eigenen Ordner:
 verfahren/{az-kurz}/
 ├── sachverhalt/
 │   ├── fakten.md           # Gesammelte Fakten (wird iterativ ergänzt)
-│   └── timeline.md         # Chronologie der Ereignisse
+│   ├── timeline.md         # Chronologie der Ereignisse
+│   ├── kalender.md         # Monatlicher Betreuungskalender (intern + offiziell)
+│   ├── notizen.md          # Lose Gesprächsnotizen (ungefiltert)
+│   └── offene-fragen.md    # Loop-Fragen mit Antworten
 ├── gegenseite/
 │   ├── antrag.md           # Antrag der Gegenseite (Markdown)
 │   └── protokoll-km.md     # Protokoll/Anlagen der Gegenseite
@@ -187,6 +190,23 @@ Nichts geht verloren, nichts wird vorschnell bewertet.
 
 Der Skill erklärt dem Nutzer kurz, warum eine Information nicht übernommen wird.
 Er verwirft sie nie stillschweigend.
+
+---
+
+## Betreuungskalender
+
+Der Skill führt einen monatsweisen Betreuungskalender in `sachverhalt/kalender.md`.
+Er wird kontinuierlich aktualisiert — immer wenn im Gespräch ein Datum genannt wird,
+ein Beleg importiert wird oder Antworten in `offene-fragen.md` Daten enthalten.
+
+→ Format, Legende und Export-Regeln: `references/kalender.md`
+
+**Interne vs. offizielle Inhalte:**
+- `(Text)` — offiziell, geht in Anlagen
+- `[Text]` — nur intern, wird beim Export automatisch entfernt
+
+**Beim Export** (Phase 5) erzeugt der Skill eine bereinigte Kopie ohne `[...]`-Inhalte
+als DOCX-Anlage.
 
 ---
 

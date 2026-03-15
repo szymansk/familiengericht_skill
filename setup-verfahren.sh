@@ -64,6 +64,7 @@ replace() {
 }
 
 replace "$TEMPLATES/sachverhalt/fakten.md"          "$TARGET/sachverhalt/fakten.md"
+replace "$TEMPLATES/sachverhalt/kalender.md"         "$TARGET/sachverhalt/kalender.md"
 replace "$TEMPLATES/sachverhalt/timeline.md"         "$TARGET/sachverhalt/timeline.md"
 replace "$TEMPLATES/sachverhalt/offene-fragen.md"    "$TARGET/sachverhalt/offene-fragen.md"
 replace "$TEMPLATES/sachverhalt/notizen.md"          "$TARGET/sachverhalt/notizen.md"
