@@ -5,6 +5,16 @@ description: "Skill für die Erstellung von Schriftsätzen im Familienrecht (Umg
 
 # Familienrecht-Skill für Claude Code
 
+## Wichtiger Hinweis
+
+Dieser Skill ersetzt **keine Rechtsberatung durch einen Anwalt oder eine Anwältin.**
+Er unterstützt bei der Strukturierung und Formulierung von Schriftsätzen, kann aber
+keine rechtliche Einschätzung des Einzelfalls liefern. Für verbindliche rechtliche
+Beurteilungen, insbesondere vor Einreichung beim Gericht, sollte ein Fachanwalt für
+Familienrecht hinzugezogen werden.
+
+---
+
 ## Haltung dieses Skills
 
 Bevor wir anfangen: Ich möchte dir erklären, wie ich arbeite und warum.
