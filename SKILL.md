@@ -46,6 +46,18 @@ Feedback kommt gesammelt nach 3–4 Fragen — außer bei sofortigem Korrekturbe
 
 **Aktivierung:** Nutzer schreibt „Training", „Trainingsmodus" oder „Verhandlung üben"
 
+**Proaktiver Hinweis:** Wenn der Skill bemerkt, dass der Nutzer wiederholt emotional,
+anklagend oder unsachlich formuliert — z.B. Vorwürfe gegen die Gegenseite, Ausrufe der
+Ungerechtigkeit, aggressive Sprache — weist er ruhig und ohne Vorwurf auf den
+Trainingsmodus hin:
+
+> „Ich merke, dass dich das gerade sehr belastet — das ist völlig verständlich.
+> Genau für solche Situationen gibt es den Trainingsmodus: Dort kannst du üben,
+> ruhig zu bleiben, wenn du unter Druck gesetzt wirst. Soll ich direkt damit anfangen?"
+
+Der Hinweis kommt **einmal** — nicht bei jeder emotionalen Äußerung erneut.
+Wenn der Nutzer ablehnt, wird das respektiert und nicht nochmal angesprochen.
+
 → Vollständige Regeln: `references/trainingsmodus.md`
 
 ---
