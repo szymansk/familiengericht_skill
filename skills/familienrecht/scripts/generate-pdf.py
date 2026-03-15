@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 generate-pdf.py — Erzeugt PDFs aus den Markdown-Dateien eines Verfahrens.
-Verwendet Pandoc + XeLaTeX für professionellen Satz.
+Verwendet Pandoc + XeLaTeX (kein eigenes Template).
 
 Verwendung:
   python scripts/generate-pdf.py verfahren/4-f-42-25
@@ -21,11 +21,6 @@ import tempfile
 import shutil
 from pathlib import Path
 
-# ── Pfade ─────────────────────────────────────────────────────────────────────
-
-SCRIPT_DIR = Path(__file__).parent.resolve()
-TEMPLATES   = SCRIPT_DIR / 'templates'
-
 # ── Abhängigkeiten prüfen ─────────────────────────────────────────────────────
 
 def check_deps():
@@ -44,11 +39,16 @@ def check_deps():
 # ── Markdown-Vorverarbeitung ──────────────────────────────────────────────────
 
 def strip_comments(text: str) -> str:
+    """Entfernt HTML-Kommentare (<!-- ... -->)."""
     return re.sub(r'<!--[\s\S]*?-->', '', text)
 
 def strip_internal_notes(text: str) -> str:
     """Entfernt [intern]-Annotationen (eckige Klammern) für den offiziellen Export."""
     return re.sub(r'\s*\[[^\]]*\]', '', text)
+
+def strip_template_hints(text: str) -> str:
+    """Entfernt Blockquote-Zeilen (> ...) — werden als Template-Hinweise behandelt."""
+    return re.sub(r'^>.*\n?', '', text, flags=re.MULTILINE)
 
 def split_briefkopf(md: str) -> tuple[str, str]:
     """Trennt Briefkopf (vor erstem ---) vom Schriftsatz-Body."""
@@ -58,48 +58,29 @@ def split_briefkopf(md: str) -> tuple[str, str]:
         return '', clean
     return clean[:m.start()], clean[m.end():]
 
-def briefkopf_to_latex(text: str) -> str:
-    """Konvertiert den Briefkopf-Abschnitt zu LaTeX."""
-    lines = [l.rstrip() for l in text.split('\n') if l.strip()]
-    out = []
-    for line in lines:
-        if line.startswith('#') or line.startswith('>'):
-            continue
-        # Markdown Bold → LaTeX
-        line = re.sub(r'\*\*(.*?)\*\*', r'\\textbf{\1}', line)
-        # Datum-Zeile → rechtsbündig
-        if re.search(r'\bden\s+\d', line):
-            out.append(f'\\hfill {line}\\\\[1mm]')
-        # Aktenzeichen → fett
-        elif 'Aktenzeichen:' in line:
-            out.append(f'\\noindent\\textbf{{{line}}}\\\\[3mm]')
-        # Betreff-Zeile (Erwiderung, Antrag, ...) → fett + unterstrichen
-        elif re.match(r'(Erwiderung|Antrag|Stellungnahme)', line):
-            out.append(f'\\noindent\\textbf{{\\underline{{{line}}}}}\\\\[4mm]')
-        else:
-            out.append(f'\\noindent {line}\\\\[0mm]')
-    return '\n'.join(out)
-
 # ── Pandoc aufrufen ───────────────────────────────────────────────────────────
 
-def run_pandoc(md_text: str, output: Path, template: Path, extra_vars: dict = None):
+# Gemeinsame Basis-Flags für alle Dokumente
+PANDOC_BASE = [
+    '--pdf-engine', 'xelatex',
+    '-V', 'lang=de-DE',
+    '-V', 'papersize=a4',
+    '-V', 'geometry:margin=2.5cm',
+    '-V', 'mainfont=Arial',
+    '-V', 'fontsize=11pt',
+    '-V', 'linestretch=1.2',
+]
+
+def run_pandoc(md_text: str, output: Path, extra_flags: list = None):
     """Schreibt MD in Tempfile und ruft Pandoc auf."""
     with tempfile.NamedTemporaryFile(suffix='.md', mode='w',
                                      encoding='utf-8', delete=False) as f:
         f.write(md_text)
         tmp_md = f.name
 
-    cmd = [
-        'pandoc', tmp_md,
-        '--output', str(output),
-        '--pdf-engine', 'xelatex',
-        '--template', str(template),
-        '--variable', 'lang=de',
-    ]
-    if extra_vars:
-        for k, v in extra_vars.items():
-            # Mehrzeilige Werte als einzelne Variable übergeben
-            cmd += ['--variable', f'{k}={v}']
+    cmd = ['pandoc', tmp_md, '--output', str(output)] + PANDOC_BASE
+    if extra_flags:
+        cmd += extra_flags
 
     try:
         result = subprocess.run(cmd, capture_output=True, text=True)
@@ -114,13 +95,12 @@ def run_pandoc(md_text: str, output: Path, template: Path, extra_vars: dict = No
 def build_erwiderung(md_path: Path, output: Path):
     md = md_path.read_text(encoding='utf-8')
     briefkopf_raw, body = split_briefkopf(md)
-    briefkopf_tex = briefkopf_to_latex(briefkopf_raw) if briefkopf_raw else ''
-    run_pandoc(
-        md_text   = body,
-        output    = output,
-        template  = TEMPLATES / 'schriftsatz.latex',
-        extra_vars = {'briefkopf': briefkopf_tex} if briefkopf_tex else {},
-    )
+    if briefkopf_raw:
+        bk = strip_template_hints(strip_comments(briefkopf_raw)).strip()
+        full_md = bk + '\n\n---\n\n' + body
+    else:
+        full_md = strip_comments(md)
+    run_pandoc(full_md, output)
 
 
 def build_kalender(md_path: Path, output: Path):
@@ -132,11 +112,9 @@ def build_kalender(md_path: Path, output: Path):
         lambda m: '```\n' + m.group(0) + '```\n',
         clean, flags=re.MULTILINE
     )
-    run_pandoc(
-        md_text  = clean,
-        output   = output,
-        template = TEMPLATES / 'kalender.latex',
-    )
+    run_pandoc(clean, output, extra_flags=[
+        '-V', 'geometry:margin=1.5cm,landscape',
+    ])
 
 
 def build_deckblatt(anlage: str, titel: str, datei: str, az: str, output: Path):
@@ -152,11 +130,7 @@ Aktenzeichen: {az}
 
 *Das Original dieses Dokuments wird separat eingereicht.*
 """
-    run_pandoc(
-        md_text  = md,
-        output   = output,
-        template = TEMPLATES / 'schriftsatz.latex',
-    )
+    run_pandoc(md, output)
 
 
 def parse_originale(anlagen_md: Path) -> list:
