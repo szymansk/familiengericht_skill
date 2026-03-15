@@ -140,8 +140,12 @@ Den Kalender in `sachverhalt/kalender.md` kontinuierlich führen — bei jedem g
 
 Exportreihenfolge (nur wenn nicht vorhanden oder Quelldatei neuer als Output):
 ```bash
+# DOCX (für Kanzlei oder wenn Word-Format gewünscht):
 node scripts/generate-docx.js verfahren/{az-kurz}
-# Erzeugt: erwiderung.docx, kalender.docx, deckblatt-{X}.docx für alle Original-Anlagen
+
+# PDF direkt aus Markdown via Pandoc + XeLaTeX (empfohlen):
+python scripts/generate-pdf.py verfahren/{az-kurz}
+# Erzeugt: erwiderung.pdf, kalender.pdf, deckblatt-{X}.pdf für alle Original-Anlagen
 ```
 
 Danach fragen:
@@ -150,8 +154,12 @@ Danach fragen:
 Bei Ja:
 ```bash
 python scripts/combine-pdf.py verfahren/{az-kurz}
-# Voraussetzung: pip install pypdf pillow  |  LibreOffice installiert
-# Erzeugt: output/einreichung.pdf
+# Generiert fehlende PDFs automatisch, führt dann zusammen → output/einreichung.pdf
+```
+
+Wenn setup.sh noch nicht ausgeführt wurde, zuerst:
+```bash
+bash scripts/setup.sh
 ```
 
 ---
