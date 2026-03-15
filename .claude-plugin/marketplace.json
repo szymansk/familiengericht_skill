@@ -9,7 +9,7 @@
   },
   "plugins": [
     {
-      "name": "familienrecht",
+      "name": "familienrecht-skill",
       "source": "./",
       "description": "Erstellung familienrechtlicher Schriftsätze (Umgang, Sorgerecht) nach dem Cochemer Modell. Inkl. 5-Phasen-Workflow, Prüfschema, Trainingsmodus und iterativer Sachverhaltsaufnahme.",
       "version": "1.0.0",
