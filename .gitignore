@@ -14,3 +14,6 @@ __pycache__/
 # Node
 node_modules/
 package-lock.json
+
+# Claude Code workspace settings (lokal, nicht für andere Nutzer)
+.claude/

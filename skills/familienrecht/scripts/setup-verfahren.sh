@@ -22,8 +22,8 @@ AZ="$1"
 AZ_DIR=$(echo "$AZ" | tr '[:upper:]' '[:lower:]' | sed 's/[ /]/-/g' | sed 's/--*/-/g')
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-TEMPLATES="$SCRIPT_DIR/templates/verfahren"
-TARGET="$SCRIPT_DIR/verfahren/$AZ_DIR"
+TEMPLATES="$SCRIPT_DIR/../assets/verfahren"
+TARGET="$(pwd)/verfahren/$AZ_DIR"
 
 # ── Zielordner prüfen ────────────────────────────────────────────────────────
 
@@ -110,7 +110,7 @@ EOF
 
 # ── .venv in Root-.gitignore sicherstellen ────────────────────────────────────
 
-ROOT_GITIGNORE="$SCRIPT_DIR/.gitignore"
+ROOT_GITIGNORE="$(pwd)/.gitignore"
 if ! grep -qF '.venv/' "$ROOT_GITIGNORE" 2>/dev/null; then
   printf '\n# Python venv\n.venv/\n' >> "$ROOT_GITIGNORE"
   echo ".venv/ zu $ROOT_GITIGNORE hinzugefügt"
@@ -121,6 +121,6 @@ fi
 echo ""
 echo "Verfahren erfolgreich angelegt:"
 echo ""
-find "$TARGET" -not -name '.gitkeep' | sort | sed "s|$SCRIPT_DIR/||"
+find "$TARGET" -not -name '.gitkeep' | sort | sed "s|$(pwd)/||"
 echo ""
 echo "Nächster Schritt: Phase 1 — sachverhalt/fakten.md befüllen."

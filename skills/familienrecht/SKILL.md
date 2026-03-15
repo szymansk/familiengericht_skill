@@ -155,7 +155,7 @@ Commit-Nachrichten kurz und beschreibend: `Sachverhalt: Betreuungsrealität erg�
 - **Markdown-First** — immer zuerst in Markdown schreiben, VS Code mit Preview
 - **DOCX nur in Phase 5** oder auf explizite Anfrage — nicht bei jeder kleinen Änderung
 - **Projektstruktur:** `verfahren/{az-kurz}/sachverhalt/`, `gegenseite/`, `belege/originale/`, `erwiderung/`, `vorbereitung/`, `output/`
-- **Neues Verfahren:** `scripts/setup-verfahren.sh "4 F 42/25"` (aus dem Skill-Verzeichnis ausführen)
+- **Neues Verfahren:** Claude führt `scripts/setup-verfahren.sh "4 F 42/25"` aus dem Plugin-Verzeichnis aus — legt `verfahren/{az-kurz}/` im aktuellen Arbeitsverzeichnis an
 
 ---
 
