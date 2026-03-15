@@ -73,6 +73,7 @@ $if(linestretch)$\setstretch{$linestretch$}$else$\setstretch{1.2}$endif$
 \usepackage{xcolor}
 \usepackage[normalem]{ulem}
 \usepackage[hidelinks]{hyperref}
+\usepackage{needspace}
 
 %% ── Pandoc-Kompatibilität ────────────────────────────────────────────────────
 \providecommand{\tightlist}{%

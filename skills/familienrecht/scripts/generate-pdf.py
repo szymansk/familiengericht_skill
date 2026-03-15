@@ -183,7 +183,7 @@ PANDOC_BASE = [
     '-V', 'papersize=a4',
     '-V', 'geometry:margin=2.5cm',
     '-V', 'mainfont=Arial',
-    '-V', 'fontsize=11pt',
+    '-V', 'fontsize=12pt',
     '-V', 'linestretch=1.2',
 ]
 
@@ -214,12 +214,13 @@ def run_pandoc(md_text: str, output: Path, extra_flags: list = None,
 
 # ── Dokumente generieren ──────────────────────────────────────────────────────
 
-def wrap_signature_samepage(body: str) -> str:
-    """Verhindert Seitenumbruch im Unterschriftsblock.
+def protect_signature_block(body: str) -> str:
+    """Verhindert Seitenumbruch im Unterschriftsblock via \\needspace.
 
-    Sucht nach 'Weiterer Sachvortrag' (Standard-Schlussformel) oder
-    als Fallback nach der Unterschriftszeile (___) und schließt alles
-    bis zum Dokumentende in \\begin{samepage}...\\end{samepage} ein.
+    Fügt \\needspace{7cm} vor 'Weiterer Sachvortrag' (Standard-Schlussformel)
+    oder als Fallback vor der Unterschriftszeile (___) ein. Anders als
+    \\begin{samepage} umschließt \\needspace keinen Inhalt, sodass Pandoc
+    das Markdown im Block normal verarbeitet.
     """
     anchor = re.search(r'\nWeiterer Sachvortrag\b', body)
     if not anchor:
@@ -227,7 +228,17 @@ def wrap_signature_samepage(body: str) -> str:
     if not anchor:
         return body
     pos = anchor.start()
-    return body[:pos] + '\n\\begin{samepage}' + body[pos:].rstrip() + '\n\\end{samepage}\n'
+    body = body[:pos] + '\n\\vspace{12pt}\n\\needspace{7cm}' + body[pos:]
+
+    # Zusätzlicher Abstand vor der Orts-Datums-Zeile im Unterschriftsblock
+    MONTHS = (r'Januar|Februar|März|April|Mai|Juni|Juli|August|'
+              r'September|Oktober|November|Dezember')
+    sig_date = re.search(r'\n(?=\S[^\n]*\d{1,2}\.\s*(?:' + MONTHS + r')\s+\d{4})',
+                         body[pos:])
+    if sig_date:
+        p = pos + sig_date.start()
+        body = body[:p] + '\n\\vspace{10pt}' + body[p:]
+    return body
 
 
 def build_erwiderung(md_path: Path, output: Path):
@@ -236,7 +247,7 @@ def build_erwiderung(md_path: Path, output: Path):
     bk_lines = briefkopf_raw.count('\n') if briefkopf_raw else 0
     body_lines = body.count('\n')
     print(f'  [Split]     Briefkopf {bk_lines} Zeilen, Body {body_lines} Zeilen')
-    body = wrap_signature_samepage(body)
+    body = protect_signature_block(body)
     briefkopf_tex = briefkopf_to_latex(briefkopf_raw) if briefkopf_raw else ''
     run_pandoc(
         md_text    = body,
