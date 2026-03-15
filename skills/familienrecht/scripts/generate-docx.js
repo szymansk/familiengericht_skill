@@ -278,12 +278,74 @@ async function buildKalender(mdPath) {
   return Packer.toBuffer(doc);
 }
 
+// ── Deckblatt für Original-Anlagen ───────────────────────────────────────────
+
+/**
+ * Liest anlagen.md und gibt alle Anlagen vom Typ "Original" zurück.
+ * Format: [{ anlage: 'B1', titel: '...', datei: '...' }, ...]
+ */
+function parseOriginale(anlagenMdPath) {
+  if (!fs.existsSync(anlagenMdPath)) return [];
+  const lines = fs.readFileSync(anlagenMdPath, 'utf8').split('\n');
+  const result = [];
+  for (const line of lines) {
+    if (!line.startsWith('|')) continue;
+    const cols = line.split('|').map(c => c.trim()).filter(Boolean);
+    if (cols.length < 4) continue;
+    if (/^[A-Z]/.test(cols[0]) && /original/i.test(cols[3])) {
+      result.push({ anlage: cols[0], titel: cols[1], datei: cols[2] });
+    }
+  }
+  return result;
+}
+
+async function buildDeckblatt(anlage, titel, datei, az) {
+  const doc = new Document({
+    sections: [{
+      properties: {
+        page: {
+          size:   { width: convertMillimetersToTwip(210), height: convertMillimetersToTwip(297) },
+          margin: { top: MARGIN, right: MARGIN, bottom: MARGIN, left: MARGIN },
+        },
+      },
+      children: [
+        emptyPara(), emptyPara(), emptyPara(),
+        new Paragraph({
+          children:  [new TextRun({ text: `Anlage ${anlage}`, font: FONT, size: 36, bold: true })],
+          alignment: AlignmentType.CENTER,
+          spacing:   { after: 240 },
+        }),
+        new Paragraph({
+          children:  [new TextRun({ text: titel || datei || '(Originaldokument)', font: FONT, size: SIZE_BODY })],
+          alignment: AlignmentType.CENTER,
+          spacing:   { after: 480 },
+        }),
+        new Paragraph({
+          children:  [new TextRun({ text: `Aktenzeichen: ${az}`, font: FONT, size: SIZE_BODY })],
+          alignment: AlignmentType.CENTER,
+          spacing:   { after: 240 },
+        }),
+        emptyPara(), emptyPara(),
+        new Paragraph({
+          children:  [new TextRun({
+            text: 'Das Original dieses Dokuments wird separat eingereicht.',
+            font: FONT, size: SIZE_BODY, italics: true,
+          })],
+          alignment: AlignmentType.CENTER,
+        }),
+      ],
+    }],
+  });
+  return Packer.toBuffer(doc);
+}
+
 // ── Main ─────────────────────────────────────────────────────────────────────
 
 async function main() {
   const args          = process.argv.slice(2);
   const verfahrenPath = args.find(a => !a.startsWith('--'));
   const only          = (args.find(a => a.startsWith('--only=')) || '').replace('--only=', '') || 'all';
+  const az            = path.basename(verfahrenPath).replace(/-/g, ' ').toUpperCase();
 
   if (!verfahrenPath) {
     console.error('Verwendung: node generate-docx.js <verfahren-pfad> [--only=erwiderung|kalender]');
@@ -320,6 +382,22 @@ async function main() {
       console.log(`✓  ${dst}`);
     } else {
       console.warn('  kalender.md nicht gefunden — übersprungen.');
+    }
+  }
+
+  if (only === 'all' || only === 'deckblatt') {
+    const anlagenSrc = path.join(verfahrenPath, 'erwiderung', 'anlagen.md');
+    const originale  = parseOriginale(anlagenSrc);
+    if (originale.length === 0) {
+      if (only === 'deckblatt') console.log('  Keine Original-Anlagen in anlagen.md gefunden.');
+    } else {
+      for (const { anlage, titel, datei } of originale) {
+        process.stdout.write(`Generiere deckblatt-${anlage}.docx … `);
+        const buf = await buildDeckblatt(anlage, titel, datei, az);
+        const dst = path.join(outputDir, `deckblatt-${anlage}.docx`);
+        fs.writeFileSync(dst, buf);
+        console.log(`✓  ${dst}`);
+      }
     }
   }
 

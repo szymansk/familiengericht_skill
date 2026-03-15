@@ -88,9 +88,13 @@ Beim Start jeder Sitzung — auch nach einem Chat-Reset — vollständigen Konte
 Wenn eine DOCX-, PDF- oder andere Datei eingebracht wird:
 
 1. **Umbenennen** nach Konvention `YYYYMMDD_[AZ]_[VON]_[AN]_[Beschreibung].[ext]` — Datum/Absender/Empfänger mit Nutzer klären, Original in `belege/originale/` ablegen
-2. **Konvertieren** mit MarkItDown (`.venv` aktivieren, dann `python -c "from markitdown import MarkItDown; ..."`)
-3. **MD ablegen** mit gleichem Basisnamen in `belege/whatsapp/`, `emails/`, `voicenotes/` oder `dokumente/`
-4. **Eintragen** in `erwiderung/anlagen.md` (beide Pfade: Original + MD)
+2. **Einreichungsart klären** — wenn unklar, fragen:
+   > „Soll dieses Dokument als Original eingereicht werden (z.B. amtliches Schreiben, unterschriebener Vertrag), oder reicht eine Kopie als Ausdruck?"
+   - **Original** → Typ `Original` in `anlagen.md`, Deckblatt wird beim Export automatisch generiert
+   - **Kopie** → Typ `Kopie`, kein Deckblatt nötig
+3. **Konvertieren** mit MarkItDown (`.venv` aktivieren) für die inhaltliche Arbeit
+4. **MD ablegen** mit gleichem Basisnamen in `belege/whatsapp/`, `emails/`, `voicenotes/` oder `dokumente/`
+5. **Eintragen** in `erwiderung/anlagen.md` mit Typ, Titel und Dateipfad
 
 ---
 
@@ -133,11 +137,22 @@ Den Kalender in `sachverhalt/kalender.md` kontinuierlich führen — bei jedem g
 **Phase 4 — Vertiefung:** Offene Fragen klären, neue Fakten einarbeiten, zurück zu Phase 3 wenn nötig.
 
 **Phase 5 — Finalisierung:** → `references/formatierung.md` lesen.
+
+Exportreihenfolge (nur wenn nicht vorhanden oder Quelldatei neuer als Output):
 ```bash
 node scripts/generate-docx.js verfahren/{az-kurz}
-# oder einzeln: --only=erwiderung / --only=kalender
+# Erzeugt: erwiderung.docx, kalender.docx, deckblatt-{X}.docx für alle Original-Anlagen
 ```
-Erzeugt `output/erwiderung.docx` und `output/kalender.docx` (ohne interne Notizen).
+
+Danach fragen:
+> „Soll ich alle Dokumente zu einer einzigen PDF-Datei zusammenführen? (Erwiderung + Kalender + Deckblätter + Originale in der richtigen Reihenfolge)"
+
+Bei Ja:
+```bash
+python scripts/combine-pdf.py verfahren/{az-kurz}
+# Voraussetzung: pip install pypdf pillow  |  LibreOffice installiert
+# Erzeugt: output/einreichung.pdf
+```
 
 ---
 
