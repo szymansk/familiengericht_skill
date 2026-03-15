@@ -59,12 +59,23 @@ Bei der Sachverhaltsaufnahme `references/betreuungsmodelle.md` lesen. Dem Nutzer
 
 ## Startup-Routine
 
-Beim Start jeder Sitzung:
+Beim Start jeder Sitzung — auch nach einem Chat-Reset — vollständigen Kontext laden:
 
-**1. Verfahrensüberblick:** `verfahren/`-Verzeichnis scannen, von jedem Verfahren `sachverhalt/fakten.md` lesen. Bei mehr als einem Verfahren kurze Übersicht:
+**1. Verfahrensüberblick:** `verfahren/`-Verzeichnis scannen. Bei mehr als einem Verfahren kurze Übersicht ausgeben und fragen, zu welchem gearbeitet werden soll. Bei einem Verfahren direkt weitermachen.
 > „Ich sehe [N] laufende Verfahren: [Az. 1], [Az. 2]. Zu welchem möchtest du arbeiten?"
 
-**2. Belege auf Nomenklatur prüfen:** Alle Unterordner von `belege/` scannen. Dateien die nicht dem Format `YYYYMMDD_[AZ]_[VON]_[AN]_[Beschreibung].[ext]` entsprechen, werden gebündelt als Tabelle zur Umbenennung vorgelegt — nie Datei für Datei. Nach Bestätigung umbenennen und committen. `.gitkeep` und versteckte Dateien überspringen.
+**2. Kontext des aktiven Verfahrens laden:** Folgende Dateien lesen, um den aktuellen Stand vollständig zu kennen:
+
+| Datei | Zweck |
+|-------|-------|
+| `sachverhalt/fakten.md` | Bekannte Fakten, Betreuungsmodell, Parteien |
+| `sachverhalt/entscheidungen.md` | Strategische Entscheidungen (immer lesen — gilt sitzungsübergreifend) |
+| `sachverhalt/timeline.md` | Chronologie der Ereignisse |
+| `sachverhalt/notizen.md` | Unverarbeitete Notizen und verworfene Punkte |
+| `erwiderung/erwiderung.md` | Aktueller Entwurfsstand |
+| `erwiderung/anlagen.md` | Verwendete Belege und Anlagen |
+
+**3. Belege auf Nomenklatur prüfen:** Alle Unterordner von `belege/` scannen. Dateien die nicht dem Format `YYYYMMDD_[AZ]_[VON]_[AN]_[Beschreibung].[ext]` entsprechen, werden gebündelt als Tabelle zur Umbenennung vorgelegt — nie Datei für Datei. Nach Bestätigung umbenennen und committen. `.gitkeep` und versteckte Dateien überspringen.
 
 → Nomenklatur-Details und Erkennungsregeln: `references/dateinamenskonvention.md`
 
@@ -111,7 +122,7 @@ Den Kalender in `sachverhalt/kalender.md` kontinuierlich führen — bei jedem g
 
 → Vollständiger Ablauf: `references/workflow.md`
 
-**Phase 1 — Sachverhaltsaufnahme:** Fakten sammeln, Betreuungsmodell erfassen, Gegenseite analysieren → `sachverhalt/fakten.md`, `timeline.md`, `kalender.md`
+**Phase 1 — Sachverhaltsaufnahme:** Fakten sammeln, Betreuungsmodell erfassen, Gegenseite analysieren → `sachverhalt/fakten.md`, `timeline.md`, `kalender.md`. Strategische Entscheidungen (welche Belege verwenden, was weglassen, was betonen) in `sachverhalt/entscheidungen.md` festhalten.
 
 **Phase 2 — Entwurf:** Schriftsatz in Markdown → `erwiderung/erwiderung.md`, Anlagen → `erwiderung/anlagen.md`
 

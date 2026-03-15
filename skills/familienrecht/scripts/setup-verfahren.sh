@@ -68,6 +68,7 @@ replace "$TEMPLATES/sachverhalt/kalender.md"         "$TARGET/sachverhalt/kalend
 replace "$TEMPLATES/sachverhalt/timeline.md"         "$TARGET/sachverhalt/timeline.md"
 replace "$TEMPLATES/sachverhalt/offene-fragen.md"    "$TARGET/sachverhalt/offene-fragen.md"
 replace "$TEMPLATES/sachverhalt/notizen.md"          "$TARGET/sachverhalt/notizen.md"
+replace "$TEMPLATES/sachverhalt/entscheidungen.md"   "$TARGET/sachverhalt/entscheidungen.md"
 replace "$TEMPLATES/erwiderung/erwiderung.md"        "$TARGET/erwiderung/erwiderung.md"
 replace "$TEMPLATES/erwiderung/anlagen.md"           "$TARGET/erwiderung/anlagen.md"
 replace "$TEMPLATES/erwiderung/nur-muendlich.md"     "$TARGET/erwiderung/nur-muendlich.md"
