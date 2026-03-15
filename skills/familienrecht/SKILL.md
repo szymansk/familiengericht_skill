@@ -138,30 +138,39 @@ Den Kalender in `sachverhalt/kalender.md` kontinuierlich führen — bei jedem g
 
 **Phase 5 — Finalisierung:** → `references/formatierung.md` lesen.
 
-Exportreihenfolge (nur wenn nicht vorhanden oder Quelldatei neuer als Output):
-```bash
-# DOCX (für Kanzlei oder wenn Word-Format gewünscht):
-node scripts/generate-docx.js verfahren/{az-kurz}
+**PDF und DOCX werden ausschließlich mit den mitgelieferten Skripten erzeugt — niemals mit anderen Werkzeugen (Chrome, wkhtmltopdf, LibreOffice, eigene Skripte o.ä.).** Die Skripte liegen im Plugin-Verzeichnis unter `scripts/`.
 
-# PDF direkt aus Markdown via Pandoc + XeLaTeX (empfohlen):
-python scripts/generate-pdf.py verfahren/{az-kurz}
-# Erzeugt: erwiderung.pdf, kalender.pdf, deckblatt-{X}.pdf für alle Original-Anlagen
+Vor dem ersten PDF-Export prüfen ob `pandoc` und `xelatex` vorhanden sind:
+```bash
+command -v pandoc && command -v xelatex
+```
+Falls nicht → zuerst Setup ausführen (siehe unten).
+
+Exportreihenfolge (nur wenn nicht vorhanden oder Quelldatei neuer als Output):
+Die Skripte liegen im `scripts/`-Unterordner dieser SKILL.md-Datei. Den absoluten Pfad zu `scripts/` ermitteln und verwenden — nie eigene Skripte erstellen.
+
+```bash
+# PDF via Pandoc + XeLaTeX (Standardweg):
+python /absoluter/pfad/zu/skills/familienrecht/scripts/generate-pdf.py verfahren/{az-kurz}
+
+# DOCX (nur wenn explizit gewünscht, z.B. für Kanzlei):
+node /absoluter/pfad/zu/skills/familienrecht/scripts/generate-docx.js verfahren/{az-kurz}
 ```
 
 Danach fragen:
-> „Soll ich alle Dokumente zu einer einzigen PDF-Datei zusammenführen? (Erwiderung + Kalender + Deckblätter + Originale in der richtigen Reihenfolge)"
+> „Soll ich alle Dokumente zu einer einzigen PDF-Datei zusammenführen?"
 
 Bei Ja:
 ```bash
-python scripts/combine-pdf.py verfahren/{az-kurz}
-# Generiert fehlende PDFs automatisch, führt dann zusammen → output/einreichung.pdf
+python /absoluter/pfad/zu/skills/familienrecht/scripts/combine-pdf.py verfahren/{az-kurz}
+# → output/einreichung.pdf
 ```
 
-Wenn `setup.sh` noch nicht ausgeführt wurde oder der Nutzer „Setup ausführen", „Abhängigkeiten installieren" oder „Skill einrichten" sagt:
+**Setup** — ausführen wenn `pandoc`/`xelatex` fehlen oder Nutzer „Setup ausführen" / „Skill einrichten" sagt:
 ```bash
-bash scripts/setup.sh
+bash /absoluter/pfad/zu/skills/familienrecht/scripts/setup.sh
 ```
-Setup prüft selbst ob alles bereits installiert ist — kann jederzeit erneut ausgeführt werden.
+Installiert: pandoc, BasicTeX + LaTeX-Pakete, Python venv (markitdown/pypdf/pillow), npm docx.
 
 ---
 
