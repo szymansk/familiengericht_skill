@@ -17,13 +17,6 @@ In Claude Code:
 /plugin install familienrecht@familienrecht-marketplace
 ```
 
-### Manuell
-
-```bash
-git clone https://github.com/szymansk/familiengericht_skill.git
-```
-
-Nach dem Klonen in Claude Code als Plugin einbinden (`/plugin`).
 
 ---
 
