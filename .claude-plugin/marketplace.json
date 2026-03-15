@@ -1,5 +1,4 @@
 {
-  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
   "name": "familienrecht-marketplace",
   "description": "Familienrecht-Skill für Claude Code — Schriftsätze, Sachverhaltsaufnahme und Verhandlungstraining nach dem Cochemer Modell.",
   "owner": {
