@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-# Erhöht die Patch-Version in plugin.json und marketplace.json vor jedem Push automatisch.
+# Erhöht die Patch-Version in plugin.json und marketplace.json vor jedem Push.
+# Wird in den letzten Commit eingebaut (amend) — kein separater Bump-Commit nötig.
 
 set -euo pipefail
 
@@ -19,8 +20,8 @@ NEW_VERSION="$MAJOR.$MINOR.$NEW_PATCH"
 sed -i '' "s/\"version\": \"$CURRENT\"/\"version\": \"$NEW_VERSION\"/g" "$PLUGIN_JSON"
 sed -i '' "s/\"version\": \"$CURRENT\"/\"version\": \"$NEW_VERSION\"/g" "$MARKETPLACE_JSON"
 
-# Committen
+# In letzten Commit einbauen (der noch nicht gepusht wurde)
 git add "$PLUGIN_JSON" "$MARKETPLACE_JSON"
-git commit -m "chore(version): $CURRENT → $NEW_VERSION"
+git commit --amend --no-edit
 
 echo "Version: $CURRENT → $NEW_VERSION"
