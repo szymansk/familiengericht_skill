@@ -1,0 +1,12 @@
+{
+  "name": "familienrecht-docx-generator",
+  "version": "1.0.0",
+  "description": "DOCX-Generator für familienrechtliche Schriftsätze",
+  "main": "generate-docx.js",
+  "scripts": {
+    "generate": "node generate-docx.js"
+  },
+  "dependencies": {
+    "docx": "^8.5.0"
+  }
+}

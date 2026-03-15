@@ -102,6 +102,21 @@ Nach 3 Iterationen ohne neue offene Fragen ist die Sachverhaltsaufnahme abgeschl
 
 → Vollständige Regeln: `references/loop-sachverhalt.md`
 
+## DOCX generieren (Phase 5)
+
+```bash
+node generate-docx.js verfahren/4-f-42-25
+# oder einzeln:
+node generate-docx.js verfahren/4-f-42-25 --only=erwiderung
+node generate-docx.js verfahren/4-f-42-25 --only=kalender
+```
+
+Erzeugt in `output/`:
+- `erwiderung.docx` — vollständiger Schriftsatz mit Briefkopf und Formatierung
+- `kalender.docx` — Betreuungskalender **ohne** interne `[...]`-Notizen, Querformat
+
+---
+
 ## Setup (einmalig)
 
 Beim ersten Aufruf prüfen und ausführen:
@@ -117,6 +132,9 @@ source .venv/bin/activate          # macOS / Linux
 # 3. MarkItDown installieren
 pip install --upgrade pip --quiet
 pip install markitdown --quiet
+
+# Node.js-Abhängigkeiten (für DOCX-Generierung)
+npm install
 
 # 4. Test
 python -c "from markitdown import MarkItDown; print('✅ MarkItDown bereit')"

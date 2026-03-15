@@ -5,5 +5,10 @@
   "author": {
     "name": "szymansk"
   },
-  "skills": ["SKILL.md"]
+  "skills": [
+    {
+      "name": "familienrecht",
+      "path": "SKILL.md"
+    }
+  ]
 }
