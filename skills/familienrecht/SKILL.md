@@ -121,7 +121,7 @@ Den Kalender in `sachverhalt/kalender.md` kontinuierlich führen — bei jedem g
 
 **Phase 5 — Finalisierung:** → `references/formatierung.md` lesen.
 ```bash
-node generate-docx.js verfahren/{az-kurz}
+node scripts/generate-docx.js verfahren/{az-kurz}
 # oder einzeln: --only=erwiderung / --only=kalender
 ```
 Erzeugt `output/erwiderung.docx` und `output/kalender.docx` (ohne interne Notizen).
@@ -155,7 +155,7 @@ Commit-Nachrichten kurz und beschreibend: `Sachverhalt: Betreuungsrealität erg�
 - **Markdown-First** — immer zuerst in Markdown schreiben, VS Code mit Preview
 - **DOCX nur in Phase 5** oder auf explizite Anfrage — nicht bei jeder kleinen Änderung
 - **Projektstruktur:** `verfahren/{az-kurz}/sachverhalt/`, `gegenseite/`, `belege/originale/`, `erwiderung/`, `vorbereitung/`, `output/`
-- **Neues Verfahren:** `./setup-verfahren.sh "4 F 42/25"`
+- **Neues Verfahren:** `scripts/setup-verfahren.sh "4 F 42/25"` (aus dem Skill-Verzeichnis ausführen)
 
 ---
 
