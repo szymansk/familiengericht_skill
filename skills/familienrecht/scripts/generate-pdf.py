@@ -56,12 +56,26 @@ def strip_template_hints(text: str) -> str:
     return re.sub(r'^>.*\n?', '', text, flags=re.MULTILINE)
 
 def split_briefkopf(md: str) -> tuple[str, str]:
-    """Trennt Briefkopf (vor erstem ---) vom Schriftsatz-Body."""
+    """Trennt Briefkopf vom Schriftsatz-Body.
+
+    Unterstützt zwei Formate:
+    - Zwei --- (Template-Format): Titel/Hints --- Briefkopf --- Body
+    - Ein ---  (einfaches Format): Briefkopf --- Body
+    """
     clean = strip_comments(md)
-    m = re.search(r'\n---\n', clean)
-    if not m:
+    separators = [m.start() for m in re.finditer(r'\n---\n', clean)]
+
+    if len(separators) >= 2:
+        # Briefkopf zwischen erstem und zweitem ---
+        bk_start = separators[0] + len('\n---\n')
+        bk_end   = separators[1]
+        body_start = separators[1] + len('\n---\n')
+        return clean[bk_start:bk_end], clean[body_start:]
+    elif len(separators) == 1:
+        # Briefkopf vor dem einzigen ---
+        return clean[:separators[0]], clean[separators[0] + len('\n---\n'):]
+    else:
         return '', clean
-    return clean[:m.start()], clean[m.end():]
 
 def briefkopf_to_latex(text: str) -> str:
     """Konvertiert Briefkopf-Zeilen zu LaTeX:
@@ -77,7 +91,7 @@ def briefkopf_to_latex(text: str) -> str:
         if line.startswith('#') or line.startswith('>'):
             continue
         if not line.strip():
-            out.append('\\medskip')
+            out.append('\\vspace{8pt}')
             continue
         # Markdown Bold → LaTeX
         line = re.sub(r'\*\*(.*?)\*\*', r'\\textbf{\1}', line)
