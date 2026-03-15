@@ -88,6 +88,20 @@ um das aktuelle und das angestrebte Modell zu erfassen.
 → Lies `references/verhaltensregeln.md` zu Beginn jedes Verfahrens und in Phase 5b.
 → Lies `references/trainingsmodus.md` wenn der Trainingsmodus aktiviert wird.
 
+## Loop-Modus: Iterative Sachverhaltsaufnahme
+
+Für die Sachverhaltsaufnahme kann der `/loop`-Skill von Claude Code verwendet werden.
+Claude läuft in einem festen Intervall, liest `sachverhalt/offene-fragen.md`,
+wertet Antworten aus, aktualisiert `sachverhalt/fakten.md` und stellt neue Fragen.
+Nach 3 Iterationen ohne neue offene Fragen ist die Sachverhaltsaufnahme abgeschlossen.
+
+**Aktivierung:**
+```
+/loop 10m Führe eine Iteration des Familienrecht-Sachverhalts-Loops durch für verfahren/{az-kurz}
+```
+
+→ Vollständige Regeln: `references/loop-sachverhalt.md`
+
 ## Setup (einmalig)
 
 Beim ersten Aufruf prüfen und ausführen:
