@@ -1,21 +1,19 @@
 {
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
   "name": "familienrecht-marketplace",
+  "description": "Familienrecht-Skill für Claude Code — Schriftsätze, Sachverhaltsaufnahme und Verhandlungstraining nach dem Cochemer Modell.",
   "owner": {
     "name": "szymansk"
-  },
-  "metadata": {
-    "description": "Familienrecht-Skill für Claude Code — Schriftsätze, Sachverhaltsaufnahme und Verhandlungstraining nach dem Cochemer Modell.",
-    "version": "1.0.0"
   },
   "plugins": [
     {
       "name": "familienrecht-skill",
-      "source": "./",
       "description": "Erstellung familienrechtlicher Schriftsätze (Umgang, Sorgerecht) nach dem Cochemer Modell. Inkl. 5-Phasen-Workflow, Prüfschema, Trainingsmodus und iterativer Sachverhaltsaufnahme.",
       "version": "1.0.0",
       "author": {
         "name": "szymansk"
-      }
+      },
+      "source": "./"
     }
   ]
 }
