@@ -6,6 +6,43 @@ Skill zur Erstellung von Schriftsätzen im Familienrecht (Umgang, Sorgerecht) na
 
 ## Installation in Claude Code
 
+Es gibt zwei Wege, den Skill zu installieren: über den **Marketplace** (empfohlen, kein `git clone` nötig) oder **manuell** per Symlink.
+
+---
+
+### Option A: Über den Marketplace (empfohlen)
+
+#### Schritt 1: Marketplace hinzufügen
+
+In Claude Code:
+
+```
+/plugin marketplace add szymansk/familiengericht_skill
+```
+
+#### Schritt 2: Plugin installieren
+
+```
+/plugin install familienrecht@familienrecht-marketplace
+```
+
+Oder interaktiv:
+1. `/plugin` aufrufen
+2. Tab **Discover** öffnen
+3. `familienrecht` auswählen und Installationsbereich wählen (user / project)
+
+#### Schritt 3: Abhängigkeiten installieren
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+pip install markitdown --quiet
+```
+
+---
+
+### Option B: Manuell per Symlink
+
 ### Schritt 1: Repository klonen
 
 ```bash
