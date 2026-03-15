@@ -82,7 +82,7 @@ Claude schreibt und liest dieses Format:
 # 2. offene-fragen.md wird beim ersten Loop-Aufruf automatisch erstellt
 # 3. Loop starten:
 
-/loop 10m Führe eine Iteration des Familienrecht-Sachverhalts-Loops durch für verfahren/3-f-24-26
+/loop 10m Führe eine Iteration des Familienrecht-Sachverhalts-Loops durch für verfahren/4-f-42-25
 ```
 
 ## Loop manuell stoppen

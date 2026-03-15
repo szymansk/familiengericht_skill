@@ -127,10 +127,10 @@ Die `.venv` liegt im Arbeitsverzeichnis und ist über `.gitignore` vom Repositor
 ## Neues Verfahren anlegen
 
 ```bash
-./setup-verfahren.sh "2 F 67/68"
+./setup-verfahren.sh "4 F 42/25"
 ```
 
-Das Script legt `verfahren/2-f-67-68/` mit der vollständigen Ordnerstruktur an und befüllt alle Templates mit dem Aktenzeichen. Danach direkt mit Phase 1 beginnen.
+Das Script legt `verfahren/4-f-42-25/` mit der vollständigen Ordnerstruktur an und befüllt alle Templates mit dem Aktenzeichen. Danach direkt mit Phase 1 beginnen.
 
 ## Projektstruktur
 
@@ -214,8 +214,8 @@ Folgende Dateien entsprechen nicht der Namenskonvention:
 
 | # | Aktueller Name | Vorgeschlagener Name | VON | AN |
 |---|---------------|----------------------|-----|----|
-| 1 | Antrag.pdf | 20240315_3f2426_KM_R_Antrag-Umgangsregelung.pdf | KM | R |
-| 2 | whatsapp-export.txt | 20240210_3f2426_KV_KM_WhatsApp-Export.md | KV | KM |
+| 1 | Antrag.pdf | 20240315_4f4225_KM_R_Antrag-Umgangsregelung.pdf | KM | R |
+| 2 | whatsapp-export.txt | 20240210_4f4225_KV_KM_WhatsApp-Export.md | KV | KM |
 
 Soll ich alle umbenennen? Oder einzelne anpassen?
 ```

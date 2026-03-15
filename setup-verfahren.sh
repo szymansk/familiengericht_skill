@@ -2,7 +2,7 @@
 # setup-verfahren.sh — Legt ein neues Familienrechtsverfahren mit Ordnerstruktur und Templates an.
 #
 # Verwendung:
-#   ./setup-verfahren.sh "3 F 24/26"
+#   ./setup-verfahren.sh "4 F 42/25"
 #
 # Der Az.-String wird als Ordnername sanitized (Leerzeichen → Bindestriche, Slash → Bindestrich).
 
@@ -12,7 +12,7 @@ set -euo pipefail
 
 if [[ $# -lt 1 ]]; then
   echo "Verwendung: $0 <Aktenzeichen>"
-  echo "Beispiel:   $0 \"3 F 24/26\""
+  echo "Beispiel:   $0 \"4 F 42/25\""
   exit 1
 fi
 

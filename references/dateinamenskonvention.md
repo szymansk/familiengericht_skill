@@ -20,7 +20,7 @@ Keine Leerzeichen, keine Sonderzeichen außer `-` und `_`.
 
 ### 2. Aktenzeichen-Kürzel `[AZ]`
 - Aus dem Ordnernamen des Verfahrens abgeleitet
-- Beispiel: `verfahren/3-f-24-26/` → `3f2426`
+- Beispiel: `verfahren/4-f-42-25/` → `4f4225`
 - Kann entfallen wenn das Dokument keinem Verfahren eindeutig zugeordnet ist
 
 ### 3. Absender `[VON]`
@@ -58,13 +58,13 @@ Konvertierte Markdown-Version: gleicher Basisname, Erweiterung `.md`.
 
 | Original | Bedeutung |
 |----------|-----------|
-| `20240315_3f2426_KM_R_Antrag-Umgangsregelung.pdf` | Antrag der Kindsmutter ans Gericht vom 15.03.2024 |
-| `20240315_3f2426_KM_R_Antrag-Umgangsregelung.md` | Konvertierte Version desselben Dokuments |
-| `20240401_3f2426_R_KV_Ladung-Termin-12Mai.pdf` | Ladung vom Gericht an den Kindsvater |
-| `20240210_3f2426_KV_KM_WhatsApp-Export-Jan-Feb.md` | WhatsApp-Export KV → KM |
-| `20240318_3f2426_KB_INT_Entwicklungsgespraech-KiTa.md` | Gesprächsnotiz KiTa, intern |
-| `20240120_3f2426_EB_INT_Beratungsprotokoll-Erstgespraech.pdf` | Protokoll Beratungsstelle |
-| `20240501_3f2426_GA_R_Gutachten-Bindungsanalyse.pdf` | Gutachten an Gericht |
+| `20240315_4f4225_KM_R_Antrag-Umgangsregelung.pdf` | Antrag der Kindsmutter ans Gericht vom 15.03.2024 |
+| `20240315_4f4225_KM_R_Antrag-Umgangsregelung.md` | Konvertierte Version desselben Dokuments |
+| `20240401_4f4225_R_KV_Ladung-Termin-12Mai.pdf` | Ladung vom Gericht an den Kindsvater |
+| `20240210_4f4225_KV_KM_WhatsApp-Export-Jan-Feb.md` | WhatsApp-Export KV → KM |
+| `20240318_4f4225_KB_INT_Entwicklungsgespraech-KiTa.md` | Gesprächsnotiz KiTa, intern |
+| `20240120_4f4225_EB_INT_Beratungsprotokoll-Erstgespraech.pdf` | Protokoll Beratungsstelle |
+| `20240501_4f4225_GA_R_Gutachten-Bindungsanalyse.pdf` | Gutachten an Gericht |
 
 ---
 

@@ -6,7 +6,7 @@ Im Arbeitsalltag wird in Markdown geschrieben und in VS Code mit Preview bearbei
 
 ### Überschriften
 ```markdown
-# Erwiderung — Az. 3 F 24/26         (Dokumenttitel, nicht im Text)
+# Erwiderung — Az. 4 F 42/25         (Dokumenttitel, nicht im Text)
 
 ## Begründung:                         (Hauptüberschrift)
 ## I. Vorbemerkung                     (Kapitel)
@@ -49,11 +49,11 @@ Für die Endausgabe als DOCX gelten diese Standards:
 
 ### Briefkopf
 ```
-Dr.-Ing. Marc Szymanski          [fett]
+Thomas Beispiel          [fett]
 Friedrichstraße 61
 76229 Karlsruhe
-Tel.: 0152 38097507
-E-Mail: marc.szymanski@mac.com
+Tel.: 0151 00000000
+E-Mail: thomas.beispiel@example.com
 
 Amtsgericht Karlsruhe-Durlach    [fett]
 – Familiengericht –
@@ -81,7 +81,7 @@ Weiterer Sachvortrag bleibt vorbehalten.
 
 
 _______________________________
-Dr.-Ing. Marc Szymanski           [fett]
+Thomas Beispiel           [fett]
 (Antragsgegner)
 ```
 

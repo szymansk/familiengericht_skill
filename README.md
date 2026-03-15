@@ -91,16 +91,16 @@ Claude Code erkennt den Skill automatisch anhand der Trigger-Begriffe in `SKILL.
 
 ```bash
 # Setup-Script aus dem Skill-Verzeichnis ausführen:
-~/.claude/skills/familienrecht/setup-verfahren.sh "3 F 24/26"
+~/.claude/skills/familienrecht/setup-verfahren.sh "4 F 42/25"
 ```
 
 Oder wenn du direkt im Skill-Verzeichnis arbeitest:
 
 ```bash
-./setup-verfahren.sh "3 F 24/26"
+./setup-verfahren.sh "4 F 42/25"
 ```
 
-Das Script legt `verfahren/3-f-24-26/` mit der vollständigen Ordnerstruktur an
+Das Script legt `verfahren/4-f-42-25/` mit der vollständigen Ordnerstruktur an
 und befüllt alle Templates mit dem Aktenzeichen.
 
 ---
