@@ -39,6 +39,7 @@ echo "Lege Verfahren an: $AZ  →  verfahren/$AZ_DIR"
 mkdir -p \
   "$TARGET/sachverhalt" \
   "$TARGET/gegenseite" \
+  "$TARGET/belege/originale" \
   "$TARGET/belege/whatsapp" \
   "$TARGET/belege/emails" \
   "$TARGET/belege/voicenotes" \
@@ -90,6 +91,7 @@ EOF
 # ── .gitkeep für leere Belege-Unterordner ────────────────────────────────────
 
 touch \
+  "$TARGET/belege/originale/.gitkeep" \
   "$TARGET/belege/whatsapp/.gitkeep" \
   "$TARGET/belege/emails/.gitkeep" \
   "$TARGET/belege/voicenotes/.gitkeep" \

@@ -145,10 +145,11 @@ verfahren/{az-kurz}/
 │   ├── antrag.md           # Antrag der Gegenseite (Markdown)
 │   └── protokoll-km.md     # Protokoll/Anlagen der Gegenseite
 ├── belege/
-│   ├── whatsapp/           # Chat-Exports als .md
-│   ├── emails/             # E-Mails als .md
-│   ├── voicenotes/         # Transkripte von Sprachnachrichten
-│   └── dokumente/          # Sonstige Belege als .md
+│   ├── originale/          # Originaldateien (PDF, DOCX, Bilder) — umbenannt nach Konvention
+│   ├── whatsapp/           # Konvertierte WhatsApp-Exporte (.md)
+│   ├── emails/             # Konvertierte E-Mails (.md)
+│   ├── voicenotes/         # Transkripte von Sprachnachrichten (.md)
+│   └── dokumente/          # Sonstige konvertierte Dokumente (.md)
 ├── erwiderung/
 │   ├── erwiderung.md       # Haupttext der Erwiderung
 │   ├── anlagen.md          # Anlagenverzeichnis mit Beschreibung
@@ -211,16 +212,31 @@ Der Skill gibt beim Start eine kurze Übersicht wenn mehr als ein Verfahren exis
 
 ## Neue Dokumente importieren
 
+→ Namenskonvention für alle Dateien: `references/dateinamenskonvention.md`
+
 Wenn der Nutzer eine DOCX-, PDF- oder andere Datei einbringt:
 
+**Schritt 1 — Umbenennen nach Konvention:**
+```
+YYYYMMDD_[AZ]_[VON]_[AN]_[Beschreibung].[ext]
+```
+Datum, Absender und Empfänger mit dem Nutzer klären falls nicht eindeutig.
+Original unter neuem Namen in `belege/originale/` ablegen.
+
+**Schritt 2 — Konvertieren:**
 ```python
 from markitdown import MarkItDown
 md = MarkItDown()
-result = md.convert("datei.docx")
-# result.text_content enthält den Markdown-Text
+result = md.convert("belege/originale/YYYYMMDD_AZ_VON_AN_Beschreibung.ext")
+# Ergebnis als .md mit identischem Basisnamen im thematischen Unterordner speichern
 ```
 
-Speichere das Ergebnis im passenden Unterordner als `.md`.
+**Schritt 3 — MD-Datei ablegen:**
+Gleicher Basisname, Erweiterung `.md`, im passenden Unterordner:
+`belege/whatsapp/`, `belege/emails/`, `belege/voicenotes/` oder `belege/dokumente/`
+
+**Schritt 4 — In Anlagenverzeichnis eintragen:**
+Beide Pfade (Original + MD) in `erwiderung/anlagen.md` vermerken.
 
 ## 5-Phasen-Workflow
 
