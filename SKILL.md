@@ -190,9 +190,42 @@ Er verwirft sie nie stillschweigend.
 
 ---
 
-## Überblick über laufende Verfahren
+## Startup-Routine
 
-Beim Start jeder Sitzung scannt der Skill das `verfahren/`-Verzeichnis
+Beim Start jeder Sitzung führt der Skill folgende Prüfungen durch:
+
+### 1. Belege auf Nomenklatur prüfen
+
+Der Skill scannt alle Unterordner von `belege/` im aktiven Verfahren:
+`originale/`, `whatsapp/`, `emails/`, `voicenotes/`, `dokumente/`
+
+Für jede Datei, die **nicht** dem Format `YYYYMMDD_[AZ]_[VON]_[AN]_[Beschreibung].[ext]`
+entspricht, wird ein Umbenennungsvorschlag erarbeitet:
+
+1. Datum aus Datei-Metadaten oder Dateiname extrahieren — sonst heutiges Datum
+2. AZ aus dem Verfahrensordner ableiten
+3. VON/AN aus Dateiname oder Inhalt erschließen — falls unklar: Nutzer fragen
+4. Beschreibung aus Dateiname ableiten und bereinigen (Leerzeichen → Bindestriche)
+
+Die Vorschläge werden **gebündelt** als Tabelle vorgelegt — nicht Datei für Datei:
+
+```
+Folgende Dateien entsprechen nicht der Namenskonvention:
+
+| # | Aktueller Name | Vorgeschlagener Name | VON | AN |
+|---|---------------|----------------------|-----|----|
+| 1 | Antrag.pdf | 20240315_3f2426_KM_R_Antrag-Umgangsregelung.pdf | KM | R |
+| 2 | whatsapp-export.txt | 20240210_3f2426_KV_KM_WhatsApp-Export.md | KV | KM |
+
+Soll ich alle umbenennen? Oder einzelne anpassen?
+```
+
+Nach Bestätigung: umbenennen und Git-Commit.
+Gitkeep-Dateien und versteckte Dateien (`.`) werden übersprungen.
+
+### 2. Überblick über laufende Verfahren
+
+Der Skill scannt das `verfahren/`-Verzeichnis
 und liest von jedem Verfahren die `sachverhalt/fakten.md` (Verfahrensdaten-Tabelle).
 So ist er über alle laufenden Verfahren im Bilde und kann:
 - Verbindungen zwischen Verfahren erkennen (z.B. gemeinsame Beteiligte)

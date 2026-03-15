@@ -103,3 +103,33 @@ Wenn der Nutzer eine Datei einbringt, benennt der Skill sie vor dem Speichern um
 
 Präfix `ca` vor dem Datum: `ca20240301_...`
 Oder Datum des Hinzufügens ohne Präfix, mit Notiz in `anlagen.md`.
+
+---
+
+## Erkennung nicht-konformer Dateinamen (Startup-Prüfung)
+
+Eine Datei gilt als **nicht konform**, wenn sie **nicht** diesem Muster entspricht:
+
+```
+^\d{8}_[a-z0-9]+-[a-z0-9-]+_[A-Z]+_[A-Z]+_.+\.[a-z0-9]+$
+```
+
+Konkret: beginnt nicht mit 8 Ziffern, enthält keine Unterstriche als Trennzeichen,
+oder fehlt ein VON/AN-Kürzel aus der Kürzel-Tabelle.
+
+**Ausnahmen — diese Dateien überspringen:**
+- `.gitkeep`
+- Dateien die mit `.` beginnen
+- Dateien in `output/`
+- Bereits umbenannte Dateien (Muster erfüllt)
+
+**Datum-Extraktion (Priorität):**
+1. Datei-Metadaten (`mtime` / EXIF bei Bildern)
+2. Datum im bestehenden Dateinamen (verschiedene Formate erkennen)
+3. Heutiges Datum als Fallback
+
+**VON/AN-Erschließung:**
+- Aus Verzeichnis: `whatsapp/` → wahrscheinlich KV↔KM
+- Aus Dateiname: „Antrag" → KM oder RAG als VON, R als AN
+- Aus Inhalt (wenn bereits als .md vorhanden): Briefkopf auswerten
+- Sonst: Nutzer fragen
