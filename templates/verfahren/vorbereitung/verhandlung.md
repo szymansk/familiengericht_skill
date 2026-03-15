@@ -77,3 +77,28 @@
 - Unterbrechen
 - Rechtfertigungen vorbringen, die nicht gefragt wurden
 - Details ausbreiten, die im Schriftsatz nicht stehen (Überraschungsgefahr)
+
+---
+
+## Anhang: Verhaltensregeln
+
+→ Vollständige Regeln für Gericht, Jugendamt und Verfahrensbeistand:
+   `references/verhaltensregeln.md`
+
+### Der wichtigste Satz für das gesamte Verfahren:
+
+> **„Was ist das Beste für mein Kind?"**
+>
+> Jede Entscheidung, jede Antwort, jede Formulierung — stelle dir diese Frage zuerst.
+
+### Wenn du unter Druck gesetzt oder provoziert wirst:
+
+1. Pause — nicht sofort antworten
+2. „Das entspricht nicht meiner Wahrnehmung" statt „Das stimmt nicht"
+3. Auf Fakten verweisen, nicht auf Gefühle
+4. Die Richterin entscheidet — nicht die Gegenanwältin
+
+### Wenn du merkst, dass du emotional wirst:
+
+Sage nichts. Bitte um einen kurzen Moment. Das ist kein Zeichen von Schwäche —
+es ist Professionalität. Richterinnen kennen das.
