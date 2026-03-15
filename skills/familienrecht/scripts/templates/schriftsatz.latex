@@ -1,6 +1,12 @@
 %% schriftsatz.latex — Pandoc-Template für familienrechtliche Schriftsätze
-%% Verwendet XeLaTeX für echte Systemfonts (Arial).
-\documentclass[a4paper,11pt]{article}
+%% Verwendet KOMA-Script (scrartcl) + XeLaTeX für professionellen deutschen Satz.
+\documentclass[
+  paper=a4,
+  fontsize=11pt,
+  parskip=full,        %% Absätze mit Abstand, kein Einzug (DIN 5008)
+  headings=small,      %% Überschriften nicht zu groß
+  numbers=noendperiod, %% Keine Punkte hinter Gliederungsnummern
+]{scrartcl}
 
 %% ── Fonts (XeLaTeX) ──────────────────────────────────────────────────────────
 \usepackage{fontspec}
@@ -11,31 +17,34 @@
   Ligatures      = TeX,
 ]
 
-%% ── Sprache ──────────────────────────────────────────────────────────────────
+%% ── Sprache & Mikrotypografie ────────────────────────────────────────────────
 \usepackage[ngerman]{babel}
-\usepackage{microtype}   % Mikrotypografie: Randausgleich, Kerning
+\usepackage{microtype}
 
-%% ── Seitenlayout ─────────────────────────────────────────────────────────────
+%% ── Seitenlayout (DIN 5008 orientiert) ──────────────────────────────────────
+%% Links 30 mm (Heftrand), rechts 20 mm, oben/unten 25 mm
 \usepackage[
-  top=20mm, bottom=20mm, left=20mm, right=20mm,
-  headheight=14pt
+  top=25mm, bottom=25mm,
+  left=30mm, right=20mm,
+  headheight=14pt,
 ]{geometry}
 
-%% ── Zeilenabstand & Absätze ──────────────────────────────────────────────────
+%% ── Zeilenabstand ────────────────────────────────────────────────────────────
 \usepackage{setspace}
-\setstretch{1.15}
-\usepackage{parskip}
-\setlength{\parskip}{6pt}
-\setlength{\parindent}{0pt}
+\setstretch{1.2}
 
-%% ── Überschriften ────────────────────────────────────────────────────────────
-\usepackage{titlesec}
-\titleformat{\section}
-  {\normalfont\large\bfseries}{}{0em}{}
-\titleformat{\subsection}
-  {\normalfont\normalsize\bfseries}{}{0em}{}
-\titlespacing{\section}{0pt}{14pt}{6pt}
-\titlespacing{\subsection}{0pt}{10pt}{4pt}
+%% ── Überschriften fett (KOMA) ────────────────────────────────────────────────
+\setkomafont{section}{\large\bfseries}
+\setkomafont{subsection}{\normalsize\bfseries}
+\setkomafont{subsubsection}{\normalsize\bfseries}
+\RedeclareSectionCommand[
+  beforeskip=14pt,
+  afterskip=6pt,
+]{section}
+\RedeclareSectionCommand[
+  beforeskip=10pt,
+  afterskip=4pt,
+]{subsection}
 
 %% ── Seitenzahlen ─────────────────────────────────────────────────────────────
 \usepackage{fancyhdr}
@@ -53,17 +62,16 @@
 \usepackage{caption}
 \captionsetup{font=small, labelfont=bf}
 
-%% ── Listen & Einzüge ─────────────────────────────────────────────────────────
+%% ── Listen ───────────────────────────────────────────────────────────────────
 \usepackage{enumitem}
 \setlist{noitemsep, topsep=4pt}
 
 %% ── Sonstiges ────────────────────────────────────────────────────────────────
 \usepackage{xcolor}
-\usepackage[normalem]{ulem}           % \sout für Durchstreichung
-\usepackage[hidelinks]{hyperref}      % Links ohne rote Boxen
+\usepackage[normalem]{ulem}
+\usepackage[hidelinks]{hyperref}
 
 %% ── Pandoc-Kompatibilität ────────────────────────────────────────────────────
-%% Pandoc erzeugt \tightlist für kompakte Listen
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 
