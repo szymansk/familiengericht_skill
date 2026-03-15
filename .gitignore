@@ -1,0 +1,14 @@
+# Generierte Ausgaben
+verfahren/*/output/*.docx
+verfahren/*/output/*.pdf
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Python
+__pycache__/
+*.pyc
+
+# Node
+node_modules/

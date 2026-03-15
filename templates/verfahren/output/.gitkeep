@@ -1,0 +1,8 @@
+# Generierte Dokumente (DOCX/PDF) — werden nicht versioniert
+output/
+*.docx
+*.pdf
+
+# OS
+.DS_Store
+Thumbs.db
