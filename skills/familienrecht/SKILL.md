@@ -169,3 +169,4 @@ Commit-Nachrichten kurz und beschreibend: `Sachverhalt: Betreuungsrealität erg�
 6. **Kein Kostenantrag** ohne expliziten Wunsch des Nutzers — wirkt konfrontativ und schadet der Kooperationslinie
 7. **„Weiterer Sachvortrag bleibt vorbehalten."** immer vor der Unterschrift — sichert das Recht, später zu ergänzen
 8. **Nach jeder Dateiänderung committen** — der Nutzer committed nie selbst
+9. **Pushen immer über `./push.sh`** statt `git push` — bumpt automatisch die Patch-Version
