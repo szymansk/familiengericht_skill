@@ -1,14 +1,8 @@
 {
-  "name": "familienrecht",
+  "name": "familienrecht-skill",
   "description": "Skill für die Erstellung von Schriftsätzen im Familienrecht (Umgang, Sorgerecht) nach dem Cochemer Modell — mit Trainingsmodus zur Verhandlungsvorbereitung.",
   "version": "1.0.0",
   "author": {
     "name": "szymansk"
-  },
-  "skills": [
-    {
-      "name": "familienrecht",
-      "path": "SKILL.md"
-    }
-  ]
+  }
 }
