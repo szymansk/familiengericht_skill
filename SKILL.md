@@ -28,10 +28,10 @@ python -c "from markitdown import MarkItDown; print('✅ MarkItDown bereit')"
 ## Neues Verfahren anlegen
 
 ```bash
-./setup-verfahren.sh "3 F 24/26"
+./setup-verfahren.sh "2 F 67/68"
 ```
 
-Das Script legt `verfahren/3-f-24-26/` mit der vollständigen Ordnerstruktur an und befüllt alle Templates mit dem Aktenzeichen. Danach direkt mit Phase 1 beginnen.
+Das Script legt `verfahren/2-f-67-68/` mit der vollständigen Ordnerstruktur an und befüllt alle Templates mit dem Aktenzeichen. Danach direkt mit Phase 1 beginnen.
 
 ## Projektstruktur
 
@@ -109,8 +109,40 @@ Speichere das Ergebnis im passenden Unterordner als `.md`.
 
 - **Schreibe immer zuerst in Markdown** — der Nutzer arbeitet in VS Code mit Preview
 - **DOCX nur als Output** — generiert in Phase 5 oder auf Anfrage
-- **Versionierung über Git** — der Nutzer committed selbst
+- **Versionierung über Git** — der Skill committed nach jeder Dateiänderung, der Nutzer committed nicht selbst
 - Vermeide es, bei jeder kleinen Änderung ein neues DOCX zu generieren
+
+## Git-Versionierung (automatisch)
+
+Nach **jeder Änderung an Verfahrensdateien** (Sachverhalt, Erwiderung, Anlagen, Belege usw.)
+führt der Skill automatisch einen Commit durch. Der Nutzer muss das nicht selbst tun.
+
+### Setup-Prüfung beim ersten Aufruf eines Verfahrens:
+
+```bash
+# 1. Git installiert?
+if ! command -v git &>/dev/null; then
+  brew install git        # macOS
+  # alternativ: apt install git / winget install git
+fi
+
+# 2. Lokales Repo vorhanden?
+if [ ! -d ".git" ]; then
+  git init
+  git add .
+  git commit -m "Initial: Verfahren angelegt"
+fi
+```
+
+### Commit-Regeln:
+
+- **Wann:** nach jeder gespeicherten Änderung an einer Verfahrensdatei
+- **Nachricht:** kurz und beschreibend, z.B.:
+  - `Sachverhalt: Betreuungsrealität ergänzt`
+  - `Erwiderung: Abschnitt III überarbeitet`
+  - `Belege: WhatsApp-Export importiert`
+  - `Anlagen: B4 hinzugefügt`
+- **Nie committen:** `output/*.docx`, `output/*.pdf` (via `.gitignore` ausgeschlossen)
 
 ## Wichtige Regeln
 
@@ -121,3 +153,4 @@ Speichere das Ergebnis im passenden Unterordner als `.md`.
 5. **Eidesstattliche Versicherung** nie in Schriftsätze aufnehmen — unüblich am Familiengericht
 6. **Kostenantrag** nur wenn vom Nutzer ausdrücklich gewünscht — wirkt konfrontativ
 7. **„Weiterer Sachvortrag bleibt vorbehalten"** immer vor der Unterschrift
+8. **Nach jeder Dateiänderung committen** — der Nutzer committed nie selbst
