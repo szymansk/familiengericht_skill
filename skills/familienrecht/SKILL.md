@@ -138,13 +138,13 @@ Den Kalender in `sachverhalt/kalender.md` kontinuierlich führen — bei jedem g
 
 **Phase 5 — Finalisierung:** → `references/formatierung.md` lesen.
 
-**PDF und DOCX werden ausschließlich mit den mitgelieferten Skripten erzeugt — niemals mit anderen Werkzeugen (Chrome, wkhtmltopdf, LibreOffice, eigene Skripte o.ä.).** Die Skripte liegen im Plugin-Verzeichnis unter `scripts/`.
+**PDF und DOCX werden ausschließlich mit den mitgelieferten Skripten erzeugt.**
+Wenn `pandoc` oder `xelatex` fehlen: `setup.sh` ausführen — fertig. Keine Alternativen vorschlagen (kein LibreOffice, kein Chrome, keine eigenen Skripte). Das ist eine harte Regel ohne Ausnahmen.
 
-Vor dem ersten PDF-Export prüfen ob `pandoc` und `xelatex` vorhanden sind:
 ```bash
-command -v pandoc && command -v xelatex
+command -v pandoc && command -v xelatex || echo "Setup nötig"
 ```
-Falls nicht → zuerst Setup ausführen (siehe unten).
+Falls "Setup nötig": sofort `bash .../scripts/setup.sh` ausführen, nicht fragen.
 
 Exportreihenfolge (nur wenn nicht vorhanden oder Quelldatei neuer als Output):
 Die Skripte liegen im `scripts/`-Unterordner dieser SKILL.md-Datei. Den absoluten Pfad zu `scripts/` ermitteln und verwenden — nie eigene Skripte erstellen.
@@ -216,3 +216,4 @@ Commit-Nachrichten kurz und beschreibend: `Sachverhalt: Betreuungsrealität erg�
 7. **„Weiterer Sachvortrag bleibt vorbehalten."** immer vor der Unterschrift — sichert das Recht, später zu ergänzen
 8. **Nach jeder Dateiänderung committen** — der Nutzer committed nie selbst
 9. **Pushen immer über `./push.sh`** statt `git push` — bumpt automatisch die Patch-Version
+10. **PDF-Generierung nur via `generate-pdf.py`** (Pandoc+XeLaTeX) — niemals LibreOffice, Chrome oder andere Tools vorschlagen. Fehlen die Deps: `setup.sh` ausführen.
