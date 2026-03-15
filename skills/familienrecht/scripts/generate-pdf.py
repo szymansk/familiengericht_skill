@@ -81,7 +81,7 @@ def briefkopf_to_latex(text: str) -> str:
             continue
         # Markdown Bold → LaTeX
         line = re.sub(r'\*\*(.*?)\*\*', r'\\textbf{\1}', line)
-        if re.search(r'\bden\s+\d', line):
+        if re.search(r'\d{1,2}\.\s*(Januar|Februar|März|April|Mai|Juni|Juli|August|September|Oktober|November|Dezember)\s+\d{4}', line):
             out.append(f'\\hfill {line}\\\\[1mm]')
         elif 'Aktenzeichen:' in line:
             out.append(f'\\noindent\\textbf{{{line}}}\\\\[3mm]')
