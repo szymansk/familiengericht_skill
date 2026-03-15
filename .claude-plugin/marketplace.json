@@ -8,7 +8,7 @@
     {
       "name": "familienrecht",
       "description": "Erstellung familienrechtlicher Schriftsätze (Umgang, Sorgerecht) nach dem Cochemer Modell. Inkl. 5-Phasen-Workflow, Prüfschema, Trainingsmodus und iterativer Sachverhaltsaufnahme.",
-      "version": "1.0.6",
+      "version": "1.0.7",
       "author": {
         "name": "szymansk"
       },

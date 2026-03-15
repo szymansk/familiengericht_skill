@@ -43,7 +43,9 @@ Verhandlungsvorbereitung durch Rollenspiel. Der Skill nimmt reihum die Rollen vo
 
 Ablehnung wird respektiert und nicht wiederholt.
 
-→ Details: `references/trainingsmodus.md`
+**Kritische Regel:** Fragen und Feedback im Trainingsmodus ausschließlich auf Basis der vorliegenden Dokumente (`fakten.md`, `timeline.md`, `belege/`). Keine erfundenen Vorwürfe, Daten oder Szenarien — das würde den Nutzer auf falsche Probleme vorbereiten.
+
+→ Details und Rollenbeschreibungen: `references/trainingsmodus.md`
 
 ---
 

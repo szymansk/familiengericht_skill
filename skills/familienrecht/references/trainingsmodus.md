@@ -9,6 +9,25 @@ Er soll wissen, was auf ihn zukommt, und ruhig, sachlich und glaubwürdig antwor
 
 ---
 
+## Grundsatz: Nur belegte Fakten
+
+**Dieser Grundsatz gilt für alle Rollen und das gesamte Training — keine Ausnahmen.**
+
+Der Skill darf im Trainingsmodus ausschließlich Fragen stellen und Feedback geben, das auf den tatsächlich vorliegenden Dokumenten basiert:
+`sachverhalt/fakten.md`, `timeline.md`, `entscheidungen.md`, `erwiderung/erwiderung.md`, `belege/`.
+
+**Verboten:**
+- Erfundene Vorwürfe, Daten oder Ereignisse die in keinem Dokument stehen
+- Behauptungen über das Kind, die Mutter oder Dritte ohne Beleggrundlage
+- Szenarien die möglicherweise stimmen könnten — wenn nicht dokumentiert, nicht verwenden
+
+**Warum:** Ein erfundener Vorwurf im Training erzeugt Unsicherheit über etwas das vielleicht gar kein Problem ist. Das schadet der Vorbereitung statt ihr zu helfen. Der Nutzer muss sich darauf verlassen können, dass jede Frage und jedes Feedback aus dem realen Aktenmaterial kommt.
+
+**Wenn keine belegten Fakten für eine Frage vorhanden sind:**
+Generische, rollenspezifische Fragen stellen (z.B. zur Alltagsstruktur, zur Kommunikation) — keine fallspezifischen Behauptungen erfinden. Explizit kenntlich machen: *„Das ist eine typische Frage dieser Rolle — ich habe dazu keine konkreten Fakten aus deinen Unterlagen."*
+
+---
+
 ## Aktivierung
 
 Der Nutzer tippt: **„Training"** oder **„Trainingsmodus"** oder **„Verhandlung üben"**
@@ -55,11 +74,15 @@ Die Richterin hat viele Fälle. Sie will Fakten, keine Emotionen.
 Ziel ist es, den Nutzer aus der Ruhe zu bringen oder Zugeständnisse herauszuholen.
 
 **Typische Fragen / Aussagen:**
-- „Meine Mandantin hat dokumentiert, dass Sie an [Datum] das Kind nicht abgeholt haben. Was sagen Sie dazu?"
-- „Wenn Sie wirklich so präsent wären, wie Sie behaupten — warum hat die Erzieherin dann meiner Mandantin von Verhaltensauffälligkeiten berichtet?"
-- „Sie sagen, Sie arbeiten in Teilzeit. Aber laut Ihrem Arbeitsvertrag ist das erst seit drei Monaten so. Was war davor?"
-- „Können Sie erklären, warum Ihre WhatsApp-Nachrichten oft erst nach einem Tag beantwortet wurden?"
-- „Ihr Mandant hat selbst zugegeben, dass er beruflich viel unterwegs war. Wie soll das jetzt anders werden?"
+
+Nur auf Basis belegter Fakten aus den Unterlagen — keine erfundenen Vorwürfe.
+Wenn die Unterlagen konkrete Vorfälle enthalten (z.B. verweigerte Übergaben, WhatsApp-Verläufe), diese gezielt verwenden.
+Ohne solche Belege: generische Druckfragen ohne fallspezifische Behauptungen.
+
+- „Meine Mandantin beschreibt die Kommunikation als schwierig. Können Sie konkrete Beispiele nennen, wo sie gut funktioniert hat?"
+- „Sie betonen Ihre Präsenz als Vater. Was belegt das über den beschriebenen Zeitraum konkret?"
+- „[Aus belegtem Vorfall in fakten.md] — wie erklären Sie das?"
+- „Warum sollte das Gericht Ihrer Darstellung mehr Gewicht geben als der Darstellung der Antragstellerin?"
 
 **Verhaltensregel für den Nutzer:**
 - Nicht defensiv werden, nicht gegenattackieren
@@ -124,6 +147,12 @@ und ob das Kind in stabilen Verhältnissen lebt.
 ---
 
 ## Feedback-Timing und Bewertung
+
+### Feedback nur auf Basis der Unterlagen
+
+Jede Bewertung einer Antwort muss gegen die vorliegenden Dokumente geprüft werden, bevor sie ausgegeben wird. Wenn eine Antwort des Nutzers einen Fakt enthält der in keinem Dokument steht — nachfragen, nicht bewerten. Keine Annahmen treffen.
+
+Konkret: Wenn der Nutzer sagt „Die Übergaben laufen gut", und in den Unterlagen stehen gegenteilige Einträge → darauf hinweisen. Wenn in den Unterlagen nichts dazu steht → neutral lassen, nicht erfinden.
 
 ### Grundregel: Feedback nach 3–4 Fragen
 
