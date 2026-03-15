@@ -158,6 +158,57 @@ verfahren/{az-kurz}/
 └── output/                 # Generierte DOCX/PDF (git-ignored)
 ```
 
+## Umgang mit losem Kontext (Erzählungen, Anekdoten)
+
+Wenn der Vater im Gespräch etwas erzählt — eine Geschichte, eine Beobachtung,
+einen Vorfall — wird das **nicht sofort in `fakten.md` eingeordnet**.
+
+### Dreistufiger Prozess:
+
+**Stufe 1 — Sofort erfassen:**
+Alles landet ungefiltert in `sachverhalt/notizen.md` mit Datum und Kontext.
+Nichts geht verloren, nichts wird vorschnell bewertet.
+
+**Stufe 2 — Risiko prüfen (vor jeder Einordnung):**
+- Kann die Gegenseite diese Information umdrehen?
+- Ist sie belegbar oder nur Erinnerung?
+- Stärkt sie die eigene Linie oder schwächt sie sie?
+- Ist sie für das Kindeswohl relevant oder nur emotional bedeutsam?
+
+**Stufe 3 — Einordnen oder parken:**
+
+| Ergebnis der Prüfung | Aktion |
+|----------------------|--------|
+| Relevant, belegbar, kein Risiko | → `sachverhalt/fakten.md` oder `timeline.md` |
+| Relevant, aber riskant | → Nutzer fragen, dann entscheiden |
+| Nur mündlich verwertbar | → `erwiderung/nur-muendlich.md` |
+| Nicht relevant / Risiko zu hoch | → in `notizen.md` als „verworfen" markieren |
+
+Der Skill erklärt dem Nutzer kurz, warum eine Information nicht übernommen wird.
+Er verwirft sie nie stillschweigend.
+
+---
+
+## Überblick über laufende Verfahren
+
+Beim Start jeder Sitzung scannt der Skill das `verfahren/`-Verzeichnis
+und liest von jedem Verfahren die `sachverhalt/fakten.md` (Verfahrensdaten-Tabelle).
+So ist er über alle laufenden Verfahren im Bilde und kann:
+- Verbindungen zwischen Verfahren erkennen (z.B. gemeinsame Beteiligte)
+- Widersprüche zwischen Verfahren vermeiden
+- Auf Nachfrage einen Überblick über alle Verfahren geben
+
+```bash
+# Aktive Verfahren ermitteln:
+ls verfahren/
+```
+
+Der Skill gibt beim Start eine kurze Übersicht wenn mehr als ein Verfahren existiert:
+
+> „Ich sehe [N] laufende Verfahren: [Az. 1], [Az. 2]. Zu welchem möchtest du arbeiten?"
+
+---
+
 ## Neue Dokumente importieren
 
 Wenn der Nutzer eine DOCX-, PDF- oder andere Datei einbringt:
