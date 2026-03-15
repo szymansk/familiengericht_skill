@@ -1,48 +1,117 @@
 # Familienrecht-Skill für Claude Code
 
-Skill zur Erstellung von Schriftsätzen im Familienrecht (Umgang, Sorgerecht) nach dem Cochemer Modell.
+Skill zur Erstellung von Schriftsätzen im Familienrecht (Umgang, Sorgerecht) nach dem Cochemer Modell — mit integriertem Trainingsmodus zur Verhandlungsvorbereitung.
 
-## Schnellstart
+---
 
-### 1. Installation
+## Installation in Claude Code
+
+### Schritt 1: Repository klonen
+
 ```bash
-pip install markitdown
+git clone https://github.com/szymansk/familiengericht_skill.git
+cd familiengericht_skill
 ```
 
-### 2. Neues Verfahren anlegen
+### Schritt 2: Skill in Claude Code registrieren
+
+Claude Code lädt Skills aus dem Verzeichnis `~/.claude/skills/`. Den Skill-Ordner dort verlinken oder kopieren:
+
 ```bash
-cp -r templates/verfahren verfahren/3f2426-gabriel-szymanski
+# Option A: Symlink (empfohlen — bleibt automatisch aktuell)
+mkdir -p ~/.claude/skills
+ln -s "$(pwd)" ~/.claude/skills/familienrecht
+
+# Option B: Kopieren
+cp -r . ~/.claude/skills/familienrecht
 ```
 
-### 3. Dokumente importieren
-Wirf DOCX/PDF-Dateien in den passenden Unterordner und lasse Claude Code sie konvertieren:
-```
-# Claude Code konvertiert automatisch mit MarkItDown
+### Schritt 3: Abhängigkeiten installieren
+
+```bash
+# MarkItDown für den DOCX/PDF-Import
+pip install markitdown --quiet
+
+# Test
+python -c "from markitdown import MarkItDown; print('MarkItDown bereit')"
 ```
 
-### 4. Arbeiten
-Bearbeite die Markdown-Dateien in VS Code mit Preview. Claude Code kennt den 5-Phasen-Workflow und führt dich durch.
+### Schritt 4: Skill in Claude Code verwenden
+
+Starte Claude Code in dem Verzeichnis, in dem du deine Verfahren ablegen möchtest:
+
+```bash
+cd ~/Dokumente/familienrecht   # oder ein anderer Arbeitsordner
+claude
+```
+
+Claude Code erkennt den Skill automatisch anhand der Trigger-Begriffe in `SKILL.md`:
+**Erwiderung, Antrag, Umgang, Sorgerecht, Wechselmodell, Familiengericht, Kindeswohl** u.a.
+
+---
+
+## Erstes Verfahren anlegen
+
+```bash
+# Setup-Script aus dem Skill-Verzeichnis ausführen:
+~/.claude/skills/familienrecht/setup-verfahren.sh "3 F 24/26"
+```
+
+Oder wenn du direkt im Skill-Verzeichnis arbeitest:
+
+```bash
+./setup-verfahren.sh "3 F 24/26"
+```
+
+Das Script legt `verfahren/3-f-24-26/` mit der vollständigen Ordnerstruktur an
+und befüllt alle Templates mit dem Aktenzeichen.
+
+---
+
+## Skill aktualisieren
+
+```bash
+cd ~/.claude/skills/familienrecht
+git pull
+```
+
+---
+
+## Modi
+
+| Modus | Aktivierung | Zweck |
+|-------|-------------|-------|
+| **Schreibmodus** | automatisch | Anträge, Erwiderungen, Stellungnahmen erstellen und prüfen |
+| **Trainingsmodus** | „Training" eingeben | Verhandlung üben — Skill spielt Richterin, Gegenanwältin, Verfahrensbeistand und Jugendamt |
+
+---
 
 ## Struktur
 
 ```
 familienrecht-skill/
-├── SKILL.md                    # Hauptskill (Claude Code liest das zuerst)
+├── SKILL.md                        # Skill-Definition (von Claude Code gelesen)
+├── setup-verfahren.sh              # Script für neue Verfahren
 ├── references/
-│   ├── cochemer-modell.md      # Ton und Haltung
-│   ├── workflow.md             # 5-Phasen-Prozess
-│   ├── pruefschema.md          # Prüfung aus Sicht aller Beteiligten
-│   └── formatierung.md         # DOCX-Standards
+│   ├── cochemer-modell.md          # Ton und Haltung
+│   ├── workflow.md                 # 5-Phasen-Prozess
+│   ├── pruefschema.md              # Prüfung aus Sicht aller Beteiligten
+│   ├── formatierung.md             # DOCX-Standards
+│   ├── betreuungsmodelle.md        # Erklärung aller Betreuungsmodelle
+│   ├── verhaltensregeln.md         # Dos/Don'ts für Gericht, Jugendamt, Verfahrensbeistand
+│   └── trainingsmodus.md           # Regeln und Rollen für den Trainingsmodus
 ├── templates/
-│   └── verfahren/              # Kopiervorlage für neue Verfahren
+│   └── verfahren/                  # Vorlage für neue Verfahren
 └── verfahren/
-    └── [az-kurz]/              # Jedes Verfahren als eigener Ordner
+    └── {az-kurz}/                  # Jedes Verfahren als eigener Ordner
 ```
 
-## Workflow
+---
 
-1. **Sachverhaltsaufnahme** — Fakten sammeln, Gegenseite analysieren
-2. **Entwurf** — Schriftsatz in Markdown
-3. **Prüfung** — Aus Sicht aller Verfahrensbeteiligten
-4. **Vertiefung** — Offene Fragen, neue Fakten
-5. **Finalisierung** — DOCX generieren, Vorbereitung Verhandlung
+## 5-Phasen-Workflow
+
+1. **Sachverhaltsaufnahme** — Fakten sammeln, Betreuungsmodell erfassen, Gegenseite analysieren
+2. **Entwurf** — Schriftsatz in Markdown nach dem Cochemer-Prinzip
+3. **Prüfung** — Aus Sicht von Richterin, Gegenanwalt, Verfahrensbeistand und Gutachter
+4. **Vertiefung** — Offene Fragen klären, neue Fakten einarbeiten
+5. **Finalisierung** — DOCX exportieren, Verhandlung vorbereiten
