@@ -157,10 +157,11 @@ python scripts/combine-pdf.py verfahren/{az-kurz}
 # Generiert fehlende PDFs automatisch, führt dann zusammen → output/einreichung.pdf
 ```
 
-Wenn setup.sh noch nicht ausgeführt wurde, zuerst:
+Wenn `setup.sh` noch nicht ausgeführt wurde oder der Nutzer „Setup ausführen", „Abhängigkeiten installieren" oder „Skill einrichten" sagt:
 ```bash
 bash scripts/setup.sh
 ```
+Setup prüft selbst ob alles bereits installiert ist — kann jederzeit erneut ausgeführt werden.
 
 ---
 
