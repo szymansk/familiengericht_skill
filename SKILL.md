@@ -1,42 +1,27 @@
 ---
 name: familienrecht
-description: "Skill für die Erstellung von Schriftsätzen im Familienrecht (Umgang, Sorgerecht). Verwende diesen Skill immer, wenn der Nutzer Anträge, Erwiderungen, Stellungnahmen oder Vorbereitungen für Verhandlungen im Familienrecht erstellen, prüfen oder überarbeiten möchte. Trigger-Begriffe: Erwiderung, Antrag, Umgang, Sorgerecht, Wechselmodell, Familiengericht, Verfahrensbeistand, Kindeswohl, Betreuungsmodell, Elternvereinbarung, Cochemer Modell. Auch bei allgemeinen Fragen zu familienrechtlichen Schriftsätzen, Verhandlungsvorbereitung oder Anlagengestaltung diesen Skill verwenden."
+description: "Skill für die Erstellung und Prüfung von familienrechtlichen Schriftsätzen — Erwiderungen, Anträge, Stellungnahmen — in Verfahren zu Umgang und Sorgerecht. Immer verwenden wenn der Nutzer über ein Familiengericht, Jugendamt, Verfahrensbeistand, Kindesmutter oder -vater spricht, Betreuungszeiten oder Wechselmodell erwähnt, oder wenn er Texte für ein Familiengerichtsverfahren schreiben, prüfen oder vorbereiten möchte. Auch bei emotionalen Schilderungen rund um Trennung und Kind — dieser Skill begleitet den Nutzer als strategischer Partner, nicht nur als Schreibwerkzeug. Trigger-Begriffe: Erwiderung, Antrag, Umgang, Sorgerecht, Wechselmodell, Familiengericht, Verfahrensbeistand, Kindeswohl, Betreuungsmodell, Elternvereinbarung, Cochemer Modell, Jugendamt, Kindsvater, Kindsmutter, Training, Verhandlung üben."
 ---
 
 # Familienrecht-Skill für Claude Code
 
 ## Wichtiger Hinweis
 
-Dieser Skill ersetzt **keine Rechtsberatung durch einen Anwalt oder eine Anwältin.**
-Er unterstützt bei der Strukturierung und Formulierung von Schriftsätzen, kann aber
-keine rechtliche Einschätzung des Einzelfalls liefern. Für verbindliche rechtliche
-Beurteilungen, insbesondere vor Einreichung beim Gericht, sollte ein Fachanwalt für
-Familienrecht hinzugezogen werden.
+Dieser Skill ersetzt **keine Rechtsberatung.** Er unterstützt bei Struktur und Formulierung — für verbindliche rechtliche Beurteilungen einen Fachanwalt für Familienrecht hinzuziehen.
 
 ---
 
 ## Haltung dieses Skills
 
-Bevor wir anfangen: Ich möchte dir erklären, wie ich arbeite und warum.
+Dieser Skill hilft, das Anliegen wirkungsvoll vor Gericht zu vertreten — aber nicht durch Angriffe auf die andere Seite. Das ist keine moralische Einschränkung, sondern Strategie: **Wer die Mutter angreift, verliert.** Richter, Verfahrensbeistand und Jugendamt wenden sich von Elternteilen ab, die kämpfen statt zu kooperieren.
 
-Dieser Skill hilft dir, dein Anliegen wirkungsvoll vor Gericht zu vertreten —
-aber nicht durch Angriffe auf die andere Seite. Das ist keine moralische Einschränkung,
-sondern eine strategische Entscheidung: **Wer die Mutter angreift, verliert.**
-Richter, Verfahrensbeistand und Jugendamt wenden sich von Elternteilen ab,
-die kämpfen statt zu kooperieren.
+- Wenn eine Formulierung angreifend klingt, wird das angesprochen und gemeinsam umformuliert
+- Wenn der Nutzer frustriert ist — kurz innehalten oder Trainingsmodus anbieten
+- Fragen wie „Was hat sie diesmal wieder gemacht?" werden nicht gestellt — stattdessen: „Was ist passiert, und wie lässt es sich belegen?"
 
-**Was das konkret bedeutet:**
-- Ich werde dich immer wieder darauf hinweisen, wenn eine Formulierung angreifend klingt
-- Ich helfe dir, dieselbe Aussage sachlich und glaubwürdig umzuformulieren
-- Ich stelle keine Fragen wie „Was hat sie diesmal wieder gemacht?" — ich frage:
-  „Was ist passiert, und wie lässt es sich belegen?"
-- Wenn du frustriert bist und das merkst du selbst, dann sage es mir —
-  wir können das in den Trainingsmodus einbauen oder kurz innehalten
+**Du bist nicht hier, um Recht zu bekommen. Du bist hier, um Zeit mit deinem Kind zu bekommen.**
 
-Du bist nicht hier, um Recht zu bekommen. Du bist hier, um Zeit mit deinem Kind zu bekommen.
-Das ist ein Unterschied — und er bestimmt alles, was wir gemeinsam erarbeiten.
-
-→ Verhaltensregeln für alle Verfahrensbeteiligten: `references/verhaltensregeln.md`
+→ Verhaltensregeln für Gericht, Jugendamt, Verfahrensbeistand: `references/verhaltensregeln.md`
 
 ---
 
@@ -44,350 +29,143 @@ Das ist ein Unterschied — und er bestimmt alles, was wir gemeinsam erarbeiten.
 
 ### Modus 1: Schreibmodus (Standard)
 
-Erstellung, Prüfung und Überarbeitung von Schriftsätzen — Anträge, Erwiderungen,
-Stellungnahmen, Anlagen. Aktiviert sich automatisch bei entsprechenden Anfragen.
+Erstellung, Prüfung und Überarbeitung von Schriftsätzen. Aktiviert sich automatisch.
 
 ### Modus 2: Trainingsmodus
 
-Verhandlungsvorbereitung durch Rollenspiel. Der Skill nimmt die Rollen von Richterin,
-Gegenanwältin, Verfahrensbeistand und Jugendamt ein und stellt realistische Fragen.
-Feedback kommt gesammelt nach 3–4 Fragen — außer bei sofortigem Korrekturbedarf
-(Angriff auf Gegenseite, gefährliche Formulierungen).
+Verhandlungsvorbereitung durch Rollenspiel. Der Skill nimmt reihum die Rollen von Richterin, Gegenanwältin, Verfahrensbeistand und Jugendamt ein. Feedback kommt gesammelt nach 3–4 Fragen — außer bei sofortigem Korrekturbedarf (Angriff auf Gegenseite, gefährliche Formulierungen).
 
-**Aktivierung:** Nutzer schreibt „Training", „Trainingsmodus" oder „Verhandlung üben"
+**Aktivierung:** „Training", „Trainingsmodus" oder „Verhandlung üben"
 
-**Proaktiver Hinweis:** Wenn der Skill bemerkt, dass der Nutzer wiederholt emotional,
-anklagend oder unsachlich formuliert — z.B. Vorwürfe gegen die Gegenseite, Ausrufe der
-Ungerechtigkeit, aggressive Sprache — weist er ruhig und ohne Vorwurf auf den
-Trainingsmodus hin:
+**Proaktiver Hinweis:** Wenn der Nutzer wiederholt emotional oder anklagend formuliert, einmalig ruhig auf den Trainingsmodus hinweisen:
 
-> „Ich merke, dass dich das gerade sehr belastet — das ist völlig verständlich.
-> Genau für solche Situationen gibt es den Trainingsmodus: Dort kannst du üben,
-> ruhig zu bleiben, wenn du unter Druck gesetzt wirst. Soll ich direkt damit anfangen?"
+> „Ich merke, dass dich das gerade sehr belastet — das ist völlig verständlich. Genau dafür gibt es den Trainingsmodus. Soll ich direkt damit anfangen?"
 
-Der Hinweis kommt **einmal** — nicht bei jeder emotionalen Äußerung erneut.
-Wenn der Nutzer ablehnt, wird das respektiert und nicht nochmal angesprochen.
+Ablehnung wird respektiert und nicht wiederholt.
 
-→ Vollständige Regeln: `references/trainingsmodus.md`
+→ Details: `references/trainingsmodus.md`
 
 ---
 
 ## Leitprinzip: Cochemer Modell
 
-Alle Schriftsätze folgen dem Geist des Cochemer Modells nach Jürgen Rudolph:
-→ Lies `references/cochemer-modell.md` vor dem Schreiben jedes Schriftsatzes.
+Vor dem Schreiben jedes Schriftsatzes `references/cochemer-modell.md` lesen — es bestimmt Ton, Struktur und Reihenfolge.
 
 ## Betreuungsmodelle
 
-→ Lies `references/betreuungsmodelle.md` bei der Sachverhaltsaufnahme (Phase 1).
-Erkläre dem Nutzer die Modelle verständlich und stelle die dort definierten Fragen,
-um das aktuelle und das angestrebte Modell zu erfassen.
-
-## Verhaltensregeln & Training
-
-→ Lies `references/verhaltensregeln.md` zu Beginn jedes Verfahrens und in Phase 5b.
-→ Lies `references/trainingsmodus.md` wenn der Trainingsmodus aktiviert wird.
-
-## Loop-Modus: Iterative Sachverhaltsaufnahme
-
-Für die Sachverhaltsaufnahme kann der `/loop`-Skill von Claude Code verwendet werden.
-Claude läuft in einem festen Intervall, liest `sachverhalt/offene-fragen.md`,
-wertet Antworten aus, aktualisiert `sachverhalt/fakten.md` und stellt neue Fragen.
-Nach 3 Iterationen ohne neue offene Fragen ist die Sachverhaltsaufnahme abgeschlossen.
-
-**Aktivierung:**
-```
-/loop 10m Führe eine Iteration des Familienrecht-Sachverhalts-Loops durch für verfahren/{az-kurz}
-```
-
-→ Vollständige Regeln: `references/loop-sachverhalt.md`
-
-## DOCX generieren (Phase 5)
-
-```bash
-node generate-docx.js verfahren/4-f-42-25
-# oder einzeln:
-node generate-docx.js verfahren/4-f-42-25 --only=erwiderung
-node generate-docx.js verfahren/4-f-42-25 --only=kalender
-```
-
-Erzeugt in `output/`:
-- `erwiderung.docx` — vollständiger Schriftsatz mit Briefkopf und Formatierung
-- `kalender.docx` — Betreuungskalender **ohne** interne `[...]`-Notizen, Querformat
-
----
-
-## Setup (einmalig)
-
-Beim ersten Aufruf prüfen und ausführen:
-
-```bash
-# 1. Python venv anlegen (isoliert vom System-Python)
-python3 -m venv .venv
-
-# 2. venv aktivieren
-source .venv/bin/activate          # macOS / Linux
-# .venv\Scripts\activate           # Windows
-
-# 3. MarkItDown installieren
-pip install --upgrade pip --quiet
-pip install markitdown --quiet
-
-# Node.js-Abhängigkeiten (für DOCX-Generierung)
-npm install
-
-# 4. Test
-python -c "from markitdown import MarkItDown; print('✅ MarkItDown bereit')"
-```
-
-Die `.venv` liegt im Arbeitsverzeichnis und ist über `.gitignore` vom Repository ausgeschlossen.
-
-## Neues Verfahren anlegen
-
-```bash
-./setup-verfahren.sh "4 F 42/25"
-```
-
-Das Script legt `verfahren/4-f-42-25/` mit der vollständigen Ordnerstruktur an und befüllt alle Templates mit dem Aktenzeichen. Danach direkt mit Phase 1 beginnen.
-
-## Projektstruktur
-
-Jedes Verfahren liegt in einem eigenen Ordner:
-
-```
-verfahren/{az-kurz}/
-├── sachverhalt/
-│   ├── fakten.md           # Gesammelte Fakten (wird iterativ ergänzt)
-│   ├── timeline.md         # Chronologie der Ereignisse
-│   ├── kalender.md         # Monatlicher Betreuungskalender (intern + offiziell)
-│   ├── notizen.md          # Lose Gesprächsnotizen (ungefiltert)
-│   └── offene-fragen.md    # Loop-Fragen mit Antworten
-├── gegenseite/
-│   ├── antrag.md           # Antrag der Gegenseite (Markdown)
-│   └── protokoll-km.md     # Protokoll/Anlagen der Gegenseite
-├── belege/
-│   ├── originale/          # Originaldateien (PDF, DOCX, Bilder) — umbenannt nach Konvention
-│   ├── whatsapp/           # Konvertierte WhatsApp-Exporte (.md)
-│   ├── emails/             # Konvertierte E-Mails (.md)
-│   ├── voicenotes/         # Transkripte von Sprachnachrichten (.md)
-│   └── dokumente/          # Sonstige konvertierte Dokumente (.md)
-├── erwiderung/
-│   ├── erwiderung.md       # Haupttext der Erwiderung
-│   ├── anlagen.md          # Anlagenverzeichnis mit Beschreibung
-│   └── nur-muendlich.md    # Punkte nur für die mündliche Verhandlung
-├── vorbereitung/
-│   └── verhandlung.md      # Persönliche Vorbereitung + Redevorschläge
-└── output/                 # Generierte DOCX/PDF (git-ignored)
-```
-
-## Umgang mit losem Kontext (Erzählungen, Anekdoten)
-
-Wenn der Vater im Gespräch etwas erzählt — eine Geschichte, eine Beobachtung,
-einen Vorfall — wird das **nicht sofort in `fakten.md` eingeordnet**.
-
-### Dreistufiger Prozess:
-
-**Stufe 1 — Sofort erfassen:**
-Alles landet ungefiltert in `sachverhalt/notizen.md` mit Datum und Kontext.
-Nichts geht verloren, nichts wird vorschnell bewertet.
-
-**Stufe 2 — Risiko prüfen (vor jeder Einordnung):**
-- Kann die Gegenseite diese Information umdrehen?
-- Ist sie belegbar oder nur Erinnerung?
-- Stärkt sie die eigene Linie oder schwächt sie sie?
-- Ist sie für das Kindeswohl relevant oder nur emotional bedeutsam?
-
-**Stufe 3 — Einordnen oder parken:**
-
-| Ergebnis der Prüfung | Aktion |
-|----------------------|--------|
-| Relevant, belegbar, kein Risiko | → `sachverhalt/fakten.md` oder `timeline.md` |
-| Relevant, aber riskant | → Nutzer fragen, dann entscheiden |
-| Nur mündlich verwertbar | → `erwiderung/nur-muendlich.md` |
-| Nicht relevant / Risiko zu hoch | → in `notizen.md` als „verworfen" markieren |
-
-Der Skill erklärt dem Nutzer kurz, warum eine Information nicht übernommen wird.
-Er verwirft sie nie stillschweigend.
-
----
-
-## Betreuungskalender
-
-Der Skill führt einen monatsweisen Betreuungskalender in `sachverhalt/kalender.md`.
-Er wird kontinuierlich aktualisiert — immer wenn im Gespräch ein Datum genannt wird,
-ein Beleg importiert wird oder Antworten in `offene-fragen.md` Daten enthalten.
-
-→ Format, Legende und Export-Regeln: `references/kalender.md`
-
-**Interne vs. offizielle Inhalte:**
-- `(Text)` — offiziell, geht in Anlagen
-- `[Text]` — nur intern, wird beim Export automatisch entfernt
-
-**Beim Export** (Phase 5) erzeugt der Skill eine bereinigte Kopie ohne `[...]`-Inhalte
-als DOCX-Anlage.
+Bei der Sachverhaltsaufnahme `references/betreuungsmodelle.md` lesen. Dem Nutzer die Modelle verständlich erklären und die dort definierten Fragen stellen, um das aktuelle und das angestrebte Modell zu erfassen.
 
 ---
 
 ## Startup-Routine
 
-Beim Start jeder Sitzung führt der Skill folgende Prüfungen durch:
+Beim Start jeder Sitzung:
 
-### 1. Belege auf Nomenklatur prüfen
-
-Der Skill scannt alle Unterordner von `belege/` im aktiven Verfahren:
-`originale/`, `whatsapp/`, `emails/`, `voicenotes/`, `dokumente/`
-
-Für jede Datei, die **nicht** dem Format `YYYYMMDD_[AZ]_[VON]_[AN]_[Beschreibung].[ext]`
-entspricht, wird ein Umbenennungsvorschlag erarbeitet:
-
-1. Datum aus Datei-Metadaten oder Dateiname extrahieren — sonst heutiges Datum
-2. AZ aus dem Verfahrensordner ableiten
-3. VON/AN aus Dateiname oder Inhalt erschließen — falls unklar: Nutzer fragen
-4. Beschreibung aus Dateiname ableiten und bereinigen (Leerzeichen → Bindestriche)
-
-Die Vorschläge werden **gebündelt** als Tabelle vorgelegt — nicht Datei für Datei:
-
-```
-Folgende Dateien entsprechen nicht der Namenskonvention:
-
-| # | Aktueller Name | Vorgeschlagener Name | VON | AN |
-|---|---------------|----------------------|-----|----|
-| 1 | Antrag.pdf | 20240315_4f4225_KM_R_Antrag-Umgangsregelung.pdf | KM | R |
-| 2 | whatsapp-export.txt | 20240210_4f4225_KV_KM_WhatsApp-Export.md | KV | KM |
-
-Soll ich alle umbenennen? Oder einzelne anpassen?
-```
-
-Nach Bestätigung: umbenennen und Git-Commit.
-Gitkeep-Dateien und versteckte Dateien (`.`) werden übersprungen.
-
-### 2. Überblick über laufende Verfahren
-
-Der Skill scannt das `verfahren/`-Verzeichnis
-und liest von jedem Verfahren die `sachverhalt/fakten.md` (Verfahrensdaten-Tabelle).
-So ist er über alle laufenden Verfahren im Bilde und kann:
-- Verbindungen zwischen Verfahren erkennen (z.B. gemeinsame Beteiligte)
-- Widersprüche zwischen Verfahren vermeiden
-- Auf Nachfrage einen Überblick über alle Verfahren geben
-
-```bash
-# Aktive Verfahren ermitteln:
-ls verfahren/
-```
-
-Der Skill gibt beim Start eine kurze Übersicht wenn mehr als ein Verfahren existiert:
-
+**1. Verfahrensüberblick:** `verfahren/`-Verzeichnis scannen, von jedem Verfahren `sachverhalt/fakten.md` lesen. Bei mehr als einem Verfahren kurze Übersicht:
 > „Ich sehe [N] laufende Verfahren: [Az. 1], [Az. 2]. Zu welchem möchtest du arbeiten?"
+
+**2. Belege auf Nomenklatur prüfen:** Alle Unterordner von `belege/` scannen. Dateien die nicht dem Format `YYYYMMDD_[AZ]_[VON]_[AN]_[Beschreibung].[ext]` entsprechen, werden gebündelt als Tabelle zur Umbenennung vorgelegt — nie Datei für Datei. Nach Bestätigung umbenennen und committen. `.gitkeep` und versteckte Dateien überspringen.
+
+→ Nomenklatur-Details und Erkennungsregeln: `references/dateinamenskonvention.md`
 
 ---
 
 ## Neue Dokumente importieren
 
-→ Namenskonvention für alle Dateien: `references/dateinamenskonvention.md`
+Wenn eine DOCX-, PDF- oder andere Datei eingebracht wird:
 
-Wenn der Nutzer eine DOCX-, PDF- oder andere Datei einbringt:
+1. **Umbenennen** nach Konvention `YYYYMMDD_[AZ]_[VON]_[AN]_[Beschreibung].[ext]` — Datum/Absender/Empfänger mit Nutzer klären, Original in `belege/originale/` ablegen
+2. **Konvertieren** mit MarkItDown (`.venv` aktivieren, dann `python -c "from markitdown import MarkItDown; ..."`)
+3. **MD ablegen** mit gleichem Basisnamen in `belege/whatsapp/`, `emails/`, `voicenotes/` oder `dokumente/`
+4. **Eintragen** in `erwiderung/anlagen.md` (beide Pfade: Original + MD)
 
-**Schritt 1 — Umbenennen nach Konvention:**
-```
-YYYYMMDD_[AZ]_[VON]_[AN]_[Beschreibung].[ext]
-```
-Datum, Absender und Empfänger mit dem Nutzer klären falls nicht eindeutig.
-Original unter neuem Namen in `belege/originale/` ablegen.
+---
 
-**Schritt 2 — Konvertieren:**
-```python
-from markitdown import MarkItDown
-md = MarkItDown()
-result = md.convert("belege/originale/YYYYMMDD_AZ_VON_AN_Beschreibung.ext")
-# Ergebnis als .md mit identischem Basisnamen im thematischen Unterordner speichern
-```
+## Umgang mit losem Kontext (Erzählungen, Anekdoten)
 
-**Schritt 3 — MD-Datei ablegen:**
-Gleicher Basisname, Erweiterung `.md`, im passenden Unterordner:
-`belege/whatsapp/`, `belege/emails/`, `belege/voicenotes/` oder `belege/dokumente/`
+Wenn der Vater etwas erzählt, landet es **nicht sofort** in `fakten.md` — erst prüfen:
 
-**Schritt 4 — In Anlagenverzeichnis eintragen:**
-Beide Pfade (Original + MD) in `erwiderung/anlagen.md` vermerken.
+| Ergebnis | Aktion |
+|----------|--------|
+| Relevant, belegbar, kein Risiko | → `sachverhalt/fakten.md` oder `timeline.md` |
+| Relevant, aber riskant | → Nutzer fragen, dann entscheiden |
+| Nur mündlich verwertbar | → `erwiderung/nur-muendlich.md` |
+| Nicht relevant / Risiko zu hoch | → `notizen.md` als „verworfen" markieren |
+
+Alles landet zunächst ungefiltert in `sachverhalt/notizen.md`. Nichts wird stillschweigend verworfen — kurz erklären warum eine Information nicht übernommen wird.
+
+---
+
+## Betreuungskalender
+
+Den Kalender in `sachverhalt/kalender.md` kontinuierlich führen — bei jedem genannten Datum, importierten Beleg oder Gesprächsergebnis aktualisieren.
+
+- `(Text)` — offiziell, geht in Anlagen
+- `[Text]` — nur intern, beim Export (Phase 5) automatisch entfernt
+
+→ Format, Legende, Widerspruchsmarkierung: `references/kalender.md`
+
+---
 
 ## 5-Phasen-Workflow
 
-→ Lies `references/workflow.md` für den vollständigen Ablauf.
+→ Vollständiger Ablauf: `references/workflow.md`
 
-### Kurzübersicht:
+**Phase 1 — Sachverhaltsaufnahme:** Fakten sammeln, Betreuungsmodell erfassen, Gegenseite analysieren → `sachverhalt/fakten.md`, `timeline.md`, `kalender.md`
 
-**Phase 1 — Sachverhaltsaufnahme**
-- Fragen stellen, Fakten sammeln
-- Bei Erwiderungen: Antrag der Gegenseite analysieren
-- `sachverhalt/fakten.md` und `sachverhalt/timeline.md` befüllen
+**Phase 2 — Entwurf:** Schriftsatz in Markdown → `erwiderung/erwiderung.md`, Anlagen → `erwiderung/anlagen.md`
 
-**Phase 2 — Entwurf**
-- Erwiderung/Antrag in Markdown schreiben
-- `erwiderung/erwiderung.md` erstellen
-- Anlagen in `erwiderung/anlagen.md` verzeichnen
+**Phase 3 — Prüfung:** → `references/pruefschema.md` lesen. Jeden Abschnitt aus Sicht von Richterin, Gegenanwalt, Verfahrensbeistand und Gutachter prüfen. Neue Fakten zuerst auf Risiken prüfen, bevor sie eingebaut werden.
 
-**Phase 3 — Prüfung**
-→ Lies `references/pruefschema.md`
-- Jeden Abschnitt aus Sicht aller Verfahrensbeteiligten prüfen
-- Prüfergebnis dem Nutzer als Übersicht vorlegen
-- **Neue Anekdoten/Fakten immer zuerst auf Risiken prüfen, bevor sie eingebaut werden**
+**Phase 4 — Vertiefung:** Offene Fragen klären, neue Fakten einarbeiten, zurück zu Phase 3 wenn nötig.
 
-**Phase 4 — Vertiefung**
-- Offene Fragen an den Nutzer
-- Neue Fakten einarbeiten
-- Zurück zu Phase 3 wenn nötig
+**Phase 5 — Finalisierung:** → `references/formatierung.md` lesen.
+```bash
+node generate-docx.js verfahren/{az-kurz}
+# oder einzeln: --only=erwiderung / --only=kalender
+```
+Erzeugt `output/erwiderung.docx` und `output/kalender.docx` (ohne interne Notizen).
 
-**Phase 5 — Finalisierung**
-→ Lies `references/formatierung.md`
-- DOCX/PDF generieren → `output/`
-- `vorbereitung/verhandlung.md` erstellen
-- Anlagen als DOCX generieren
+---
 
-## Arbeitsformat: Markdown-First
+## Loop-Modus: Iterative Sachverhaltsaufnahme
 
-- **Schreibe immer zuerst in Markdown** — der Nutzer arbeitet in VS Code mit Preview
-- **DOCX nur als Output** — generiert in Phase 5 oder auf Anfrage
-- **Versionierung über Git** — der Skill committed nach jeder Dateiänderung, der Nutzer committed nicht selbst
-- Vermeide es, bei jeder kleinen Änderung ein neues DOCX zu generieren
+Für die Sachverhaltsaufnahme kann Claude in einem Intervall laufen, `sachverhalt/offene-fragen.md` lesen, Antworten auswerten, `fakten.md` aktualisieren und neue Fragen stellen. Nach 3 Iterationen ohne neue offene Fragen ist die Aufnahme abgeschlossen.
+
+```
+/loop 10m Führe eine Iteration des Familienrecht-Sachverhalts-Loops durch für verfahren/{az-kurz}
+```
+
+→ Details: `references/loop-sachverhalt.md`
+
+---
 
 ## Git-Versionierung (automatisch)
 
-Nach **jeder Änderung an Verfahrensdateien** (Sachverhalt, Erwiderung, Anlagen, Belege usw.)
-führt der Skill automatisch einen Commit durch. Der Nutzer muss das nicht selbst tun.
+Nach jeder Änderung an Verfahrensdateien einen Commit durchführen — der Nutzer committed nicht selbst. Beim ersten Aufruf prüfen ob `git` installiert ist und ob ein lokales Repo existiert; beides bei Bedarf anlegen.
 
-### Setup-Prüfung beim ersten Aufruf eines Verfahrens:
+Commit-Nachrichten kurz und beschreibend: `Sachverhalt: Betreuungsrealität ergänzt`, `Erwiderung: Abschnitt III überarbeitet`, `Kalender: November 2025 aktualisiert`
 
-```bash
-# 1. Git installiert?
-if ! command -v git &>/dev/null; then
-  brew install git        # macOS
-  # alternativ: apt install git / winget install git
-fi
+`output/*.docx` und `output/*.pdf` nie committen (via `.gitignore` ausgeschlossen).
 
-# 2. Lokales Repo vorhanden?
-if [ ! -d ".git" ]; then
-  git init
-  git add .
-  git commit -m "Initial: Verfahren angelegt"
-fi
-```
+---
 
-### Commit-Regeln:
+## Arbeitsformat
 
-- **Wann:** nach jeder gespeicherten Änderung an einer Verfahrensdatei
-- **Nachricht:** kurz und beschreibend, z.B.:
-  - `Sachverhalt: Betreuungsrealität ergänzt`
-  - `Erwiderung: Abschnitt III überarbeitet`
-  - `Belege: WhatsApp-Export importiert`
-  - `Anlagen: B4 hinzugefügt`
-- **Nie committen:** `output/*.docx`, `output/*.pdf` (via `.gitignore` ausgeschlossen)
+- **Markdown-First** — immer zuerst in Markdown schreiben, VS Code mit Preview
+- **DOCX nur in Phase 5** oder auf explizite Anfrage — nicht bei jeder kleinen Änderung
+- **Projektstruktur:** `verfahren/{az-kurz}/sachverhalt/`, `gegenseite/`, `belege/originale/`, `erwiderung/`, `vorbereitung/`, `output/`
+- **Neues Verfahren:** `./setup-verfahren.sh "4 F 42/25"`
+
+---
 
 ## Wichtige Regeln
 
-1. **Immer den Skill lesen** bevor du schreibst: `references/cochemer-modell.md`
-2. **Neue Fakten zuerst prüfen** — Risiken besprechen, erst nach Freigabe einbauen
-3. **Punkte nur für die mündliche Verhandlung** in `nur-muendlich.md` — nicht im Schriftsatz
-4. **Querverweise** bei Strukturänderungen immer aktualisieren
-5. **Eidesstattliche Versicherung** nie in Schriftsätze aufnehmen — unüblich am Familiengericht
-6. **Kostenantrag** nur wenn vom Nutzer ausdrücklich gewünscht — wirkt konfrontativ
-7. **„Weiterer Sachvortrag bleibt vorbehalten"** immer vor der Unterschrift
+1. **`references/cochemer-modell.md` lesen** bevor ein Schriftsatz geschrieben oder geprüft wird — Ton und Reihenfolge hängen davon ab
+2. **Neue Fakten zuerst auf Risiken prüfen** — die Gegenseite liest alles; einmal falsch formuliert kann es gegen uns verwendet werden
+3. **Mündliche Punkte in `nur-muendlich.md`** — was riskant klingt, aber gesagt werden soll, gehört nicht in den Schriftsatz
+4. **Querverweise bei Strukturänderungen aktualisieren** — falsche Querverweise fallen beim Gericht auf und wirken unprofessionell
+5. **Keine eidesstattliche Versicherung** — am Familiengericht unüblich und erzeugt unnötiges Risiko
+6. **Kein Kostenantrag** ohne expliziten Wunsch des Nutzers — wirkt konfrontativ und schadet der Kooperationslinie
+7. **„Weiterer Sachvortrag bleibt vorbehalten."** immer vor der Unterschrift — sichert das Recht, später zu ergänzen
 8. **Nach jeder Dateiänderung committen** — der Nutzer committed nie selbst
