@@ -1,0 +1,3 @@
+# Generierte PDFs und DOCX nicht einchecken — lokal behalten für Layout-Review
+*.pdf
+*.docx

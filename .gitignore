@@ -1,5 +1,9 @@
-# Generierte Ausgaben und Verfahrensdaten (Nutzerdaten, nicht im Plugin-Repo)
-verfahren/
+# Verfahrensdaten im Root (Nutzerdaten, nicht im Plugin-Repo)
+/verfahren/
+
+# Test-Output nicht einchecken
+/test/verfahren/*/output/*.pdf
+/test/verfahren/*/output/*.docx
 
 # OS
 .DS_Store

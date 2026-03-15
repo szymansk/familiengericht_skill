@@ -1,10 +1,5 @@
 %% kalender.latex — Pandoc-Template für den Betreuungskalender (Querformat)
-\documentclass[
-  paper=a4,
-  fontsize=10pt,
-  parskip=half,
-  landscape,
-]{scrartcl}
+\documentclass[a4paper,10pt,landscape]{article}
 
 %% ── Fonts ────────────────────────────────────────────────────────────────────
 \usepackage{fontspec}
@@ -15,16 +10,21 @@
 \usepackage[ngerman]{babel}
 \usepackage{microtype}
 
-%% ── Seitenlayout (Querformat DIN A4) ─────────────────────────────────────────
+%% ── Seitenlayout (Querformat) ────────────────────────────────────────────────
 \usepackage[
   top=15mm, bottom=15mm, left=15mm, right=15mm,
   landscape, headheight=14pt
 ]{geometry}
 
-%% ── Überschriften fett ───────────────────────────────────────────────────────
-\setkomafont{section}{\large\bfseries}
-\setkomafont{subsection}{\normalsize\bfseries}
-\RedeclareSectionCommand[beforeskip=12pt, afterskip=4pt]{section}
+%% ── Abstände ─────────────────────────────────────────────────────────────────
+\usepackage{parskip}
+\setlength{\parskip}{3pt}
+\setlength{\parindent}{0pt}
+
+%% ── Überschriften ────────────────────────────────────────────────────────────
+\usepackage{titlesec}
+\titleformat{\section}{\normalfont\large\bfseries}{}{0em}{}
+\titlespacing{\section}{0pt}{12pt}{4pt}
 
 %% ── Seitenzahlen ─────────────────────────────────────────────────────────────
 \usepackage{fancyhdr}
