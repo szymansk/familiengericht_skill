@@ -1,6 +1,5 @@
-# Generierte Ausgaben
-verfahren/*/output/*.docx
-verfahren/*/output/*.pdf
+# Generierte Ausgaben und Verfahrensdaten (Nutzerdaten, nicht im Plugin-Repo)
+verfahren/
 
 # OS
 .DS_Store

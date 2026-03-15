@@ -21,11 +21,21 @@ import os
 import subprocess
 from pathlib import Path
 
-# ── Abhängigkeiten prüfen ─────────────────────────────────────────────────────
+# ── Venv auto-detect: pypdf/pillow im .venv aktivieren ───────────────────────
+
+def _find_venv_python() -> str | None:
+    candidates = [
+        Path(os.getcwd()) / '.venv' / 'bin' / 'python',
+        Path(__file__).parents[3] / '.venv' / 'bin' / 'python',
+    ]
+    return next((str(p) for p in candidates if p.exists()), None)
 
 try:
     from pypdf import PdfWriter, PdfReader
 except ImportError:
+    venv_py = _find_venv_python()
+    if venv_py and venv_py != sys.executable:
+        os.execv(venv_py, [venv_py] + sys.argv)
     print("Fehler: pypdf nicht installiert. Bitte ausführen: bash scripts/setup.sh")
     sys.exit(1)
 
