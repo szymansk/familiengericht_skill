@@ -104,6 +104,14 @@ cat > "$TARGET/output/.gitignore" <<'EOF'
 !.gitkeep
 EOF
 
+# ── .venv in Root-.gitignore sicherstellen ────────────────────────────────────
+
+ROOT_GITIGNORE="$SCRIPT_DIR/.gitignore"
+if ! grep -qF '.venv/' "$ROOT_GITIGNORE" 2>/dev/null; then
+  printf '\n# Python venv\n.venv/\n' >> "$ROOT_GITIGNORE"
+  echo ".venv/ zu $ROOT_GITIGNORE hinzugefügt"
+fi
+
 # ── Ergebnis ──────────────────────────────────────────────────────────────────
 
 echo ""

@@ -107,9 +107,22 @@ Nach 3 Iterationen ohne neue offene Fragen ist die Sachverhaltsaufnahme abgeschl
 Beim ersten Aufruf prüfen und ausführen:
 
 ```bash
+# 1. Python venv anlegen (isoliert vom System-Python)
+python3 -m venv .venv
+
+# 2. venv aktivieren
+source .venv/bin/activate          # macOS / Linux
+# .venv\Scripts\activate           # Windows
+
+# 3. MarkItDown installieren
+pip install --upgrade pip --quiet
 pip install markitdown --quiet
+
+# 4. Test
 python -c "from markitdown import MarkItDown; print('✅ MarkItDown bereit')"
 ```
+
+Die `.venv` liegt im Arbeitsverzeichnis und ist über `.gitignore` vom Repository ausgeschlossen.
 
 ## Neues Verfahren anlegen
 
