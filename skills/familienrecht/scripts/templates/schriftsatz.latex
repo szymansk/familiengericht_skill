@@ -86,9 +86,7 @@ $if(linestretch)$\setstretch{$linestretch$}$else$\setstretch{1.2}$endif$
 %% Aktenzeichen fett, alle anderen Zeilen linksbündig mit explizitem Zeilenumbruch.
 $if(briefkopf)$
 $briefkopf$
-\bigskip
-\noindent\rule{\textwidth}{0.4pt}
-\bigskip
+\medskip
 $endif$
 
 $body$

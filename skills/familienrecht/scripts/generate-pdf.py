@@ -78,31 +78,100 @@ def split_briefkopf(md: str) -> tuple[str, str]:
         return '', clean
 
 def briefkopf_to_latex(text: str) -> str:
-    """Konvertiert Briefkopf-Zeilen zu LaTeX:
-    - Leerzeilen          → \\medskip (Abstand zwischen Adressblöcken)
-    - Datum (den \\d)     → rechtsbündig via \\hfill
-    - Aktenzeichen:       → fett
-    - Erwiderung / Antrag / Stellungnahme → fett + unterstrichen
-    - Alle anderen Zeilen → linksbündig mit explizitem Zeilenumbruch
+    """Konvertiert Briefkopf-Absätze zu LaTeX.
+
+    Parsing-Regeln (absatzbasiert):
+    - Fettzeile (**Name**) allein → Adressblock-Beginn; Folgeabsätze (Text)
+      werden als Adresszeilen gesammelt. Zwischen zwei Adressblöcken: \\bigskip.
+    - Datum (dt. Monatsname)    → rechtsbündig via \\hfill
+    - Aktenzeichen:             → fett
+    - Erwiderung / Stellungnahme (fett allein) → fett + unterstrichen
+    - Alles andere              → linksbündig mit explizitem Zeilenumbruch
     """
-    lines = [l.rstrip() for l in text.split('\n')]
-    out = []
-    for line in lines:
-        if line.startswith('#') or line.startswith('>'):
+    MONTHS  = (r'Januar|Februar|März|April|Mai|Juni|Juli|August|'
+               r'September|Oktober|November|Dezember')
+    DATE_RE   = re.compile(r'\d{1,2}\.\s*(?:' + MONTHS + r')\s+\d{4}')
+    BOLD_ONLY = re.compile(r'^\*\*[^*]+\*\*$')
+
+    def bold_to_tex(s: str) -> str:
+        return re.sub(r'\*\*(.*?)\*\*', r'\\textbf{\1}', s)
+
+    def strip_bold(s: str) -> str:
+        return re.sub(r'\*\*', '', s)
+
+    paragraphs = [p.strip() for p in re.split(r'\n{2,}', text.strip()) if p.strip()]
+
+    # ── Klassifizierung ───────────────────────────────────────────────────────
+    classified = []
+    for para in paragraphs:
+        lines = [l.strip() for l in para.split('\n') if l.strip()]
+        if not lines:
             continue
-        if not line.strip():
-            out.append('\\vspace{8pt}')
-            continue
-        # Markdown Bold → LaTeX
-        line = re.sub(r'\*\*(.*?)\*\*', r'\\textbf{\1}', line)
-        if re.search(r'\d{1,2}\.\s*(Januar|Februar|März|April|Mai|Juni|Juli|August|September|Oktober|November|Dezember)\s+\d{4}', line):
-            out.append(f'\\hfill {line}\\\\[1mm]')
-        elif 'Aktenzeichen:' in line:
-            out.append(f'\\noindent\\textbf{{{line}}}\\\\[3mm]')
-        elif re.match(r'(Erwiderung|Antrag|Stellungnahme)', line):
-            out.append(f'\\noindent\\textbf{{\\underline{{{line}}}}}\\\\[4mm]')
+        first = lines[0]
+        if 'Aktenzeichen:' in para:
+            classified.append(('az',        lines))
+        elif (BOLD_ONLY.match(first) and len(lines) == 1
+              and re.match(r'\*\*(Erwiderung|Stellungnahme)\b', first)):
+            classified.append(('subject',   lines))
+        elif BOLD_ONLY.match(first) and len(lines) == 1:
+            classified.append(('addr_start', lines))
+        elif DATE_RE.search(para):
+            classified.append(('date',      lines))
         else:
-            out.append(f'\\noindent {line}\\\\[0mm]')
+            classified.append(('text',      lines))
+
+    # ── Adressblöcke zusammenführen ───────────────────────────────────────────
+    items = []
+    i = 0
+    while i < len(classified):
+        kind, lines = classified[i]
+        if kind == 'addr_start':
+            addr_lines = list(lines)
+            j = i + 1
+            while j < len(classified) and classified[j][0] == 'text':
+                addr_lines.extend(classified[j][1])
+                j += 1
+            items.append(('addr', addr_lines))
+            i = j
+        else:
+            items.append((kind, lines))
+            i += 1
+
+    # ── Parse-Log ────────────────────────────────────────────────────────────
+    LABELS = {'addr': 'Adresse', 'date': 'Datum', 'az': 'Aktenzeichen',
+              'subject': 'Betreff', 'text': 'Text'}
+    for kind, lines in items:
+        first = lines[0][:60] + ('…' if len(lines[0]) > 60 else '')
+        extra = f' (+{len(lines)-1} Zeilen)' if len(lines) > 1 else ''
+        print(f'  [Briefkopf] {LABELS.get(kind, kind):<14} {first}{extra}')
+
+    # ── Rendern ───────────────────────────────────────────────────────────────
+    out = []
+    prev_addr = False
+    for kind, lines in items:
+        if kind == 'addr':
+            if prev_addr:
+                out.append('\\par\\vspace{14pt}')
+            tex = ['\\noindent ' + bold_to_tex(l) for l in lines]
+            out.append('\\\\[0mm]\n'.join(tex) + '\\par')
+            prev_addr = True
+        elif kind == 'date':
+            prev_addr = False
+            for l in lines:
+                out.append(f'\\hfill {bold_to_tex(l)}\\\\[1mm]')
+        elif kind == 'az':
+            prev_addr = False
+            for l in lines:
+                out.append(f'\\noindent\\textbf{{{strip_bold(l)}}}\\\\[3mm]')
+        elif kind == 'subject':
+            prev_addr = False
+            for l in lines:
+                out.append(f'\\noindent\\textbf{{{{{strip_bold(l)}}}}}\\\\[4mm]')
+        else:
+            prev_addr = False
+            for l in lines:
+                out.append(f'\\noindent {bold_to_tex(l)}\\\\[0mm]')
+
     return '\n'.join(out)
 
 # ── Pandoc aufrufen ───────────────────────────────────────────────────────────
@@ -145,9 +214,29 @@ def run_pandoc(md_text: str, output: Path, extra_flags: list = None,
 
 # ── Dokumente generieren ──────────────────────────────────────────────────────
 
+def wrap_signature_samepage(body: str) -> str:
+    """Verhindert Seitenumbruch im Unterschriftsblock.
+
+    Sucht nach 'Weiterer Sachvortrag' (Standard-Schlussformel) oder
+    als Fallback nach der Unterschriftszeile (___) und schließt alles
+    bis zum Dokumentende in \\begin{samepage}...\\end{samepage} ein.
+    """
+    anchor = re.search(r'\nWeiterer Sachvortrag\b', body)
+    if not anchor:
+        anchor = re.search(r'\n_{5,}', body)
+    if not anchor:
+        return body
+    pos = anchor.start()
+    return body[:pos] + '\n\\begin{samepage}' + body[pos:].rstrip() + '\n\\end{samepage}\n'
+
+
 def build_erwiderung(md_path: Path, output: Path):
     md = md_path.read_text(encoding='utf-8')
     briefkopf_raw, body = split_briefkopf(md)
+    bk_lines = briefkopf_raw.count('\n') if briefkopf_raw else 0
+    body_lines = body.count('\n')
+    print(f'  [Split]     Briefkopf {bk_lines} Zeilen, Body {body_lines} Zeilen')
+    body = wrap_signature_samepage(body)
     briefkopf_tex = briefkopf_to_latex(briefkopf_raw) if briefkopf_raw else ''
     run_pandoc(
         md_text    = body,

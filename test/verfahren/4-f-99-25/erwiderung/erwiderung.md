@@ -1,30 +1,34 @@
-# Erwiderung — Az. 4 F 99/25
+# Erwiderung — Az. 3 F 24/26
 
-> **Arbeitsformat:** Dieses Dokument wird in Markdown bearbeitet und erst in Phase 5 als PDF exportiert.
-> **Seitenlimit:** Maximal 8 Seiten. Inhalt kürzen ist immer besser als Schrift verkleinern.
+> **Version:** 4.5 | **Stand:** 15.03.2026 | **Status:** Entwurf
 
 ---
 
-Thomas Musterann
-Gartenstraße 4
-12345 Musterstadt
+**ADS asdffsf**
 
-An das
-Amtsgericht Musterstadt
-— Familiengericht —
-Musterstraße 1
-12345 Musterstadt
+Musterweg 23
 
-Musterstadt, den 15. März 2026
+23455 Musterstadt
 
-**Antragsgegner:** Thomas Musterann, Gartenstraße 4, 12345 Musterstadt
-**Antragstellerin:** Sandra Musterfrau, Hauptstraße 7, 12345 Musterstadt
+Tel.: 0177 2141234
 
-Aktenzeichen: 4 F 99/25
+E-Mail: asdfdsfas@adf.com
 
-Erwiderung auf den Antrag der Antragstellerin vom 01. Februar 2026
+**Amtsgericht Musterstadt**
 
-In der Familiensache Musterann ./. Musterfrau, betreffend die gemeinsamen Kinder Finn (geb. 03.04.2018) und Mia (geb. 17.09.2020)
+– Familiengericht –
+
+Horststraße 2
+
+23445 Musterstadt
+
+Musterstadt, den 16. März 2026
+
+**Aktenzeichen: 90 F 56/22**
+
+**Erwiderung auf den Antrag der Antragstellerin vom 04. März 2024**
+
+In der Familiensache sgfd ./. Asdf, betreffend das gemeinsame Kind Werwaef Asdf, geb. 02.03.2024
 
 ---
 
@@ -34,78 +38,97 @@ In der Familiensache Musterann ./. Musterfrau, betreffend die gemeinsamen Kinder
 
 **Es wird weiter beantragt:**
 
-2. Die bestehende Umgangsregelung vom 15. Januar 2024 beizubehalten.
+2. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
 
-   Hilfsweise: Erweiterung des Umgangs auf jedes Wochenende sowie einen Wochentag.
+Hilfsweise: Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
+
+3. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
 
 ## Begründung:
 
 ## I. Vorbemerkung
 
-Der Antragsgegner ist der Vater der gemeinsamen Kinder Finn und Mia. Er erwidert den Antrag der Antragstellerin auf Einschränkung des Umgangs und beantragt, die bestehende Regelung beizubehalten. Die Kinder haben eine stabile, liebevolle Beziehung zum Antragsgegner; dazu unten III und IV.
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.  
 
-Der Antragsgegner betont ausdrücklich seine Bereitschaft zur Zusammenarbeit mit der Antragstellerin im Sinne des Kindeswohls.
+Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer
 
 ## II. Zur Vorgeschichte und den tatsächlichen Lebensumständen
 
-### 1. Wohnsituation beider Elternteile
+### 1. Wohnsituation, Arbeits- und Eigentumsverhältnisse
 
-Der Antragsgegner bewohnt seit April 2024 eine Vierzimmerwohnung in der Gartenstraße 4, 12345 Musterstadt. Finn und Mia haben dort jeweils ein eigenes Kinderzimmer mit vertrauter Einrichtung. Die Wohnung liegt 1,8 km vom Wohnort der Antragstellerin entfernt und befindet sich im selben Schulbezirk.
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.  
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer
 
-### 2. Betreuungsrealität seit der Trennung
+### 2. Betreuungsrealität – der Antragsgegner war immer aktiv beteiligt
 
-Seit Januar 2024 betreut der Antragsgegner Finn und Mia an jedem zweiten Wochenende sowie in der Hälfte der Schulferien. Alle 24 vereinbarten Umgangstermine wurden wahrgenommen (Anlage B1: Kalenderübersicht). Übergaben erfolgen stets pünktlich.
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.  
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante.
+Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer
 
-### 3. Berufliche Situation
+### 3. Entstehung der Elternvereinbarung – kein Druck, sondern gemeinsame Aushandlung
 
-Der Antragsgegner ist als Ingenieur tätig (Anlage B2: Arbeitgeberbestätigung) und arbeitet Montag bis Freitag von 07:30 bis 16:30 Uhr. An zwei Tagen pro Woche ist Homeoffice möglich.
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.  
 
-## III. Alltag mit den Kindern
+Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer
 
-Während der Umgangswochenenden pflegt der Antragsgegner mit den Kindern regelmäßige Aktivitäten: wöchentliches Schwimmtraining mit Finn im Verein (Anlage B3), gemeinsames Kochen und Backen mit Mia, Ausflüge auf den Bauernhof sowie Radtouren.
+## III. Harmonische Zusammenarbeit seit der Trennung
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus.
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.  
 
-Der Antragsgegner nimmt regelmäßig an Elterngesprächen der Grundschule teil. Das letzte Gespräch mit der Klassenlehrerin Frau Bergmann fand am 5. Februar 2026 statt (Anlage B4: Gesprächsprotokoll).
+Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer
 
-## IV. Einschätzungen von Fachkräften
+## IV. Zum Entwicklungsgespräch in der KiTa Obere Setz vom 11. März 2026
 
-Der Kinderarzt Dr. Schneider bescheinigte bei der Untersuchung vom 20. Januar 2026 eine altersgerechte Entwicklung beider Kinder ohne Auffälligkeiten (Anlage B5). Die Kitaleiterin Frau Hoffmann äußerte im Entwicklungsgespräch vom 8. Februar 2026 über Mia: *„Mia ist ein aufgeschlossenes Kind, das positiv über beide Elternteile spricht und sich sichtlich auf die Wochenenden beim Papa freut."* (Anlage B6).
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.  
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Proin vel ante a orci tempus eleifend ut et magna.
+Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer
 
-## V. Zu den Behauptungen der Antragstellerin
+## V. Zum laufenden Beratungsprozess
 
-Die Antragstellerin behauptet, die Kinder kehrten belastet zurück. Diese Einschätzung steht im direkten Widerspruch zu den Beobachtungen der Kitaleiterin, der Klassenlehrerin und des Kinderarztes (Anlagen B4, B5, B6). Keine der befragten Fachkräfte hat Auffälligkeiten festgestellt.
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.  
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.
+Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer
 
-## VI. Schlussbemerkung
+## VI. Zu den konkreten Behauptungen im Antrag
 
-Finn und Mia haben das Recht, mit beiden Elternteilen aufzuwachsen. Die bestehende Umgangsregelung hat sich bewährt. Der Antragsgegner regt an, vor jeder gerichtlichen Entscheidung eine Mediation im Sinne des Cochemer Modells durchzuführen.
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.  
 
-## VII. Glaubhaftmachung
+Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer
+
+## VII. Zum Protokoll der Antragstellerin
+
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.  
+
+Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer
+
+## VIII. Schlussbemerkung
+
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.  
+
+Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer
+
+## Glaubhaftmachung
 
 Die vorstehenden Tatsachen werden glaubhaft gemacht durch:
 
-Anlage B1: Kalenderübersicht Umgangstermine März 2025 – März 2026
-Anlage B2: Arbeitgeberbestätigung Muster GmbH vom 10.03.2026
-Anlage B3: Mitgliedsbescheinigung Schwimmverein Musterstadt e.V.
-Anlage B4: Gesprächsprotokoll Grundschule Frau Bergmann, 05.02.2026
-Anlage B5: Kinderärztliche Bescheinigung Dr. Schneider, 20.01.2026
-Anlage B6: Gesprächsprotokoll Kita Sonnenschein Frau Hoffmann, 08.02.2026
+Anlage B2: Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
 
----
+Anlage B3: Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
+
+Anlage B4: Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
+
+Anlage B6: Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
+
+Anlage B7: Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
+
 
 Weiterer Sachvortrag bleibt vorbehalten.
 
-Musterstadt, den 15. März 2026
+Musterstadt, den 16. März 2026
 
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
 
-_______________________________
-**Thomas Musterann**
+**ASdf asdf**
+
 (Antragsgegner)
