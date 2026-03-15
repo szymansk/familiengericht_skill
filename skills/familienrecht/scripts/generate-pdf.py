@@ -21,6 +21,11 @@ import tempfile
 import shutil
 from pathlib import Path
 
+# ── Pfade ─────────────────────────────────────────────────────────────────────
+
+SCRIPT_DIR = Path(__file__).parent.resolve()
+TEMPLATES  = SCRIPT_DIR / 'templates'
+
 # ── Abhängigkeiten prüfen ─────────────────────────────────────────────────────
 
 def check_deps():
@@ -58,6 +63,30 @@ def split_briefkopf(md: str) -> tuple[str, str]:
         return '', clean
     return clean[:m.start()], clean[m.end():]
 
+def briefkopf_to_latex(text: str) -> str:
+    """Konvertiert Briefkopf-Zeilen zu LaTeX:
+    - Datum (enthält 'den \\d') → rechtsbündig
+    - Aktenzeichen: → fett
+    - Erwiderung / Antrag / Stellungnahme → fett + unterstrichen
+    - Alle anderen Zeilen → linksbündig mit explizitem Zeilenumbruch
+    """
+    lines = [l.rstrip() for l in text.split('\n') if l.strip()]
+    out = []
+    for line in lines:
+        if line.startswith('#') or line.startswith('>'):
+            continue
+        # Markdown Bold → LaTeX
+        line = re.sub(r'\*\*(.*?)\*\*', r'\\textbf{\1}', line)
+        if re.search(r'\bden\s+\d', line):
+            out.append(f'\\hfill {line}\\\\[1mm]')
+        elif 'Aktenzeichen:' in line:
+            out.append(f'\\noindent\\textbf{{{line}}}\\\\[3mm]')
+        elif re.match(r'(Erwiderung|Antrag|Stellungnahme)', line):
+            out.append(f'\\noindent\\textbf{{\\underline{{{line}}}}}\\\\[4mm]')
+        else:
+            out.append(f'\\noindent {line}\\\\[0mm]')
+    return '\n'.join(out)
+
 # ── Pandoc aufrufen ───────────────────────────────────────────────────────────
 
 # Gemeinsame Basis-Flags für alle Dokumente
@@ -71,7 +100,8 @@ PANDOC_BASE = [
     '-V', 'linestretch=1.2',
 ]
 
-def run_pandoc(md_text: str, output: Path, extra_flags: list = None):
+def run_pandoc(md_text: str, output: Path, extra_flags: list = None,
+               extra_vars: dict = None, template: Path = None):
     """Schreibt MD in Tempfile und ruft Pandoc auf."""
     with tempfile.NamedTemporaryFile(suffix='.md', mode='w',
                                      encoding='utf-8', delete=False) as f:
@@ -79,8 +109,13 @@ def run_pandoc(md_text: str, output: Path, extra_flags: list = None):
         tmp_md = f.name
 
     cmd = ['pandoc', tmp_md, '--output', str(output)] + PANDOC_BASE
+    if template:
+        cmd += ['--template', str(template)]
     if extra_flags:
         cmd += extra_flags
+    if extra_vars:
+        for k, v in extra_vars.items():
+            cmd += ['--variable', f'{k}={v}']
 
     try:
         result = subprocess.run(cmd, capture_output=True, text=True)
@@ -95,12 +130,13 @@ def run_pandoc(md_text: str, output: Path, extra_flags: list = None):
 def build_erwiderung(md_path: Path, output: Path):
     md = md_path.read_text(encoding='utf-8')
     briefkopf_raw, body = split_briefkopf(md)
-    if briefkopf_raw:
-        bk = strip_template_hints(strip_comments(briefkopf_raw)).strip()
-        full_md = bk + '\n\n---\n\n' + body
-    else:
-        full_md = strip_comments(md)
-    run_pandoc(full_md, output)
+    briefkopf_tex = briefkopf_to_latex(briefkopf_raw) if briefkopf_raw else ''
+    run_pandoc(
+        md_text    = body,
+        output     = output,
+        template   = TEMPLATES / 'schriftsatz.latex',
+        extra_vars = {'briefkopf': briefkopf_tex} if briefkopf_tex else {},
+    )
 
 
 def build_kalender(md_path: Path, output: Path):
@@ -130,7 +166,7 @@ Aktenzeichen: {az}
 
 *Das Original dieses Dokuments wird separat eingereicht.*
 """
-    run_pandoc(md, output)
+    run_pandoc(md, output, template=TEMPLATES / 'schriftsatz.latex')
 
 
 def parse_originale(anlagen_md: Path) -> list:

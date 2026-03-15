@@ -1,41 +1,53 @@
-%% schriftsatz.latex — Pandoc-Template für familienrechtliche Schriftsätze
-%% Verwendet XeLaTeX für echte Systemfonts (Arial).
-\documentclass[a4paper,11pt]{article}
+%% schriftsatz.latex — Anpassbares Pandoc-Template für familienrechtliche Schriftsätze
+%%
+%% Pandoc-Variablen (via -V oder YAML-Frontmatter):
+%%   mainfont      Schriftart             (Standard: Arial)
+%%   fontsize      Schriftgröße           (Standard: 11pt)
+%%   papersize     Papierformat           (Standard: a4)
+%%   geometry      Seitenränder           (Standard: margin=2.5cm)
+%%   linestretch   Zeilenabstand          (Standard: 1.2)
+%%   lang          Sprache                (Standard: de-DE)
+%%   briefkopf     Vorbereiteter LaTeX-Briefkopf (von generate-pdf.py erzeugt)
+%%
+%% ─────────────────────────────────────────────────────────────────────────────
 
-%% ── Fonts (XeLaTeX) ──────────────────────────────────────────────────────────
-\usepackage{fontspec}
-\setmainfont{Arial}[
-  BoldFont       = Arial Bold,
-  ItalicFont     = Arial Italic,
-  BoldItalicFont = Arial Bold Italic,
-  Ligatures      = TeX,
-]
+\documentclass[
+  $if(fontsize)$$fontsize$$else$11pt$endif$,
+  $if(papersize)$$papersize$paper$else$a4paper$endif$,
+]{article}
 
 %% ── Sprache ──────────────────────────────────────────────────────────────────
 \usepackage[ngerman]{babel}
-\usepackage{microtype}   % Mikrotypografie: Randausgleich, Kerning
+
+%% ── Fonts (XeLaTeX) ──────────────────────────────────────────────────────────
+\usepackage{fontspec}
+\setmainfont{$if(mainfont)$$mainfont$$else$Arial$endif$}[
+  BoldFont       = $if(mainfont)$$mainfont$$else$Arial$endif$ Bold,
+  ItalicFont     = $if(mainfont)$$mainfont$$else$Arial$endif$ Italic,
+  BoldItalicFont = $if(mainfont)$$mainfont$$else$Arial$endif$ Bold Italic,
+  Ligatures      = TeX,
+]
+\usepackage{microtype}
 
 %% ── Seitenlayout ─────────────────────────────────────────────────────────────
-\usepackage[
-  top=20mm, bottom=20mm, left=20mm, right=20mm,
-  headheight=14pt
-]{geometry}
+\usepackage[$if(geometry)$$for(geometry)$$geometry$$sep$,$endfor$$else$margin=2.5cm$endif$]{geometry}
 
 %% ── Zeilenabstand & Absätze ──────────────────────────────────────────────────
 \usepackage{setspace}
-\setstretch{1.15}
+$if(linestretch)$\setstretch{$linestretch$}$else$\setstretch{1.2}$endif$
 \usepackage{parskip}
 \setlength{\parskip}{6pt}
 \setlength{\parindent}{0pt}
 
 %% ── Überschriften ────────────────────────────────────────────────────────────
 \usepackage{titlesec}
-\titleformat{\section}
-  {\normalfont\large\bfseries}{}{0em}{}
-\titleformat{\subsection}
-  {\normalfont\normalsize\bfseries}{}{0em}{}
+\titleformat{\section}{\normalfont\large\bfseries}{}{0em}{}
+\titleformat{\subsection}{\normalfont\normalsize\bfseries}{}{0em}{}
+\titleformat{\subsubsection}{\normalfont\normalsize\bfseries}{}{0em}{}
 \titlespacing{\section}{0pt}{14pt}{6pt}
 \titlespacing{\subsection}{0pt}{10pt}{4pt}
+%% Keine automatische Abschnittsnummerierung
+\setcounter{secnumdepth}{0}
 
 %% ── Seitenzahlen ─────────────────────────────────────────────────────────────
 \usepackage{fancyhdr}
@@ -53,24 +65,25 @@
 \usepackage{caption}
 \captionsetup{font=small, labelfont=bf}
 
-%% ── Listen & Einzüge ─────────────────────────────────────────────────────────
+%% ── Listen ───────────────────────────────────────────────────────────────────
 \usepackage{enumitem}
 \setlist{noitemsep, topsep=4pt}
 
 %% ── Sonstiges ────────────────────────────────────────────────────────────────
 \usepackage{xcolor}
-\usepackage[normalem]{ulem}           % \sout für Durchstreichung
-\usepackage[hidelinks]{hyperref}      % Links ohne rote Boxen
+\usepackage[normalem]{ulem}
+\usepackage[hidelinks]{hyperref}
 
 %% ── Pandoc-Kompatibilität ────────────────────────────────────────────────────
-%% Pandoc erzeugt \tightlist für kompakte Listen
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 
 %% ─────────────────────────────────────────────────────────────────────────────
 \begin{document}
 
-%% Briefkopf (vor dem ersten ---) als Raw-LaTeX übergeben
+%% Briefkopf — von generate-pdf.py aus Markdown-Zeilen vor dem ersten --- erzeugt.
+%% Zeilen mit "den \d" werden rechtsbündig gesetzt, Betreff fett+unterstrichen,
+%% Aktenzeichen fett, alle anderen Zeilen linksbündig mit explizitem Zeilenumbruch.
 $if(briefkopf)$
 $briefkopf$
 \bigskip
