@@ -83,6 +83,27 @@ Beim Start jeder Sitzung — auch nach einem Chat-Reset — vollständigen Konte
 
 ---
 
+## Dateistruktur-Regeln
+
+### `belege/` ist unveränderlich
+
+Der Ordner `belege/` und **alle seine Unterordner** (`belege/dokumente/`, `belege/emails/`, `belege/whatsapp/`, `belege/voicenotes/`, `belege/originale/`, …) sind **Single Source of Truth** für importierte Dokumente. Nach dem Import wird dort **nichts mehr verändert** — keine inhaltlichen Anpassungen, keine Ergänzungen, keine Umstrukturierungen, keine neuen Dateien außerhalb des Import-Prozesses.
+
+> **Einzige Ausnahmen:** Umbenennung nach Nomenklatur unmittelbar beim Import (Schritt 1 unten) und das initiale Ablegen der konvertierten MD-Datei (Schritt 4).
+
+### Wo neue Dateien abgelegt werden
+
+| Inhalt | Ablageort |
+|--------|-----------|
+| Importierte Originalbelege (PDF, DOCX, …) | `belege/originale/` |
+| Konvertierte MD-Versionen importierter Dokumente | `belege/dokumente/`, `belege/emails/`, … |
+| Vom Skill **generierte** Anlage-MDs (Zusammenfassungen, Deckblätter, synthetisierte Dokumente) | **Hauptdokument-Ordner** (`erwiderung/`, `antrag/`, …) |
+| Anlagenverzeichnis | `erwiderung/anlagen.md` (oder entsprechender Hauptdokument-Ordner) |
+
+Wenn der Nutzer anweist, eine MD-Datei für einen Anhang zu erzeugen (z. B. Reisekostenübersicht, Aufstellung, Protokollzusammenfassung), wird diese **im selben Ordner wie das Hauptdokument** abgelegt — niemals in `belege/`.
+
+---
+
 ## Neue Dokumente importieren
 
 Wenn eine DOCX-, PDF- oder andere Datei eingebracht wird:
@@ -93,8 +114,9 @@ Wenn eine DOCX-, PDF- oder andere Datei eingebracht wird:
    - **Original** → Typ `Original` in `anlagen.md`, Deckblatt wird beim Export automatisch generiert
    - **Kopie** → Typ `Kopie`, kein Deckblatt nötig
 3. **Konvertieren** mit MarkItDown (`.venv` aktivieren) für die inhaltliche Arbeit
-4. **MD ablegen** mit gleichem Basisnamen in `belege/whatsapp/`, `emails/`, `voicenotes/` oder `dokumente/`
+4. **MD ablegen** mit gleichem Basisnamen in `belege/whatsapp/`, `belege/emails/`, `belege/voicenotes/` oder `belege/dokumente/`
 5. **Eintragen** in `erwiderung/anlagen.md` mit Typ, Titel und Dateipfad
+6. **`belege/`-Datei ab jetzt nicht mehr anfassen** — alle weiteren Arbeiten am Inhalt erfolgen über das Hauptdokument
 
 ---
 

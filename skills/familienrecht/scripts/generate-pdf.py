@@ -189,26 +189,40 @@ PANDOC_BASE = [
 
 def run_pandoc(md_text: str, output: Path, extra_flags: list = None,
                extra_vars: dict = None, template: Path = None):
-    """Schreibt MD in Tempfile und ruft Pandoc auf."""
+    """Schreibt MD in Tempfile und ruft Pandoc auf.
+
+    Erzeugt neben der PDF auch eine .tex-Datei im selben Verzeichnis,
+    damit Layout-Anpassungen direkt im LaTeX-Code möglich sind.
+    """
     with tempfile.NamedTemporaryFile(suffix='.md', mode='w',
                                      encoding='utf-8', delete=False) as f:
         f.write(md_text)
         tmp_md = f.name
 
-    cmd = ['pandoc', tmp_md, '--output', str(output)] + PANDOC_BASE
+    base_cmd = ['pandoc', tmp_md] + PANDOC_BASE
     if template:
-        cmd += ['--template', str(template)]
+        base_cmd += ['--template', str(template)]
     if extra_flags:
-        cmd += extra_flags
+        base_cmd += extra_flags
     if extra_vars:
         for k, v in extra_vars.items():
-            cmd += ['--variable', f'{k}={v}']
+            base_cmd += ['--variable', f'{k}={v}']
 
     try:
-        result = subprocess.run(cmd, capture_output=True, text=True)
+        # PDF erzeugen
+        result = subprocess.run(base_cmd + ['--output', str(output)],
+                                capture_output=True, text=True)
         if result.returncode != 0:
             print(f"\nPandoc-Fehler:\n{result.stderr}")
             sys.exit(1)
+
+        # .tex-Datei erhalten (gleicher Name, andere Endung)
+        tex_output = output.with_suffix('.tex')
+        result_tex = subprocess.run(
+            base_cmd + ['--output', str(tex_output)],
+            capture_output=True, text=True)
+        if result_tex.returncode != 0:
+            print(f"  [Warnung] .tex konnte nicht gespeichert werden: {result_tex.stderr[:200]}")
     finally:
         os.unlink(tmp_md)
 
@@ -257,18 +271,379 @@ def build_erwiderung(md_path: Path, output: Path):
     )
 
 
+# ── Kalender-Rendering (matplotlib) ──────────────────────────────────────────
+
+MONTH_DE_TO_NUM = {
+    'Januar': 1, 'Februar': 2, 'März': 3, 'April': 4,
+    'Mai': 5, 'Juni': 6, 'Juli': 7, 'August': 8,
+    'September': 9, 'Oktober': 10, 'November': 11, 'Dezember': 12,
+}
+
+CELL_COLORS = {'V': '#BDD7EE', 'M': '#FCE4D6', '—': '#E8E8E8', '': '#FFFFFF'}
+FLAG_COLORS = {'F': '#C00000', 'K': '#E07000', '!': '#C00000', '~': '#888888'}
+
+
+def parse_kalender_md(md: str) -> list:
+    """Parst kalender.md → Liste von Monatsdicts."""
+    clean = strip_internal_notes(strip_template_hints(strip_comments(md)))
+    sections = re.split(r'\n---\n', clean)
+    MONTH_RE = re.compile(
+        r'^(Januar|Februar|März|April|Mai|Juni|Juli|August|'
+        r'September|Oktober|November|Dezember)\s+(\d{4})'
+        r'(?:\s+\(([^)]*)\))?', re.MULTILINE
+    )
+    CELL_RE = re.compile(r'^\s*(\d+)\s*([!~]?)([VM\u2014]?)([FK]*)\s*$')
+
+    months = []
+    for section in sections:
+        section = section.strip()
+        m = MONTH_RE.search(section)
+        if not m:
+            continue
+        month_name = m.group(1)
+        year       = int(m.group(2))
+        hint       = (m.group(3) or '').strip()
+
+        # Zellen aus ASCII-Grid lesen
+        raw_cells = []
+        for line in section.splitlines():
+            if '│' not in line or 'Mo' in line or '─' in line:
+                continue
+            for field in line.split('│')[1:-1]:
+                cm = CELL_RE.match(field)
+                if cm and cm.group(1):
+                    raw_cells.append({
+                        'day':      int(cm.group(1)),
+                        'modifier': cm.group(2),
+                        'betreuer': cm.group(3),
+                        'flags':    set(cm.group(4)),
+                    })
+                else:
+                    raw_cells.append(None)  # leeres Feld im Grid
+
+        # Ereignisse lesen (interne Anmerkungen schon entfernt)
+        ereignisse = []
+        in_erg = False
+        for line in section.splitlines():
+            if re.match(r'Ereignisse:', line.strip()):
+                in_erg = True
+                continue
+            if in_erg and line.strip().startswith('-'):
+                ereignisse.append(line.strip()[1:].strip())
+
+        months.append({
+            'title':      f'{month_name} {year}',
+            'month_num':  MONTH_DE_TO_NUM[month_name],
+            'year':       year,
+            'hint':       hint,
+            'raw_cells':  raw_cells,
+            'ereignisse': ereignisse,
+        })
+    return months
+
+
+def _axes_rect(col: int, row: int) -> tuple:
+    """Gibt (x, y, w, h) in Figure-Koordinaten zurück. 4 Spalten, 2 Reihen."""
+    ML, MR, MT, MB = 0.02, 0.02, 0.04, 0.02
+    HG, VG = 0.010, 0.025
+    col_w = (1 - ML - MR - 3 * HG) / 4
+    row_h = (1 - MT - MB - VG) / 2
+    x = ML + col * (col_w + HG)
+    y = 1 - MT - (row + 1) * row_h - row * VG
+    return x, y, col_w, row_h
+
+
+def _draw_month(ax, mdata: dict):
+    """Zeichnet einen Monat in die übergebene Axes."""
+    import calendar as cal_mod
+    import matplotlib.patches as patches
+
+    month_num = mdata['month_num']
+    year      = mdata['year']
+    first_wd, n_days = cal_mod.monthrange(year, month_num)  # 0=Mo
+
+    ax.set_xlim(0, 7)
+    ax.set_ylim(0, 8)   # 1 Titel + 1 Header + 6 Wochen
+    ax.set_aspect('auto')
+    ax.axis('off')
+
+    WEEKDAYS = ['Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa', 'So']
+
+    # Titel
+    title_y = 7.6
+    ax.text(3.5, title_y, mdata['title'],
+            ha='center', va='center', fontsize=7.5, fontweight='bold',
+            color='#1F3864')
+    if mdata['hint']:
+        hint = mdata['hint'] if len(mdata['hint']) <= 55 else mdata['hint'][:52] + '…'
+        ax.text(3.5, 7.15, hint,
+                ha='center', va='center', fontsize=4.5, color='#555555')
+
+    # Wochentag-Header
+    for c, wd in enumerate(WEEKDAYS):
+        fc = '#2F5496' if c < 5 else '#5B7EC9'
+        ax.add_patch(patches.Rectangle(
+            (c, 6), 1, 0.9, facecolor=fc, edgecolor='white', lw=0.4))
+        ax.text(c + 0.5, 6.45, wd,
+                ha='center', va='center', fontsize=5.5,
+                color='white', fontweight='bold')
+
+    # Datumszellen
+    for day in range(1, n_days + 1):
+        idx = first_wd + day - 1
+        c   = idx % 7
+        r   = idx // 7          # Woche (0 = erste)
+        y0  = 5 - r             # y-Unterkante (von oben nach unten)
+
+        # Zell-Daten aus raw_cells suchen
+        cell = next((x for x in mdata['raw_cells']
+                     if x and x['day'] == day), None)
+        betreuer = cell['betreuer'] if cell else ''
+        modifier = cell['modifier'] if cell else ''
+        flags    = cell['flags']    if cell else set()
+
+        bg = CELL_COLORS.get(betreuer, '#FFFFFF')
+        ax.add_patch(patches.Rectangle(
+            (c, y0), 1, 1, facecolor=bg, edgecolor='#CCCCCC', lw=0.35))
+
+        # Tageszahl
+        day_color = FLAG_COLORS['F'] if 'F' in flags else '#222222'
+        ax.text(c + 0.12, y0 + 0.72, str(day),
+                fontsize=5, va='center', color=day_color)
+
+        # Betreuer-Kürzel
+        if betreuer and betreuer != '—':
+            tc = '#1A4F8A' if betreuer == 'V' else '#B22222'
+            ax.text(c + 0.5, y0 + 0.32, betreuer,
+                    ha='center', va='center', fontsize=6.5,
+                    fontweight='bold', color=tc)
+
+        # Flags / Modifier (oben rechts)
+        extra = modifier + ''.join(sorted(flags - {'F'}))
+        if extra:
+            ec = FLAG_COLORS.get(extra[0], '#888888')
+            ax.text(c + 0.90, y0 + 0.72, extra,
+                    ha='right', va='center', fontsize=4, color=ec)
+
+    # Leere Zellen (vor erstem Tag)
+    for c in range(first_wd):
+        ax.add_patch(patches.Rectangle(
+            (c, 5), 1, 1, facecolor='#F5F5F5', edgecolor='#E0E0E0', lw=0.25))
+
+    # Leere Zellen (nach letztem Tag)
+    last_idx = first_wd + n_days - 1
+    last_c   = last_idx % 7
+    last_r   = last_idx // 7
+    for c in range(last_c + 1, 7):
+        ax.add_patch(patches.Rectangle(
+            (c, 5 - last_r), 1, 1, facecolor='#F5F5F5',
+            edgecolor='#E0E0E0', lw=0.25))
+
+
+def _render_ereignisse(pdf, months: list):
+    """Rendert eine oder mehrere Ereignisse-Seiten."""
+    import matplotlib.pyplot as plt
+
+    COLOR_HEAD = '#1F3864'
+    lines = []
+    for m in months:
+        if not m['ereignisse']:
+            continue
+        lines.append(('h', m['title']))
+        for e in m['ereignisse']:
+            lines.append(('e', e))
+        lines.append(('s', ''))
+
+    if not lines:
+        return
+
+    def new_page():
+        fig = plt.figure(figsize=(29.7 / 2.54, 21.0 / 2.54))
+        ax  = fig.add_axes([0.05, 0.04, 0.90, 0.92])
+        ax.axis('off')
+        ax.text(0.0, 1.01, 'Ereignisse', transform=ax.transAxes,
+                fontsize=11, fontweight='bold', va='bottom', color=COLOR_HEAD)
+        return fig, ax, 0.97
+
+    fig, ax, y = new_page()
+    for kind, text in lines:
+        if kind == 'h':
+            if y < 0.12:
+                pdf.savefig(fig, bbox_inches='tight')
+                plt.close(fig)
+                fig, ax, y = new_page()
+            ax.text(0.0, y, text, transform=ax.transAxes,
+                    fontsize=8.5, fontweight='bold', va='top', color=COLOR_HEAD)
+            y -= 0.028
+        elif kind == 'e':
+            if y < 0.05:
+                pdf.savefig(fig, bbox_inches='tight')
+                plt.close(fig)
+                fig, ax, y = new_page()
+            ax.text(0.015, y, f'– {text}', transform=ax.transAxes,
+                    fontsize=7, va='top')
+            y -= 0.020
+        else:
+            y -= 0.010
+    pdf.savefig(fig, bbox_inches='tight')
+    plt.close(fig)
+
+
+def _render_legende(pdf):
+    """Rendert eine Legendenseite als erste Seite des Kalender-PDFs."""
+    import matplotlib.pyplot as plt
+    import matplotlib.patches as patches
+
+    COLOR_HEAD = '#1F3864'
+    fig = plt.figure(figsize=(29.7 / 2.54, 21.0 / 2.54), facecolor='white')
+    ax  = fig.add_axes([0.05, 0.05, 0.90, 0.90])
+    ax.set_xlim(0, 10)
+    ax.set_ylim(0, 7)
+    ax.axis('off')
+
+    # Titel
+    ax.text(5, 6.65, 'Betreuungskalender — Legende',
+            ha='center', va='center', fontsize=14, fontweight='bold',
+            color=COLOR_HEAD)
+
+    # ── Spalte 1: Betreuung ─────────────────────────────────────────────────
+    ax.text(0.1, 6.1, 'Betreuung', fontsize=10, fontweight='bold',
+            va='center', color=COLOR_HEAD)
+
+    betreuung = [
+        ('#BDD7EE', '#1A4F8A', 'V', 'Vater'),
+        ('#FCE4D6', '#B22222', 'M', 'Mutter'),
+        ('#E8E8E8', '#444444', '—', 'Kein WM-Eintrag (vor Wechselmodell-Start)'),
+        ('#FFFFFF', '#444444', '',  'Keine Angabe'),
+    ]
+    for i, (bg, tc, kuerzel, label) in enumerate(betreuung):
+        y = 5.5 - i * 0.75
+        # Beispielzelle
+        ax.add_patch(patches.Rectangle(
+            (0.1, y - 0.28), 0.7, 0.56,
+            facecolor=bg, edgecolor='#AAAAAA', lw=0.8))
+        if kuerzel:
+            ax.text(0.45, y, kuerzel, ha='center', va='center',
+                    fontsize=9, fontweight='bold', color=tc)
+        ax.text(1.0, y, label, va='center', fontsize=8.5)
+
+    # ── Spalte 2: Zellenaufbau ──────────────────────────────────────────────
+    ax.text(5.0, 6.1, 'Aufbau einer Tageszelle', fontsize=10,
+            fontweight='bold', va='center', color=COLOR_HEAD)
+
+    # Beispielzelle groß gezeichnet
+    cw, ch = 1.8, 1.4
+    cx, cy = 5.0, 4.55
+    ax.add_patch(patches.Rectangle(
+        (cx, cy), cw, ch, facecolor='#BDD7EE', edgecolor='#888888', lw=1.0))
+    # Tageszahl oben links
+    ax.text(cx + 0.12, cy + ch - 0.22, '15',
+            fontsize=10, va='center', color='#222222')
+    # Betreuer-Kürzel mittig
+    ax.text(cx + cw/2, cy + ch/2 - 0.1, 'V',
+            ha='center', va='center', fontsize=13, fontweight='bold',
+            color='#1A4F8A')
+    # Flag oben rechts
+    ax.text(cx + cw - 0.10, cy + ch - 0.22, 'F',
+            ha='right', va='center', fontsize=8, color='#C00000')
+
+    # Pfeile und Beschriftungen
+    arrow = dict(arrowstyle='->', color='#333333', lw=0.8)
+    ax.annotate('Tageszahl', xy=(cx + 0.18, cy + ch - 0.22),
+                xytext=(cx - 0.8, cy + ch + 0.05),
+                fontsize=7.5, arrowprops=arrow, va='center')
+    ax.annotate('Betreuer (V / M)', xy=(cx + cw/2, cy + ch/2 - 0.1),
+                xytext=(cx + cw + 0.15, cy + ch/2 + 0.15),
+                fontsize=7.5, arrowprops=arrow, va='center')
+    ax.annotate('Markierung', xy=(cx + cw - 0.12, cy + ch - 0.22),
+                xytext=(cx + cw + 0.15, cy + ch - 0.05),
+                fontsize=7.5, arrowprops=arrow, va='center')
+
+    # ── Spalte 2: Markierungen ──────────────────────────────────────────────
+    ax.text(5.0, 3.35, 'Markierungen', fontsize=10, fontweight='bold',
+            va='center', color=COLOR_HEAD)
+
+    markierungen = [
+        ('#C00000', 'F',  'Feiertag (Tageszahl ebenfalls rot)'),
+        ('#E07000', 'K',  'Kind krank'),
+        ('#C00000', '!',  'Widerspruch zu Beleg (abweichend von Plan)'),
+        ('#888888', '~',  'Datum unsicher'),
+        ('#444444', 'FK', 'Kombination möglich (z. B. Feiertag + krank)'),
+    ]
+    for i, (color, kuerzel, label) in enumerate(markierungen):
+        y = 2.85 - i * 0.55
+        ax.text(5.1, y, kuerzel, va='center', fontsize=8.5,
+                fontweight='bold', color=color)
+        ax.text(5.6, y, label, va='center', fontsize=8.5)
+
+    # ── Spalte 2: Sonderzeichen ─────────────────────────────────────────────
+    ax.text(5.0, 0.55, 'Sonderzeichen in Ereignissen', fontsize=10,
+            fontweight='bold', va='center', color=COLOR_HEAD)
+    sonder = [
+        ('(Text)', 'Offizieller Eintrag — erscheint in Anlagen'),
+        ('[Text]', 'Nur interner Hinweis — wird beim PDF-Export entfernt'),
+    ]
+    for i, (kuerzel, label) in enumerate(sonder):
+        y = 0.08 - i * 0.40 + 0.35
+        ax.text(5.1, y, kuerzel, va='center', fontsize=8, color='#333333',
+                fontstyle='italic')
+        ax.text(6.5, y, label, va='center', fontsize=8)
+
+    # Trennlinien zwischen Spalten
+    ax.axvline(x=4.7, ymin=0.01, ymax=0.97, color='#CCCCCC', lw=0.8)
+
+    pdf.savefig(fig, bbox_inches='tight', dpi=150)
+    plt.close(fig)
+
+
+def _build_kalender_matplotlib(md: str, output: Path):
+    import matplotlib
+    matplotlib.use('Agg')
+    import matplotlib.pyplot as plt
+    from matplotlib.backends.backend_pdf import PdfPages
+
+    months = parse_kalender_md(md)
+    if not months:
+        raise ValueError('Keine Monatsblöcke gefunden')
+
+    with PdfPages(str(output)) as pdf:
+        _render_legende(pdf)
+        for page_start in range(0, len(months), 8):
+            page_months = months[page_start:page_start + 8]
+            fig = plt.figure(figsize=(29.7 / 2.54, 21.0 / 2.54),
+                             facecolor='white')
+            for slot, mdata in enumerate(page_months):
+                col, row = slot % 4, slot // 4
+                ax = fig.add_axes(_axes_rect(col, row))
+                _draw_month(ax, mdata)
+            for slot in range(len(page_months), 8):
+                col, row = slot % 4, slot // 4
+                ax = fig.add_axes(_axes_rect(col, row))
+                ax.axis('off')
+            pdf.savefig(fig, bbox_inches='tight', dpi=150)
+            plt.close(fig)
+
+        _render_ereignisse(pdf, months)
+
+    print(f'  [matplotlib] {len(months)} Monate gerendert')
+
+
 def build_kalender(md_path: Path, output: Path):
     md = md_path.read_text(encoding='utf-8')
-    clean = strip_internal_notes(strip_comments(md))
-    # Kalender-ASCII-Tabellen in Verbatim-Block für LaTeX wrappen
-    clean = re.sub(
-        r'((?:^[┌├└│].*\n)+)',
-        lambda m: '```\n' + m.group(0) + '```\n',
-        clean, flags=re.MULTILINE
-    )
-    run_pandoc(clean, output, extra_flags=[
-        '-V', 'geometry:margin=1.5cm,landscape',
-    ])
+    try:
+        _build_kalender_matplotlib(md, output)
+    except Exception as exc:
+        print(f'  [Warnung] matplotlib fehlgeschlagen ({exc}) — Pandoc-Fallback')
+        clean = strip_internal_notes(strip_template_hints(strip_comments(md)))
+        clean = re.sub(
+            r'((?:^[┌├└│].*\n)+)',
+            lambda m: '```\n' + m.group(0) + '```\n',
+            clean, flags=re.MULTILINE
+        )
+        run_pandoc(clean, output, extra_flags=[
+            '--from', 'markdown-yaml_metadata_block',
+            '-V', 'geometry:margin=1.5cm,landscape',
+        ])
 
 
 def build_deckblatt(anlage: str, titel: str, datei: str, az: str, output: Path):
