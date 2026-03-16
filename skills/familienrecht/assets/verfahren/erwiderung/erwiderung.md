@@ -1,3 +1,18 @@
+---
+title: "Erwiderung"
+lang: de-DE
+fontsize: 11pt
+linestretch: 1.3
+geometry:
+  - left=3cm
+  - right=2cm
+  - top=2.5cm
+  - bottom=2.5cm
+mainfont: "Arial"
+header-includes:
+  - \usepackage{parskip}
+---
+
 # Erwiderung — Az. [Aktenzeichen]
 
 > **Arbeitsformat:** Dieses Dokument wird in Markdown bearbeitet und erst in Phase 5 als DOCX exportiert.

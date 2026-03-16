@@ -55,6 +55,20 @@ def strip_template_hints(text: str) -> str:
     """Entfernt Blockquote-Zeilen (> ...) — werden als Template-Hinweise behandelt."""
     return re.sub(r'^>.*\n?', '', text, flags=re.MULTILINE)
 
+def extract_yaml_frontmatter(md: str) -> tuple[str, str]:
+    """Extrahiert YAML-Frontmatter (---...---) vom Dateianfang.
+
+    Gibt (yaml_block_inkl_delimiter, rest) zurück.
+    Bei fehlendem YAML: ('', md).
+    """
+    if not md.startswith('---\n'):
+        return '', md
+    end = md.find('\n---\n', 4)
+    if end == -1:
+        return '', md
+    yaml_block = md[:end + 5]   # inkl. schließendem ---\n
+    return yaml_block, md[end + 5:]
+
 def split_briefkopf(md: str) -> tuple[str, str]:
     """Trennt Briefkopf vom Schriftsatz-Body.
 
@@ -176,15 +190,9 @@ def briefkopf_to_latex(text: str) -> str:
 
 # ── Pandoc aufrufen ───────────────────────────────────────────────────────────
 
-# Gemeinsame Basis-Flags für alle Dokumente
+# Basis-Flag — Dokumenteigenschaften kommen aus dem YAML-Header der jeweiligen MD-Datei
 PANDOC_BASE = [
     '--pdf-engine', 'xelatex',
-    '-V', 'lang=de-DE',
-    '-V', 'papersize=a4',
-    '-V', 'geometry:margin=2.5cm',
-    '-V', 'mainfont=Arial',
-    '-V', 'fontsize=12pt',
-    '-V', 'linestretch=1.2',
 ]
 
 def run_pandoc(md_text: str, output: Path, extra_flags: list = None,
@@ -257,14 +265,17 @@ def protect_signature_block(body: str) -> str:
 
 def build_erwiderung(md_path: Path, output: Path):
     md = md_path.read_text(encoding='utf-8')
-    briefkopf_raw, body = split_briefkopf(md)
+    yaml_block, md_body = extract_yaml_frontmatter(md)
+    briefkopf_raw, body = split_briefkopf(md_body)
     bk_lines = briefkopf_raw.count('\n') if briefkopf_raw else 0
     body_lines = body.count('\n')
     print(f'  [Split]     Briefkopf {bk_lines} Zeilen, Body {body_lines} Zeilen')
     body = protect_signature_block(body)
     briefkopf_tex = briefkopf_to_latex(briefkopf_raw) if briefkopf_raw else ''
+    # YAML-Block vorne anhängen, damit Pandoc Dokumenteigenschaften aus der MD-Datei liest
+    pandoc_input = (yaml_block + body) if yaml_block else body
     run_pandoc(
-        md_text    = body,
+        md_text    = pandoc_input,
         output     = output,
         template   = TEMPLATES / 'schriftsatz.latex',
         extra_vars = {'briefkopf': briefkopf_tex} if briefkopf_tex else {},
