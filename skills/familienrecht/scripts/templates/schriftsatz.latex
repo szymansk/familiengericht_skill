@@ -62,8 +62,11 @@ $if(linestretch)$\setstretch{$linestretch$}$else$\setstretch{1.2}$endif$
 \usepackage{booktabs}
 \usepackage{longtable}
 \usepackage{array}
+\usepackage{calc}
 \usepackage{caption}
 \captionsetup{font=small, labelfont=bf}
+%% Pandoc 3.x setzt \LTcaptype auf "none" — LaTeX braucht diesen Counter:
+\newcounter{none}
 
 %% ── Listen ───────────────────────────────────────────────────────────────────
 \usepackage{enumitem}

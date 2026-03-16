@@ -641,11 +641,12 @@ def _build_kalender_matplotlib(md: str, output: Path):
 
 def build_kalender(md_path: Path, output: Path):
     md = md_path.read_text(encoding='utf-8')
+    yaml_block, md_body = extract_yaml_frontmatter(md)
     try:
-        _build_kalender_matplotlib(md, output)
+        _build_kalender_matplotlib(md_body, output)
     except Exception as exc:
         print(f'  [Warnung] matplotlib fehlgeschlagen ({exc}) — Pandoc-Fallback')
-        clean = strip_internal_notes(strip_template_hints(strip_comments(md)))
+        clean = strip_internal_notes(strip_template_hints(strip_comments(md_body)))
         clean = re.sub(
             r'((?:^[┌├└│].*\n)+)',
             lambda m: '```\n' + m.group(0) + '```\n',
@@ -655,6 +656,15 @@ def build_kalender(md_path: Path, output: Path):
             '--from', 'markdown-yaml_metadata_block',
             '-V', 'geometry:margin=1.5cm,landscape',
         ])
+
+
+def build_simple(md_path: Path, output: Path):
+    """Generiert PDF für einfache Arbeitsdokumente (Fakten, Timeline, etc.)."""
+    md = md_path.read_text(encoding='utf-8')
+    yaml_block, body = extract_yaml_frontmatter(md)
+    body = strip_template_hints(strip_comments(body))
+    pandoc_input = (yaml_block + body) if yaml_block else body
+    run_pandoc(pandoc_input, output, template=TEMPLATES / 'schriftsatz.latex')
 
 
 def build_deckblatt(anlage: str, titel: str, datei: str, az: str, output: Path):
@@ -687,6 +697,17 @@ def parse_originale(anlagen_md: Path) -> list:
                 and 'original' in cols[3].lower()):
             result.append((cols[0], cols[1], cols[2]))
     return result
+
+SIMPLE_DOCS = [
+    ('sachverhalt/fakten.md',         'fakten'),
+    ('sachverhalt/timeline.md',       'timeline'),
+    ('sachverhalt/notizen.md',        'notizen'),
+    ('sachverhalt/offene-fragen.md',  'offene-fragen'),
+    ('sachverhalt/entscheidungen.md', 'entscheidungen'),
+    ('erwiderung/anlagen.md',         'anlagen'),
+    ('erwiderung/nur-muendlich.md',   'nur-muendlich'),
+    ('vorbereitung/verhandlung.md',   'verhandlung'),
+]
 
 # ── Main ──────────────────────────────────────────────────────────────────────
 
@@ -726,6 +747,15 @@ def main():
             print(f"✓  {dst}")
         else:
             print("  kalender.md nicht gefunden — übersprungen.")
+
+    for src_rel, name in SIMPLE_DOCS:
+        if only in ('all', name):
+            src = verfahren / src_rel
+            if src.exists():
+                dst = output_dir / f'{name}.pdf'
+                print(f"Generiere {name}.pdf …", end=' ', flush=True)
+                build_simple(src, dst)
+                print(f"✓  {dst}")
 
     if only in ('all', 'deckblatt'):
         anlagen_src = verfahren / 'erwiderung' / 'anlagen.md'

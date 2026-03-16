@@ -1,3 +1,18 @@
+---
+title: "Strategische Entscheidungen"
+lang: de-DE
+fontsize: 11pt
+linestretch: 1.3
+geometry:
+  - left=3cm
+  - right=2cm
+  - top=2.5cm
+  - bottom=2.5cm
+mainfont: "Arial"
+header-includes:
+  - \usepackage{parskip}
+---
+
 # Strategische Entscheidungen — Az. [Aktenzeichen]
 
 Hier werden gemeinsam getroffene Entscheidungen festgehalten, die den weiteren Verlauf des Verfahrens beeinflussen. Dieses Dokument wird vom Skill bei jedem Start gelesen.
