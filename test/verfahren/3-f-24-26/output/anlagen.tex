@@ -1,0 +1,158 @@
+%% schriftsatz.latex — Anpassbares Pandoc-Template für familienrechtliche Schriftsätze
+%%
+%% Pandoc-Variablen (via -V oder YAML-Frontmatter):
+%%   mainfont      Schriftart             (Standard: Arial)
+%%   fontsize      Schriftgröße           (Standard: 11pt)
+%%   papersize     Papierformat           (Standard: a4)
+%%   geometry      Seitenränder           (Standard: margin=2.5cm)
+%%   linestretch   Zeilenabstand          (Standard: 1.2)
+%%   lang          Sprache                (Standard: de-DE)
+%%   briefkopf     Vorbereiteter LaTeX-Briefkopf (von generate-pdf.py erzeugt)
+%%
+%% ─────────────────────────────────────────────────────────────────────────────
+
+\documentclass[
+  11pt,
+  a4paper,
+]{article}
+
+%% ── Sprache ──────────────────────────────────────────────────────────────────
+\usepackage[ngerman]{babel}
+
+%% ── Fonts (XeLaTeX) ──────────────────────────────────────────────────────────
+\usepackage{fontspec}
+\setmainfont{Arial}[
+  BoldFont       = Arial Bold,
+  ItalicFont     = Arial Italic,
+  BoldItalicFont = Arial Bold Italic,
+  Ligatures      = TeX,
+]
+\usepackage{microtype}
+
+%% ── Seitenlayout ─────────────────────────────────────────────────────────────
+\usepackage[left=3cm,right=2cm,top=2.5cm,bottom=2.5cm]{geometry}
+
+%% ── Zeilenabstand & Absätze ──────────────────────────────────────────────────
+\usepackage{setspace}
+\setstretch{1.3}
+\usepackage{parskip}
+\setlength{\parskip}{6pt}
+\setlength{\parindent}{0pt}
+
+%% ── Überschriften ────────────────────────────────────────────────────────────
+\usepackage{titlesec}
+\titleformat{\section}{\normalfont\large\bfseries}{}{0em}{}
+\titleformat{\subsection}{\normalfont\normalsize\bfseries}{}{0em}{}
+\titleformat{\subsubsection}{\normalfont\normalsize\bfseries}{}{0em}{}
+\titlespacing{\section}{0pt}{14pt}{6pt}
+\titlespacing{\subsection}{0pt}{10pt}{4pt}
+%% Keine automatische Abschnittsnummerierung
+\setcounter{secnumdepth}{0}
+
+%% ── Seitenzahlen ─────────────────────────────────────────────────────────────
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[C]{\footnotesize Seite~\thepage~von~\pageref{LastPage}}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+%% ── Tabellen ─────────────────────────────────────────────────────────────────
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{calc}
+\usepackage{caption}
+\captionsetup{font=small, labelfont=bf}
+%% Pandoc 3.x setzt \LTcaptype auf "none" — LaTeX braucht diesen Counter:
+\newcounter{none}
+
+%% ── Listen ───────────────────────────────────────────────────────────────────
+\usepackage{enumitem}
+\setlist{noitemsep, topsep=4pt}
+
+%% ── Sonstiges ────────────────────────────────────────────────────────────────
+\usepackage{xcolor}
+\usepackage[normalem]{ulem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{needspace}
+
+%% ── Pandoc-Kompatibilität ────────────────────────────────────────────────────
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+%% ─────────────────────────────────────────────────────────────────────────────
+\begin{document}
+
+%% Briefkopf — von generate-pdf.py aus Markdown-Zeilen vor dem ersten --- erzeugt.
+%% Zeilen mit "den \d" werden rechtsbündig gesetzt, Betreff fett+unterstrichen,
+%% Aktenzeichen fett, alle anderen Zeilen linksbündig mit explizitem Zeilenumbruch.
+
+\section{Anlagenverzeichnis --- Az. 7 F
+88/25}\label{anlagenverzeichnis-az.-7-f-8825}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1250}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1094}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1094}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.0781}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.4531}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1250}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Anlage
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Titel
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Datei
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Typ
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Im Schriftsatz referenziert
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Status
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+B1 & Elternvereinbarung vom 01.09.2025 & elternvereinbarung-20250901.pdf
+& Original & Ja --- Abschnitt: II.3, Anträge & beigefügt \\
+B2 & KiTa-Bericht Regenbogen, Halbjahresbericht Herbst 2025 &
+kita-bericht-herbst-2025.pdf & Kopie & Ja --- Abschnitt:
+Glaubhaftmachung & beigefügt \\
+B3 & WhatsApp-Verlauf AS/AG Oktober--November 2025 &
+whatsapp-verlauf-okt-nov-2025.pdf & Kopie & Ja --- Abschnitt: VI,
+Glaubhaftmachung & beigefügt \\
+B4 & Dienstreise-Belege (Hotelrechnung Stuttgart + Zugtickets
+Düsseldorf) & dienstreise-belege-2025-2026.pdf & Kopie & Ja ---
+Abschnitt: II.2, VII, Glaubhaftmachung & beigefügt \\
+B5 & E-Mail KiTa-Entwicklungsgespräch vom 10.02.2026 &
+kita-email-20260210.pdf & Original & Ja --- Abschnitt: IV,
+Glaubhaftmachung & beigefügt \\
+B6 & Gemeinsamer Jahreskalender 2025/2026 (Google-Calendar-Export) &
+jahreskalender-export-2026.pdf & Export & Ja --- Abschnitt: Anträge Nr.
+3, Glaubhaftmachung & beigefügt \\
+\end{longtable}
+}
+
+\subsection{Hinweise}\label{hinweise}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Original}: Wird physisch eingereicht. Der Skill generiert ein
+  Deckblatt (deckblatt-B1.docx).
+\item
+  \textbf{Kopie}: Ausreichend als Ausdruck. Kein Deckblatt nötig.
+\item
+  \textbf{Export}: Aus Markdown generiert (Kalender, Protokoll). Kein
+  separates Deckblatt.
+\item
+  Anlagen die bereits beim Gericht liegen, müssen nicht erneut
+  eingereicht werden.
+\end{itemize}
+
+\end{document}

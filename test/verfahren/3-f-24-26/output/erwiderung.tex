@@ -62,8 +62,11 @@
 \usepackage{booktabs}
 \usepackage{longtable}
 \usepackage{array}
+\usepackage{calc}
 \usepackage{caption}
 \captionsetup{font=small, labelfont=bf}
+%% Pandoc 3.x setzt \LTcaptype auf "none" — LaTeX braucht diesen Counter:
+\newcounter{none}
 
 %% ── Listen ───────────────────────────────────────────────────────────────────
 \usepackage{enumitem}
@@ -85,20 +88,20 @@
 %% Briefkopf — von generate-pdf.py aus Markdown-Zeilen vor dem ersten --- erzeugt.
 %% Zeilen mit "den \d" werden rechtsbündig gesetzt, Betreff fett+unterstrichen,
 %% Aktenzeichen fett, alle anderen Zeilen linksbündig mit explizitem Zeilenumbruch.
-\noindent \textbf{Dipl.-Ing. Max Mustermann}\\[0mm]
-\noindent Hauptstraße 42\\[0mm]
-\noindent 12345 Musterstadt\\[0mm]
-\noindent Tel.: 0151 12345678\\[0mm]
-\noindent E-Mail: max.mustermann@beispiel.de\par
+\noindent \textbf{Thomas Berger}\\[0mm]
+\noindent Tannenweg 18\\[0mm]
+\noindent 87654 Neukirchen\\[0mm]
+\noindent Tel.: 0172 9876543\\[0mm]
+\noindent E-Mail: t.berger@handwerk-beispiel.de\par
 \par\vspace{14pt}
-\noindent \textbf{Amtsgericht Musterstadt}\\[0mm]
+\noindent \textbf{Amtsgericht Neukirchen}\\[0mm]
 \noindent – Familiengericht –\\[0mm]
-\noindent Rathausstraße 1\\[0mm]
-\noindent 12345 Musterstadt\par
-\hfill Musterstadt, den 16. März 2026\\[1mm]
-\noindent\textbf{Aktenzeichen: 3 F 24/26}\\[3mm]
-\noindent\textbf{{Erwiderung auf den Antrag der Antragstellerin vom 04. März 2026}}\\[4mm]
-\noindent In der Familiensache Musterfrau ./. Mustermann, betreffend das gemeinsame Kind Luca Mustermann, geb. 22.09.2020\\[0mm]
+\noindent Kirchplatz 7\\[0mm]
+\noindent 87654 Neukirchen\par
+\hfill Neukirchen, den 05. März 2026\\[1mm]
+\noindent\textbf{Aktenzeichen: 7 F 88/25}\\[3mm]
+\noindent\textbf{{Erwiderung auf den Antrag der Antragstellerin vom 12. Februar 2026}}\\[4mm]
+\noindent In der Familiensache Berger ./. Berger, betreffend das gemeinsame Kind Finn Berger, geb. 03.05.2019\\[0mm]
 \medskip
 
 \textbf{Der Antragsgegner beantragt:}
@@ -217,8 +220,9 @@ amet.
 
 Die tatsächliche Betreuung durch die Antragstellerin zwischen dem Ende
 der KiTa-Zeit (ca. 14:30 Uhr) und der Rückkehr des Antragsgegners von
-der Arbeit (ca. 17:30 Uhr) betrug täglich rund drei Stunden. Lorem ipsum
-dolor sit amet consetetur sadipscing elitr sed diam nonumy eirmod.
+der Werkstatt (ca. 17:00 Uhr) betrug täglich rund zweieinhalb Stunden.
+Lorem ipsum dolor sit amet consetetur sadipscing elitr sed diam nonumy
+eirmod.
 
 \subsubsection{3. Entstehung der Elternvereinbarung -- kein Druck,
 sondern gemeinsame
@@ -322,12 +326,12 @@ invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua
 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
 eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
 voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Das
-Entwicklungsgespräch am 11. März 2026 hat die positive Einschätzung in
-vollem Umfang bestätigt (vgl. unten V.).
+Entwicklungsgespräch am 25. Februar 2026 hat die positive Einschätzung
+in vollem Umfang bestätigt (vgl. unten V.).
 
-\subsection{V. Zum Entwicklungsgespräch in der KiTa Sonnenhang vom 11.
-März
-2026}\label{v.-zum-entwicklungsgespruxe4ch-in-der-kita-sonnenhang-vom-11.-muxe4rz-2026}
+\subsection{V. Zum Entwicklungsgespräch in der KiTa Regenbogen vom 25.
+Februar
+2026}\label{v.-zum-entwicklungsgespruxe4ch-in-der-kita-regenbogen-vom-25.-februar-2026}
 
 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
 eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
@@ -418,11 +422,11 @@ clita kasd gubergren.
 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
 eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
 voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Das
-Protokoll nennt den 20. Januar 2026 als Reisetag des Antragsgegners --
-einen Tag, an dem er sich nachweislich noch in Musterstadt befand; die
-Dienstreise nach München fand erst am 21. Januar statt (Anlage B4). Der
-belegte Datumsfehler legt nahe, dass das Protokoll zumindest in Teilen
-rückwirkend und selektiv erstellt wurde.
+Protokoll nennt den 15. Oktober 2025 als Reisetag des Antragsgegners --
+einen Tag, an dem er sich nachweislich noch in Neukirchen befand; die
+Dienstreise nach Stuttgart fand erst am 16. Oktober statt (Anlage B4).
+Der belegte Datumsfehler legt nahe, dass das Protokoll zumindest in
+Teilen rückwirkend und selektiv erstellt wurde.
 
 \subsection{VIII. Schlussbemerkung}\label{viii.-schlussbemerkung}
 
@@ -447,12 +451,12 @@ Anlage B3: Lorem ipsum dolor sit amet, consetetur sadipscing elitr
 (vollständiger Wortlaut)
 
 Anlage B4: Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-diam nonumy eirmod tempor invidunt, Hotelrechnung Hotel Bavaria München
-vom 22. Januar 2026 sowie Nachrichtenverkehr zur Dienstreise Hamburg
-(23.--25. März 2026)
+diam nonumy eirmod tempor invidunt, Hotelrechnung Hotel Waldhorn
+Stuttgart vom 16. Oktober 2025 sowie Nachrichtenverkehr zur Dienstreise
+Düsseldorf (18.--20. Februar 2026)
 
 Anlage B5: Lorem ipsum dolor sit amet, consetetur sadipscing elitr sed
-diam nonumy eirmod tempor invidunt KiTa Sonnenhang vom 01. März 2026
+diam nonumy eirmod tempor invidunt KiTa Regenbogen vom 10. Februar 2026
 (Antragstellerin in CC)
 
 Anlage B6: Lorem ipsum dolor sit amet consetetur sadipscing elitr
@@ -465,11 +469,11 @@ Weiterer Sachvortrag bleibt vorbehalten.
 
 \vspace{10pt}
 
-Musterstadt, den 16. März 2026
+Neukirchen, den 05. März 2026
 
 \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
 
-\textbf{Dipl.-Ing. Max Mustermann}
+\textbf{Thomas Berger}
 
 (Antragsgegner)
 

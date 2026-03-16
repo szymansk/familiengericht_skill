@@ -1,0 +1,336 @@
+%% schriftsatz.latex — Anpassbares Pandoc-Template für familienrechtliche Schriftsätze
+%%
+%% Pandoc-Variablen (via -V oder YAML-Frontmatter):
+%%   mainfont      Schriftart             (Standard: Arial)
+%%   fontsize      Schriftgröße           (Standard: 11pt)
+%%   papersize     Papierformat           (Standard: a4)
+%%   geometry      Seitenränder           (Standard: margin=2.5cm)
+%%   linestretch   Zeilenabstand          (Standard: 1.2)
+%%   lang          Sprache                (Standard: de-DE)
+%%   briefkopf     Vorbereiteter LaTeX-Briefkopf (von generate-pdf.py erzeugt)
+%%
+%% ─────────────────────────────────────────────────────────────────────────────
+
+\documentclass[
+  11pt,
+  a4paper,
+]{article}
+
+%% ── Sprache ──────────────────────────────────────────────────────────────────
+\usepackage[ngerman]{babel}
+
+%% ── Fonts (XeLaTeX) ──────────────────────────────────────────────────────────
+\usepackage{fontspec}
+\setmainfont{Arial}[
+  BoldFont       = Arial Bold,
+  ItalicFont     = Arial Italic,
+  BoldItalicFont = Arial Bold Italic,
+  Ligatures      = TeX,
+]
+\usepackage{microtype}
+
+%% ── Seitenlayout ─────────────────────────────────────────────────────────────
+\usepackage[left=3cm,right=2cm,top=2.5cm,bottom=2.5cm]{geometry}
+
+%% ── Zeilenabstand & Absätze ──────────────────────────────────────────────────
+\usepackage{setspace}
+\setstretch{1.3}
+\usepackage{parskip}
+\setlength{\parskip}{6pt}
+\setlength{\parindent}{0pt}
+
+%% ── Überschriften ────────────────────────────────────────────────────────────
+\usepackage{titlesec}
+\titleformat{\section}{\normalfont\large\bfseries}{}{0em}{}
+\titleformat{\subsection}{\normalfont\normalsize\bfseries}{}{0em}{}
+\titleformat{\subsubsection}{\normalfont\normalsize\bfseries}{}{0em}{}
+\titlespacing{\section}{0pt}{14pt}{6pt}
+\titlespacing{\subsection}{0pt}{10pt}{4pt}
+%% Keine automatische Abschnittsnummerierung
+\setcounter{secnumdepth}{0}
+
+%% ── Seitenzahlen ─────────────────────────────────────────────────────────────
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[C]{\footnotesize Seite~\thepage~von~\pageref{LastPage}}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+%% ── Tabellen ─────────────────────────────────────────────────────────────────
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{calc}
+\usepackage{caption}
+\captionsetup{font=small, labelfont=bf}
+%% Pandoc 3.x setzt \LTcaptype auf "none" — LaTeX braucht diesen Counter:
+\newcounter{none}
+
+%% ── Listen ───────────────────────────────────────────────────────────────────
+\usepackage{enumitem}
+\setlist{noitemsep, topsep=4pt}
+
+%% ── Sonstiges ────────────────────────────────────────────────────────────────
+\usepackage{xcolor}
+\usepackage[normalem]{ulem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{needspace}
+
+%% ── Pandoc-Kompatibilität ────────────────────────────────────────────────────
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+%% ─────────────────────────────────────────────────────────────────────────────
+\begin{document}
+
+%% Briefkopf — von generate-pdf.py aus Markdown-Zeilen vor dem ersten --- erzeugt.
+%% Zeilen mit "den \d" werden rechtsbündig gesetzt, Betreff fett+unterstrichen,
+%% Aktenzeichen fett, alle anderen Zeilen linksbündig mit explizitem Zeilenumbruch.
+
+\section{Vorbereitung Verhandlung --- Az. 7 F
+88/25}\label{vorbereitung-verhandlung-az.-7-f-8825}
+
+\subsection{Verfahrensdaten}\label{verfahrensdaten}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Termin:} 22. Mai 2026, 10:00 Uhr
+\item
+  \textbf{Gericht:} Amtsgericht Neukirchen, Saal 3
+\item
+  \textbf{Richterin/Richter:} Richterin Dr.~Lieselotte Kern
+\item
+  \textbf{Verfahrensbeistand:} Dipl.-Soz. Klaus Hofmann
+\item
+  \textbf{Gegenanwalt/-anwältin:} RA Petra Schmitt
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{Kernbotschaften (max. 3)}\label{kernbotschaften-max.-3}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Finn geht es gut --- das sagt die KiTa, das sagen die Zahlen, das
+  zeigt das gelebte Wechselmodell der letzten sechs Monate.
+\item
+  Der Antragsgegner war von Anfang an aktiv beteiligt und hat seine
+  Rolle als Vater nie vernachlässigt.
+\item
+  Das paritätische Wechselmodell wurde einvernehmlich vereinbart und
+  funktioniert --- eine Änderung liegt nicht im Interesse Finns.
+\end{enumerate}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{Punkte aus dem Schriftsatz
+(Kurzfassung)}\label{punkte-aus-dem-schriftsatz-kurzfassung}
+
+\subsubsection{Eigene Stärken}\label{eigene-stuxe4rken}
+
+\begin{itemize}
+\tightlist
+\item
+  Stabile, kindgerechte Wohnung seit 01.07.2025; gleicher KiTa-Bezirk,
+  1,8 km Entfernung zur AS
+\item
+  Elternvereinbarung vom 01.09.2025 belegt einvernehmliche Einigung (B1)
+\item
+  AWO-Beratung am 14.01.2026 gemeinsam besucht ---
+  Kooperationsbereitschaft dokumentiert
+\end{itemize}
+
+\subsubsection{Fachliche
+Bestätigungen}\label{fachliche-bestuxe4tigungen}
+
+\begin{itemize}
+\tightlist
+\item
+  KiTa Regenbogen: Halbjahresbericht Herbst 2025 positiv (B2);
+  Entwicklungsgespräch 25.02.2026 bestätigt altersgemäße Entwicklung
+  (B5)
+\end{itemize}
+
+\subsubsection{Widerlegungen}\label{widerlegungen}
+
+\begin{itemize}
+\tightlist
+\item
+  Behauptete Abwesenheit am 15.10.2025 durch Dienstreise-Belege
+  widerlegt (B4): AG war in Neukirchen, Dienstreise war am 16.10.
+\item
+  Druckbehauptung zur Elternvereinbarung: Entstehungsgeschichte
+  dokumentiert (B3, AWO)
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{NUR MÜNDLICH-Punkte}\label{nur-muxfcndlich-punkte}
+
+→ Siehe \texttt{erwiderung/nur-muendlich.md} für Details und
+Redevorschläge.
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.1842}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.4211}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3947}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Punkt
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Wann vorbringen
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Redevorschlag
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Spontanes Lob KiTa-Leiterin & Wenn Richterin fragt nach Einschätzung der
+KiTa & „Die KiTa-Leiterin hat mich nach dem Gespräch noch kurz zur Seite
+genommen\ldots'' \\
+Veränderung bei Übergaben seit Antrag & Wenn Gegenseite mangelnde
+Kooperation behauptet & „Seit dem Antrag hat sich die Atmosphäre bei den
+Übergaben verändert\ldots'' \\
+\end{longtable}
+}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{Erwartbare Fragen der
+Richterin}\label{erwartbare-fragen-der-richterin}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.2917}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.7083}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Frage
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Antwortvorschlag
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+„Wie stellen Sie sich die Betreuung konkret vor?'' & Beibehaltung des
+aktuellen Wechselmodells: Mo--Mi Mutter, Mi--Fr Vater, Wochenenden
+alternierend. Übergabe über KiTa. \\
+„Warum sind Sie gegen das Residenzmodell?'' & Finn kennt beide Haushalte
+als gleichwertige Zuhause. Ein Residenzmodell würde eine funktionierende
+Situation ohne Anlass verschlechtern. \\
+„Wie gehen Sie mit den geschilderten Symptomen um?'' & Die KiTa sieht
+keine Auffälligkeiten. Symptome treten laut Protokoll der AS
+ausschließlich in ihrem Haushalt auf. Das ist medizinisch einzuordnen,
+nicht dem Wechselmodell anzulasten. \\
+\end{longtable}
+}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{Erwartbare Argumente der
+Gegenseite}\label{erwartbare-argumente-der-gegenseite}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Argument
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Reaktion
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+„Das Kind leidet unter dem Wechselmodell'' & KiTa-Bericht und
+Entwicklungsgespräch widersprechen dem ausdrücklich. Symptome sind auf
+AS-Haushalt beschränkt. \\
+„Die Vereinbarung wurde unter Druck unterzeichnet'' &
+Entstehungsgeschichte belegt das Gegenteil: mehrwöchige Aushandlung, AWO
+einbezogen, beide Seiten in CC bei E-Mails. \\
+„Der Vater war beruflich oft abwesend'' & Dienstreisen 2025 gesamt: 10
+Tage. Belege liegen vor. In Abwesenheitszeiten war Regelbetreuung durch
+AS wie im Modell vorgesehen. \\
+\end{longtable}
+}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{Dos and Don'ts}\label{dos-and-donts}
+
+\subsubsection{Do:}\label{do}
+
+\begin{itemize}
+\tightlist
+\item
+  Ruhig und sachlich bleiben
+\item
+  Vom Kind sprechen, nicht vom Konflikt
+\item
+  Kooperationsbereitschaft zeigen
+\item
+  Konkrete Beispiele nennen
+\item
+  Auf Fragen direkt antworten
+\end{itemize}
+
+\subsubsection{Don't:}\label{dont}
+
+\begin{itemize}
+\tightlist
+\item
+  Die Mutter angreifen
+\item
+  Emotional werden
+\item
+  Unterbrechen
+\item
+  Rechtfertigungen vorbringen, die nicht gefragt wurden
+\item
+  Details ausbreiten, die im Schriftsatz nicht stehen
+  (Überraschungsgefahr)
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{Anhang: Verhaltensregeln}\label{anhang-verhaltensregeln}
+
+→ Vollständige Regeln für Gericht, Jugendamt und Verfahrensbeistand:
+\texttt{references/verhaltensregeln.md}
+
+\subsubsection{Der wichtigste Satz für das gesamte
+Verfahren:}\label{der-wichtigste-satz-fuxfcr-das-gesamte-verfahren}
+
+\subsubsection{Wenn du unter Druck gesetzt oder provoziert
+wirst:}\label{wenn-du-unter-druck-gesetzt-oder-provoziert-wirst}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Pause --- nicht sofort antworten
+\item
+  „Das entspricht nicht meiner Wahrnehmung'' statt „Das stimmt nicht''
+\item
+  Auf Fakten verweisen, nicht auf Gefühle
+\item
+  Die Richterin entscheidet --- nicht die Gegenanwältin
+\end{enumerate}
+
+\subsubsection{Wenn du merkst, dass du emotional
+wirst:}\label{wenn-du-merkst-dass-du-emotional-wirst}
+
+Sage nichts. Bitte um einen kurzen Moment. Das ist kein Zeichen von
+Schwäche --- es ist Professionalität. Richterinnen kennen das.
+
+\end{document}

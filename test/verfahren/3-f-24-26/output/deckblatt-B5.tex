@@ -1,0 +1,104 @@
+%% schriftsatz.latex — Anpassbares Pandoc-Template für familienrechtliche Schriftsätze
+%%
+%% Pandoc-Variablen (via -V oder YAML-Frontmatter):
+%%   mainfont      Schriftart             (Standard: Arial)
+%%   fontsize      Schriftgröße           (Standard: 11pt)
+%%   papersize     Papierformat           (Standard: a4)
+%%   geometry      Seitenränder           (Standard: margin=2.5cm)
+%%   linestretch   Zeilenabstand          (Standard: 1.2)
+%%   lang          Sprache                (Standard: de-DE)
+%%   briefkopf     Vorbereiteter LaTeX-Briefkopf (von generate-pdf.py erzeugt)
+%%
+%% ─────────────────────────────────────────────────────────────────────────────
+
+\documentclass[
+  11pt,
+  a4paper,
+]{article}
+
+%% ── Sprache ──────────────────────────────────────────────────────────────────
+\usepackage[ngerman]{babel}
+
+%% ── Fonts (XeLaTeX) ──────────────────────────────────────────────────────────
+\usepackage{fontspec}
+\setmainfont{Arial}[
+  BoldFont       = Arial Bold,
+  ItalicFont     = Arial Italic,
+  BoldItalicFont = Arial Bold Italic,
+  Ligatures      = TeX,
+]
+\usepackage{microtype}
+
+%% ── Seitenlayout ─────────────────────────────────────────────────────────────
+\usepackage[margin=2.5cm]{geometry}
+
+%% ── Zeilenabstand & Absätze ──────────────────────────────────────────────────
+\usepackage{setspace}
+\setstretch{1.2}
+\usepackage{parskip}
+\setlength{\parskip}{6pt}
+\setlength{\parindent}{0pt}
+
+%% ── Überschriften ────────────────────────────────────────────────────────────
+\usepackage{titlesec}
+\titleformat{\section}{\normalfont\large\bfseries}{}{0em}{}
+\titleformat{\subsection}{\normalfont\normalsize\bfseries}{}{0em}{}
+\titleformat{\subsubsection}{\normalfont\normalsize\bfseries}{}{0em}{}
+\titlespacing{\section}{0pt}{14pt}{6pt}
+\titlespacing{\subsection}{0pt}{10pt}{4pt}
+%% Keine automatische Abschnittsnummerierung
+\setcounter{secnumdepth}{0}
+
+%% ── Seitenzahlen ─────────────────────────────────────────────────────────────
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[C]{\footnotesize Seite~\thepage~von~\pageref{LastPage}}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+%% ── Tabellen ─────────────────────────────────────────────────────────────────
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{calc}
+\usepackage{caption}
+\captionsetup{font=small, labelfont=bf}
+%% Pandoc 3.x setzt \LTcaptype auf "none" — LaTeX braucht diesen Counter:
+\newcounter{none}
+
+%% ── Listen ───────────────────────────────────────────────────────────────────
+\usepackage{enumitem}
+\setlist{noitemsep, topsep=4pt}
+
+%% ── Sonstiges ────────────────────────────────────────────────────────────────
+\usepackage{xcolor}
+\usepackage[normalem]{ulem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{needspace}
+
+%% ── Pandoc-Kompatibilität ────────────────────────────────────────────────────
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+%% ─────────────────────────────────────────────────────────────────────────────
+\begin{document}
+
+%% Briefkopf — von generate-pdf.py aus Markdown-Zeilen vor dem ersten --- erzeugt.
+%% Zeilen mit "den \d" werden rechtsbündig gesetzt, Betreff fett+unterstrichen,
+%% Aktenzeichen fett, alle anderen Zeilen linksbündig mit explizitem Zeilenumbruch.
+
+\section{Anlage B5}\label{anlage-b5}
+
+\vspace{3cm}
+
+\textbf{E-Mail KiTa-Entwicklungsgespräch vom 10.02.2026}
+
+Aktenzeichen: 3 F 24 26
+
+\vspace{2cm}
+
+\emph{Das Original dieses Dokuments wird separat eingereicht.}
+
+\end{document}

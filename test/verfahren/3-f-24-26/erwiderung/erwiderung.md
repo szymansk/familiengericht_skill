@@ -13,37 +13,37 @@ header-includes:
   - \usepackage{parskip}
 ---
 
-# Erwiderung — Az. 3 F 24/26
+# Erwiderung — Az. 7 F 88/25
 
-> **Version:** 4.5 | **Stand:** 15.03.2026 | **Status:** Entwurf
+> **Version:** 4.5 | **Stand:** 05.03.2026 | **Status:** Entwurf
 
 ---
 
-**Dipl.-Ing. Max Mustermann**
+**Thomas Berger**
 
-Hauptstraße 42
+Tannenweg 18
 
-12345 Musterstadt
+87654 Neukirchen
 
-Tel.: 0151 12345678
+Tel.: 0172 9876543
 
-E-Mail: max.mustermann@beispiel.de
+E-Mail: t.berger@handwerk-beispiel.de
 
-**Amtsgericht Musterstadt**
+**Amtsgericht Neukirchen**
 
 – Familiengericht –
 
-Rathausstraße 1
+Kirchplatz 7
 
-12345 Musterstadt
+87654 Neukirchen
 
-Musterstadt, den 16. März 2026
+Neukirchen, den 05. März 2026
 
-**Aktenzeichen: 3 F 24/26**
+**Aktenzeichen: 7 F 88/25**
 
-**Erwiderung auf den Antrag der Antragstellerin vom 04. März 2026**
+**Erwiderung auf den Antrag der Antragstellerin vom 12. Februar 2026**
 
-In der Familiensache Musterfrau ./. Mustermann, betreffend das gemeinsame Kind Luca Mustermann, geb. 22.09.2020
+In der Familiensache Berger ./. Berger, betreffend das gemeinsame Kind Finn Berger, geb. 03.05.2019
 
 ---
 
@@ -87,7 +87,7 @@ Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lo
 
 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua at vero eos et accusam et justo duo dolores et ea rebum stet clita kasd gubergren no sea takimata sanctus est lorem ipsum dolor sit amet.
 
-Die tatsächliche Betreuung durch die Antragstellerin zwischen dem Ende der KiTa-Zeit (ca. 14:30 Uhr) und der Rückkehr des Antragsgegners von der Arbeit (ca. 17:30 Uhr) betrug täglich rund drei Stunden. Lorem ipsum dolor sit amet consetetur sadipscing elitr sed diam nonumy eirmod.
+Die tatsächliche Betreuung durch die Antragstellerin zwischen dem Ende der KiTa-Zeit (ca. 14:30 Uhr) und der Rückkehr des Antragsgegners von der Werkstatt (ca. 17:00 Uhr) betrug täglich rund zweieinhalb Stunden. Lorem ipsum dolor sit amet consetetur sadipscing elitr sed diam nonumy eirmod.
 
 ### 3. Entstehung der Elternvereinbarung – kein Druck, sondern gemeinsame Aushandlung
 
@@ -119,9 +119,9 @@ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod 
 
 Stet clita kasd gubergren, no sea takimata sanctus est lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua (dazu unten V.).
 
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Das Entwicklungsgespräch am 11. März 2026 hat die positive Einschätzung in vollem Umfang bestätigt (vgl. unten V.).
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Das Entwicklungsgespräch am 25. Februar 2026 hat die positive Einschätzung in vollem Umfang bestätigt (vgl. unten V.).
 
-## V. Zum Entwicklungsgespräch in der KiTa Sonnenhang vom 11. März 2026
+## V. Zum Entwicklungsgespräch in der KiTa Regenbogen vom 25. Februar 2026
 
 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum stet clita kasd gubergren no sea takimata sanctus est lorem ipsum dolor sit amet consetetur sadipscing elitr.
 
@@ -149,7 +149,7 @@ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod 
 
 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua at vero eos et accusam et justo duo dolores et ea rebum stet clita kasd gubergren.
 
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Das Protokoll nennt den 20. Januar 2026 als Reisetag des Antragsgegners – einen Tag, an dem er sich nachweislich noch in Musterstadt befand; die Dienstreise nach München fand erst am 21. Januar statt (Anlage B4). Der belegte Datumsfehler legt nahe, dass das Protokoll zumindest in Teilen rückwirkend und selektiv erstellt wurde.
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Das Protokoll nennt den 15. Oktober 2025 als Reisetag des Antragsgegners – einen Tag, an dem er sich nachweislich noch in Neukirchen befand; die Dienstreise nach Stuttgart fand erst am 16. Oktober statt (Anlage B4). Der belegte Datumsfehler legt nahe, dass das Protokoll zumindest in Teilen rückwirkend und selektiv erstellt wurde.
 
 ## VIII. Schlussbemerkung
 
@@ -163,18 +163,18 @@ Anlage B2: Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam non
 
 Anlage B3: Lorem ipsum dolor sit amet, consetetur sadipscing elitr (vollständiger Wortlaut)
 
-Anlage B4: Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt, Hotelrechnung Hotel Bavaria München vom 22. Januar 2026 sowie Nachrichtenverkehr zur Dienstreise Hamburg (23.–25. März 2026)
+Anlage B4: Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt, Hotelrechnung Hotel Waldhorn Stuttgart vom 16. Oktober 2025 sowie Nachrichtenverkehr zur Dienstreise Düsseldorf (18.–20. Februar 2026)
 
-Anlage B5: Lorem ipsum dolor sit amet, consetetur sadipscing elitr sed diam nonumy eirmod tempor invidunt KiTa Sonnenhang vom 01. März 2026 (Antragstellerin in CC)
+Anlage B5: Lorem ipsum dolor sit amet, consetetur sadipscing elitr sed diam nonumy eirmod tempor invidunt KiTa Regenbogen vom 10. Februar 2026 (Antragstellerin in CC)
 
 Anlage B6: Lorem ipsum dolor sit amet consetetur sadipscing elitr (gemeinsam erstellter Jahreskalender inkl. abgestimmter Urlaubsplanung)
 
 Weiterer Sachvortrag bleibt vorbehalten.
 
-Musterstadt, den 16. März 2026
+Neukirchen, den 05. März 2026
 
 \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
 
-**Dipl.-Ing. Max Mustermann**
+**Thomas Berger**
 
 (Antragsgegner)

@@ -1,30 +1,77 @@
-# Betreuungskalender — Az. 3 F 24/26
+# Betreuungskalender — Az. 7 F 88/25
 
-> Legende: V = Vater (Max Mustermann) | M = Mutter (Anna Musterfrau)
+> Legende: V = Vater (Thomas Berger) | M = Mutter (Sandra Berger)
 > F = Feiertag | K = Kind krank | ~ = Datum unsicher | — = kein WM-Eintrag
 > (Text) = offiziell, erscheint in Anlagen | [Text] = nur intern, wird beim Export entfernt
 >
-> Quelle Planungsdaten: B7 (Betreuungskalender Luca 2026, gemeinsam erstellt)
+> Quelle Planungsdaten: B7 (Betreuungskalender Finn 2025/2026, gemeinsam erstellt)
 > Abweichungen vom Plan werden hier als Ist-Stand erfasst.
 >
-> [Übergabepraxis Sonntags: Elternvereinbarung sieht vor, dass der übernehmende Elternteil das Kind abholt. In der Praxis hat Mutter durchgesetzt, dass Vater Luca bringt. Vater hat das akzeptiert, um Konflikte zu vermeiden.]
+> [Übergabepraxis Sonntags: Elternvereinbarung sieht vor, dass der übernehmende Elternteil das Kind abholt. In der Praxis hat Mutter durchgesetzt, dass Vater Finn bringt. Vater hat das akzeptiert, um Konflikte zu vermeiden.]
 
 ---
-November 2025 (Wechselmodell-Start: 11.11.; 1.–10.11. noch kein WM)
+September 2025 (Wechselmodell-Start: 01.09.2025)
 
 ┌──────┬──────┬──────┬──────┬──────┬──────┬──────┐
 │  Mo  │  Di  │  Mi  │  Do  │  Fr  │  Sa  │  So  │
 ├──────┼──────┼──────┼──────┼──────┼──────┼──────┤
-│      │      │      │      │      │  1 — │  2 — │
+│  1 V │  2 V │  3 M │  4 M │  5 V │  6 V │  7 V │
 ├──────┼──────┼──────┼──────┼──────┼──────┼──────┤
-│  3 — │  4 — │  5 — │  6 — │  7 — │  8 — │  9 — │
+│  8 M │  9 M │ 10 V │ 11 V │ 12 M │ 13 M │ 14 M │
 ├──────┼──────┼──────┼──────┼──────┼──────┼──────┤
-│ 10 — │ 11 M │ 12 M │ 13 M │ 14 V │ 15 V │ 16 V │
+│ 15 V │ 16 V │ 17 M │ 18 M │ 19 V │ 20 V │ 21 V │
 ├──────┼──────┼──────┼──────┼──────┼──────┼──────┤
-│ 17 M │ 18 M │ 19 V │ 20 V │ 21 M │ 22 M │ 23 M │
+│ 22 M │ 23 M │ 24 V │ 25 V │ 26 M │ 27 M │ 28 M │
 ├──────┼──────┼──────┼──────┼──────┼──────┼──────┤
-│ 24 V │ 25 V │ 26 M │ 27 M │ 28 V │ 29 V │ 30 V │
+│ 29 V │ 30 V │      │      │      │      │      │
 └──────┴──────┴──────┴──────┴──────┴──────┴──────┘
+
+Ereignisse:
+- 01.09. (Mo) V — (Beginn Wechselmodell)
+- 03.10. (Fr) VF — Tag der Deutschen Einheit
+- 18.09. (Do) M — [WhatsApp AS: Drohung „du siehst Finn nie wieder" — nicht als Anlage verwendet; vgl. Entscheidungen]
+
+---
+Oktober 2025
+
+┌──────┬──────┬──────┬──────┬──────┬──────┬──────┐
+│  Mo  │  Di  │  Mi  │  Do  │  Fr  │  Sa  │  So  │
+├──────┼──────┼──────┼──────┼──────┼──────┼──────┤
+│      │      │  1 M │  2 M │  3 VF│  4 V │  5 V │
+├──────┼──────┼──────┼──────┼──────┼──────┼──────┤
+│  6 M │  7 M │  8 V │  9 V │ 10 M │ 11 M │ 12 M │
+├──────┼──────┼──────┼──────┼──────┼──────┼──────┤
+│ 13 V │ 14 V │ 15 M │ 16 M │ 17 V │ 18 V │ 19 V │
+├──────┼──────┼──────┼──────┼──────┼──────┼──────┤
+│ 20 M │ 21 M │ 22 V │ 23 V │ 24 M │ 25 M │ 26 M │
+├──────┼──────┼──────┼──────┼──────┼──────┼──────┤
+│ 27 V │ 28 V │ 29 M │ 30 M │ 31 V │      │      │
+└──────┴──────┴──────┴──────┴──────┴──────┴──────┘
+
+Ereignisse:
+- 15.10. (Mi) M — [AS behauptet Reisetag AG; AG war nachweislich in Neukirchen; Dienstreise Stuttgart erst am 16.10. (B4)]
+- 16.10. (Do) M — Dienstreise Vater Stuttgart, 1 Nacht — M-Tag ohnehin, kein Betreuungstag betroffen (vgl. B4)
+
+---
+November 2025
+
+┌──────┬──────┬──────┬──────┬──────┬──────┬──────┐
+│  Mo  │  Di  │  Mi  │  Do  │  Fr  │  Sa  │  So  │
+├──────┼──────┼──────┼──────┼──────┼──────┼──────┤
+│      │      │      │      │      │  1 M │  2 M │
+├──────┼──────┼──────┼──────┼──────┼──────┼──────┤
+│  3 V │  4 V │  5 M │  6 M │  7 V │  8 V │  9 V │
+├──────┼──────┼──────┼──────┼──────┼──────┼──────┤
+│ 10 M │ 11 M │ 12 V │ 13 V │ 14 M │ 15 M │ 16 M │
+├──────┼──────┼──────┼──────┼──────┼──────┼──────┤
+│ 17 V │ 18 V │ 19 M │ 20 M │ 21 V │ 22 V │ 23 V │
+├──────┼──────┼──────┼──────┼──────┼──────┼──────┤
+│ 24 M │ 25 M │ 26 V │ 27 V │ 28 M │ 29 M │ 30 M │
+└──────┴──────┴──────┴──────┴──────┴──────┴──────┘
+
+Ereignisse:
+- 01.11. (Sa) M — (Allerheiligen, gesetzlicher Feiertag Bayern)
+- 19.11. (Mi) M — [Telefonat AG–AS: Besprechung Weihnachtsplanung; einvernehmliche Einigung]
 
 ---
 Dezember 2025
@@ -32,24 +79,24 @@ Dezember 2025
 ┌──────┬──────┬──────┬──────┬──────┬──────┬──────┐
 │  Mo  │  Di  │  Mi  │  Do  │  Fr  │  Sa  │  So  │
 ├──────┼──────┼──────┼──────┼──────┼──────┼──────┤
-│  1 M │  2 M │  3 V │  4 V │  5 M │  6 M │  7 M │
+│  1 V │  2 V │  3 M │  4 M │  5 V │  6 V │  7 V │
 ├──────┼──────┼──────┼──────┼──────┼──────┼──────┤
-│  8 V │  9 V │ 10 M │ 11 M │ 12 V │ 13 V │ 14 V │
+│  8 M │  9 M │ 10 V │ 11 V │ 12 M │ 13 M │ 14 M │
 ├──────┼──────┼──────┼──────┼──────┼──────┼──────┤
-│ 15 M │ 16 M │ 17 V │ 18 V │ 19 M │ 20 M │ 21 M │
+│ 15 V │ 16 V │ 17 M │ 18 M │ 19 V │ 20 V │ 21 V │
 ├──────┼──────┼──────┼──────┼──────┼──────┼──────┤
-│ 22 V │ 23 V │ 24 M │ 25 MF│ 26 VF│ 27 V │ 28 V │
+│ 22 M │ 23 M │ 24 V │ 25 VF│ 26 MF│ 27 M │ 28 M │
 ├──────┼──────┼──────┼──────┼──────┼──────┼──────┤
-│ 29 M │ 30 M │ 31 V │      │      │      │      │
+│ 29 V │ 30 V │ 31 M │      │      │      │      │
 └──────┴──────┴──────┴──────┴──────┴──────┴──────┘
 
 Ereignisse:
-- 22.12. (Mo) V — (KiTa-Schließzeit: 22.12.2025–06.01.2026)
-- 23.12. (Di) V — [Vater bringt Luca abends zur Mutter — Weihnachtsarrangement; zeigt Kooperation]
-- 24.12. (Mi) M — (Heiligabend bei Mutter) [beide Eltern gemeinsam — vgl. Erwiderung III]
-- 25.12. (Do) MF — (1. Weihnachtstag, gemeinsam in Wohnung AG) [Oma väterlicherseits anwesend; gemeinsamer Besuch bei Großvater mütterlicherseits — beide Familienseiten vereint; vgl. Erwiderung III]
-- 26.12. (Fr) VF — (2. Weihnachtstag)
-- 31.12. (Mi) V — (Silvester) [AS organisiert Feier in Wohnung AG; anwesend: Luca, AS, AG, AS's beste Freundin mit Ehemann und 2 Kindern; AS übernachtet — vgl. Erwiderung III]
+- 22.12. (Mo) M — (KiTa-Schließzeit: 22.12.2025–06.01.2026)
+- 23.12. (Di) M — [Mutter bringt Finn abends zum Vater — Weihnachtsarrangement; zeigt Kooperation]
+- 24.12. (Mi) V — (Heiligabend bei Vater) [beide Eltern gemeinsam — vgl. Erwiderung III]
+- 25.12. (Do) VF — (1. Weihnachtstag, gemeinsam in Wohnung AG) [Oma väterlicherseits anwesend; gemeinsamer Besuch bei Großvater mütterlicherseits — beide Familienseiten vereint; vgl. Erwiderung III]
+- 26.12. (Fr) MF — (2. Weihnachtstag)
+- 31.12. (Mi) M — (Silvester) [AS organisiert Feier in Wohnung AG; anwesend: Finn, AS, AG, AS's beste Freundin mit Partner und 2 Kindern; AS übernachtet — vgl. Erwiderung III]
 
 ---
 Januar 2026
@@ -57,22 +104,22 @@ Januar 2026
 ┌──────┬──────┬──────┬──────┬──────┬──────┬──────┐
 │  Mo  │  Di  │  Mi  │  Do  │  Fr  │  Sa  │  So  │
 ├──────┼──────┼──────┼──────┼──────┼──────┼──────┤
-│      │      │      │  1 VF│  2 M │  3 M │  4 M │
+│      │      │      │  1 MF│  2 V │  3 V │  4 V │
 ├──────┼──────┼──────┼──────┼──────┼──────┼──────┤
-│  5 V │  6 VF│  7 M │  8 M │  9 V │ 10 V │ 11 V │
+│  5 M │  6 MF│  7 V │  8 V │  9 M │ 10 M │ 11 M │
 ├──────┼──────┼──────┼──────┼──────┼──────┼──────┤
-│ 12 M │ 13 M │ 14 V │ 15 V │ 16 M │ 17 MK│ 18 MK│
+│ 12 V │ 13 V │ 14 M │ 15 M │ 16 V │ 17 VK│ 18 VK│
 ├──────┼──────┼──────┼──────┼──────┼──────┼──────┤
-│19 !MK│20 !MK│ 21 MK│ 22 MK│ 23 V │ 24 V │ 25 V │
+│19 !VK│20 !VK│ 21 VK│ 22 VK│ 23 M │ 24 M │ 25 M │
 ├──────┼──────┼──────┼──────┼──────┼──────┼──────┤
-│ 26 M │ 27 M │ 28 V │ 29 V │ 30 M │ 31 M │      │
+│ 26 V │ 27 V │ 28 M │ 29 M │ 30 V │ 31 V │      │
 └──────┴──────┴──────┴──────┴──────┴──────┴──────┘
 
 Ereignisse:
-- 17.–22.01.: Luca erkrankt (Fieber) — 17.–18. und 21.–22. reguläre M-Tage [Kind krank]
-- 19.–20.01. (Mo–Di) !MK — geplante Vater-Tage; Vater verzichtet freiwillig auf Übergabe, lässt Luca bei Mutter, besucht ihn abends [zeigt Kindeswohl-Orientierung; positiv für AG]
-- 21.–22.01. (Mi–Do) M — Dienstreise Vater München, 1 Nacht — M-Tage ohnehin, kein Betreuungstag betroffen (vgl. B4)
-- 06.01. (Di) VF — (KiTa-Schließzeit endet; Heilige Drei Könige gemeinsam mit Mutter verbracht) [zeigt Kooperation]
+- 17.–22.01.: Finn erkrankt (Fieber) — 17.–18. und 21.–22. reguläre V-Tage [Kind krank]
+- 19.–20.01. (Mo–Di) !VK — geplante Mutter-Tage; Mutter verzichtet freiwillig auf Übergabe, lässt Finn beim Vater, besucht ihn abends [zeigt Kindeswohl-Orientierung]
+- 06.01. (Di) MF — (KiTa-Schließzeit endet; Heilige Drei Könige gemeinsam mit Vater verbracht) [zeigt Kooperation]
+- 14.01. (Mi) M — (Beratungsgespräch AWO Beratungsstelle Neukirchen, beide Eltern) [Ergebnis: „konstruktives Gespräch", „gute Kommunikation"; vgl. Erwiderung IV]
 
 ---
 Februar 2026
@@ -80,74 +127,22 @@ Februar 2026
 ┌──────┬──────┬──────┬──────┬──────┬──────┬──────┐
 │  Mo  │  Di  │  Mi  │  Do  │  Fr  │  Sa  │  So  │
 ├──────┼──────┼──────┼──────┼──────┼──────┼──────┤
-│      │      │      │      │      │      │  1 M │
+│      │      │      │      │      │      │  1 V │
 ├──────┼──────┼──────┼──────┼──────┼──────┼──────┤
-│  2 V │  3 V │  4 M │  5 M │  6 V │  7 V │  8 V │
+│  2 M │  3 M │  4 V │  5 V │  6 M │  7 M │  8 M │
 ├──────┼──────┼──────┼──────┼──────┼──────┼──────┤
-│  9 M │ 10 M │ 11 V │ 12 V │ 13 M │ 14 M │ 15 M │
+│  9 V │ 10 V │ 11 M │ 12 M │ 13 V │ 14 V │ 15 V │
 ├──────┼──────┼──────┼──────┼──────┼──────┼──────┤
-│ 16 V │ 17 V │ 18 M │ 19 M │20 !M │21 !M │22 !M │
+│ 16 M │ 17 M │ 18 V │ 19 V │20 !V │21 !V │22 !V │
 ├──────┼──────┼──────┼──────┼──────┼──────┼──────┤
-│ 23 M │ 24 M │ 25 V │ 26 V │ 27 M │ 28 M │      │
+│ 23 V │ 24 V │ 25 M │ 26 M │ 27 V │ 28 V │      │
 └──────┴──────┴──────┴──────┴──────┴──────┴──────┘
 
 Ereignisse:
-- ~13./14.02.: [Stadtfest-Umzug — AS verkleidet sich in Wohnung AG; zeigt, dass AS weiterhin Zugang zur Wohnung hat und nutzt — vgl. Erwiderung III]
-- 14.–17.02.: (Karneval bei Großmutter väterlicherseits) [Besuch war von AS selbst vorgeschlagen worden; 14.–15. = M-Tage, 16.–17. = V-Tage; alle gemeinsam — zeigt Kooperation; vgl. Erwiderung III]
-- 18.–22.02. !M — Vater im Skiurlaub (Sölden); 18.–19. = ohnehin M-Tage; 20.–22. = geplante V-Tage, Luca bei Mutter (Kooperation)
-- 23.02. (Mo) M — (Beratungsgespräch Berger per Video, beide Eltern) [Ergebnis: „zu früh für Bewertung", „gute Kommunikation"; vgl. Erwiderung V]
-- 27.–28.02. (Fr–Sa) M — Dienstreise Vater Frankfurt, 1 Nacht — kein Betreuungstag betroffen (vgl. B4)
-- 28.02. (Sa) M — (E-Mail AS: kündigt Elternvereinbarung auf, kündigt Antrag an) (vgl. B2)
-
----
-März 2026 (laufend — Stand: 15.03.2026)
-
-┌──────┬──────┬──────┬──────┬──────┬──────┬──────┐
-│  Mo  │  Di  │  Mi  │  Do  │  Fr  │  Sa  │  So  │
-├──────┼──────┼──────┼──────┼──────┼──────┼──────┤
-│      │      │      │      │      │      │  1 M │
-├──────┼──────┼──────┼──────┼──────┼──────┼──────┤
-│  2 V │  3 V │  4 M │  5 M │  6 V │  7 V │  8 V │
-├──────┼──────┼──────┼──────┼──────┼──────┼──────┤
-│  9 M │ 10 M │ 11 V │ 12 V │ 13 M │ 14 M │ 15 M │
-├──────┼──────┼──────┼──────┼──────┼──────┼──────┤
-│ 16 V │ 17 V │ 18 M │ 19 M │ 20 V │ 21 V │ 22 V │
-├──────┼──────┼──────┼──────┼──────┼──────┼──────┤
-│ 23 M │ 24 M │ 25 V │ 26 V │ 27 M │ 28 M │ 29 M │
-├──────┼──────┼──────┼──────┼──────┼──────┼──────┤
-│ 30 V │ 31 V │      │      │      │      │      │
-└──────┴──────┴──────┴──────┴──────┴──────┴──────┘
-
-Ereignisse:
-- 02.03. (Mo) V — [Telefonat AG–AS: AG bietet Verzicht auf Verfahren an, AS lehnt ab; vgl. Erwiderung VI]
-- 04.03. (Mi) M — [AS reicht Antrag bei Gericht ein]
-- 07.03. (Sa) V — (Fingerverletzung Luca in KiTa — beide Eltern gemeinsam ins Klinikum) [zeigt Kooperation; vgl. Erwiderung III]
-- 08.03. (So) V — [Luca will nicht zur Mutter — AG redet einfühlsam zu; Luca geht dann doch]
-- 10.03. (Di) M — AS bringt Luca zur Kinderklinik — Nachsorge Fingerverletzung
-- 11.03. (Mi) V — (Entwicklungsgespräch KiTa mit Clara Weber und Hans Müller — beide Eltern anwesend)
-- 12.03. (Do) V — (AG freigestellt wegen KiTa-Personalproblem — ganzer Tag mit Luca; nachmittags Spielverabredung)
-- 13.03. (Fr) M — [Luca verhandelt Übergabe „erst nach 14 Uhr" — Übergabe dann regulär; vgl. Erwiderung VI]
-- 23.03. (Mo) M — [Folgetermin Berger — AG in Hamburg; per Bahn erreichbar, Teilnahme klären]
-- 23.–25.03. V/M — Dienstreise Vater Hamburg (geplant; 23.+24. = M-Tage, 25. = V-Tag!) [25.03. ist V-Tag — Betreuung sicherstellen; B4]
-
----
-April 2026
-
-┌──────┬──────┬──────┬──────┬──────┬──────┬──────┐
-│  Mo  │  Di  │  Mi  │  Do  │  Fr  │  Sa  │  So  │
-├──────┼──────┼──────┼──────┼──────┼──────┼──────┤
-│      │      │  1 M │  2 M │  3 VF│  4 V │  5 V │
-├──────┼──────┼──────┼──────┼──────┼──────┼──────┤
-│  6 MF│  7 M │  8 V │  9 V │ 10 M │ 11 M │ 12 M │
-├──────┼──────┼──────┼──────┼──────┼──────┼──────┤
-│ 13 V │ 14 V │ 15 M │ 16 M │ 17 V │ 18 V │ 19 V │
-├──────┼──────┼──────┼──────┼──────┼──────┼──────┤
-│ 20 M │ 21 M │ 22 V │ 23 V │ 24 M │ 25 M │ 26 M │
-├──────┼──────┼──────┼──────┼──────┼──────┼──────┤
-│ 27 V │ 28 V │ 29 M │ 30 M │      │      │      │
-└──────┴──────┴──────┴──────┴──────┴──────┴──────┘
-
-Ereignisse:
-- 03.04. (Fr) VF — Karfreitag
-- 05.04. (So) V — Ostern
-- 06.04. (Mo) MF — Ostermontag
+- 10.02. (Di) V — (E-Mail KiTa Regenbogen: Einladung Entwicklungsgespräch; AS in CC) (B5)
+- 12.02. (Do) M — [AS reicht Antrag beim Amtsgericht Neukirchen ein]
+- 18.–22.02. !V — Vater im Skiurlaub (Oberstdorf); 18.–19. = ohnehin V-Tage; 20.–22. = geplante M-Tage, Finn bei Mutter (Kooperation)
+- 25.02. (Mi) M — (Entwicklungsgespräch KiTa Regenbogen — beide Eltern anwesend; Ergebnis positiv; vgl. Erwiderung V)
+- 28.02. (Sa) V — (E-Mail AS: kündigt Elternvereinbarung auf, kündigt Antrag an) (vgl. B2)
+- 18.02. (Mi) V — Dienstreise Vater Düsseldorf, 2 Nächte — V-Tage ohnehin, kein Betreuungstag betroffen (vgl. B4)
+- 28.02. (Sa) V — AS hat erstmals eigene Mutter zur Übergabe mitgebracht [vgl. nur-muendlich.md]
