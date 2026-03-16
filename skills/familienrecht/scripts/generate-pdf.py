@@ -125,7 +125,7 @@ def briefkopf_to_latex(text: str) -> str:
         if 'Aktenzeichen:' in para:
             classified.append(('az',        lines))
         elif (BOLD_ONLY.match(first) and len(lines) == 1
-              and re.match(r'\*\*(Erwiderung|Stellungnahme)\b', first)):
+              and re.match(r'\*\*(Erwiderung|Stellungnahme|Antrag|Klage|Schreiben|Stellungnahme)\b', first)):
             classified.append(('subject',   lines))
         elif BOLD_ONLY.match(first) and len(lines) == 1:
             classified.append(('addr_start', lines))
@@ -263,7 +263,7 @@ def protect_signature_block(body: str) -> str:
     return body
 
 
-def build_erwiderung(md_path: Path, output: Path):
+def build_schriftsatz(md_path: Path, output: Path):
     md = md_path.read_text(encoding='utf-8')
     yaml_block, md_body = extract_yaml_frontmatter(md)
     briefkopf_raw, body = split_briefkopf(md_body)
@@ -641,7 +641,7 @@ def _build_kalender_matplotlib(md: str, output: Path):
 
 def build_kalender(md_path: Path, output: Path):
     md = md_path.read_text(encoding='utf-8')
-    yaml_block, md_body = extract_yaml_frontmatter(md)
+    _, md_body = extract_yaml_frontmatter(md)
     try:
         _build_kalender_matplotlib(md_body, output)
     except Exception as exc:
@@ -698,15 +698,22 @@ def parse_originale(anlagen_md: Path) -> list:
             result.append((cols[0], cols[1], cols[2]))
     return result
 
+# Schriftsätze mit Briefkopf (Brief an Gericht/Gegenseite) — build_schriftsatz()
+SCHRIFTSATZ_DOCS = [
+    ('erwiderung/antrag-fristverlaengerung.md',     'antrag-fristverlaengerung'),
+    # weitere Schriftsätze (Stellungnahme, Antrag, ...) hier ergänzen
+]
+
+# Interne Arbeitsdokumente ohne Briefkopf — build_simple()
 SIMPLE_DOCS = [
-    ('sachverhalt/fakten.md',         'fakten'),
-    ('sachverhalt/timeline.md',       'timeline'),
-    ('sachverhalt/notizen.md',        'notizen'),
-    ('sachverhalt/offene-fragen.md',  'offene-fragen'),
-    ('sachverhalt/entscheidungen.md', 'entscheidungen'),
-    ('erwiderung/anlagen.md',         'anlagen'),
-    ('erwiderung/nur-muendlich.md',   'nur-muendlich'),
-    ('vorbereitung/verhandlung.md',   'verhandlung'),
+    ('sachverhalt/fakten.md',                       'fakten'),
+    ('sachverhalt/timeline.md',                     'timeline'),
+    ('sachverhalt/notizen.md',                      'notizen'),
+    ('sachverhalt/offene-fragen.md',                'offene-fragen'),
+    ('sachverhalt/entscheidungen.md',               'entscheidungen'),
+    ('erwiderung/anlagen.md',                       'anlagen'),
+    ('erwiderung/nur-muendlich.md',                 'nur-muendlich'),
+    ('vorbereitung/verhandlung.md',                 'verhandlung'),
 ]
 
 # ── Main ──────────────────────────────────────────────────────────────────────
@@ -733,7 +740,7 @@ def main():
         if src.exists():
             dst = output_dir / 'erwiderung.pdf'
             print(f"Generiere erwiderung.pdf …", end=' ', flush=True)
-            build_erwiderung(src, dst)
+            build_schriftsatz(src, dst)
             print(f"✓  {dst}")
         else:
             print("  erwiderung.md nicht gefunden — übersprungen.")
@@ -747,6 +754,15 @@ def main():
             print(f"✓  {dst}")
         else:
             print("  kalender.md nicht gefunden — übersprungen.")
+
+    for src_rel, name in SCHRIFTSATZ_DOCS:
+        if only in ('all', name):
+            src = verfahren / src_rel
+            if src.exists():
+                dst = output_dir / f'{name}.pdf'
+                print(f"Generiere {name}.pdf …", end=' ', flush=True)
+                build_schriftsatz(src, dst)
+                print(f"✓  {dst}")
 
     for src_rel, name in SIMPLE_DOCS:
         if only in ('all', name):
