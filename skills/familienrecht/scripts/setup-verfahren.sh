@@ -63,6 +63,7 @@ replace() {
     "$src" > "$dst"
 }
 
+replace "$TEMPLATES/kontext.md"                      "$TARGET/kontext.md"
 replace "$TEMPLATES/sachverhalt/fakten.md"          "$TARGET/sachverhalt/fakten.md"
 replace "$TEMPLATES/sachverhalt/kalender.md"         "$TARGET/sachverhalt/kalender.md"
 replace "$TEMPLATES/sachverhalt/timeline.md"         "$TARGET/sachverhalt/timeline.md"
