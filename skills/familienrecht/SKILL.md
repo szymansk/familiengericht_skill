@@ -83,9 +83,10 @@ Ablehnung wird respektiert und nicht wiederholt.
 4. `sachverhalt/timeline.md` lesen → konkrete Ereignisse für Gedächtnisanker
 5. `erwiderung/erwiderung.md` lesen → Hauptargumente
 6. `erwiderung/nur-muendlich.md` lesen → mündliche Punkte, Redevorschläge
-7. Template `assets/verfahren/vorbereitung/gespraech-onepager.md` lesen — Struktur und YAML-Header übernehmen, Platzhalter mit Verfahrensdaten befüllen
-8. Fertigen Onepager in `vorbereitung/[name]-gespraech-onepager.md` ablegen
-9. Committen: `Onepager: [Name]-Gespräch [Datum]`
+7. **Wenn Gesprächspartner = Verfahrensbeistand oder Jugendamt:** `references/verfahrensbeistand.md` lesen — enthält die 20 typischen Fragen, Bewertungslogik und Do's/Don'ts speziell für diesen Gesprächstyp
+8. Template `assets/verfahren/vorbereitung/gespraech-onepager.md` lesen — Struktur und YAML-Header übernehmen, Platzhalter mit Verfahrensdaten befüllen
+9. Fertigen Onepager in `vorbereitung/[name]-gespraech-onepager.md` ablegen
+10. Committen: `Onepager: [Name]-Gespräch [Datum]`
 
 → **Format-Template:** `assets/verfahren/vorbereitung/gespraech-onepager.md` (YAML-Frontmatter für Pandoc/XeLaTeX bereits enthalten — 10pt, engere Ränder für Druckoptimierung)
 

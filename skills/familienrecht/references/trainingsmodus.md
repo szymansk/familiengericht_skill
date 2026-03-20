@@ -98,26 +98,55 @@ Ohne solche Belege: generische Druckfragen ohne fallspezifische Behauptungen.
 
 ### Rolle 3: Verfahrensbeistand
 
-**Ton:** freundlich, aber prüfend — möchte verstehen, wie der Nutzer über das Kind spricht
-und ob er das Kind oder den Konflikt in den Vordergrund stellt.
+→ Vor dem Training diese Rolle mit detaillierten Fragen und Bewertungslogik laden: `references/verfahrensbeistand.md`
 
-**Typische Fragen:**
-- „Wie würden Sie Ihrem Kind erklären, warum Mama und Papa nicht mehr zusammen leben?"
-- „Was macht Ihr Kind besonders gern — was ist ihr/sein Lieblingsding gerade?"
-- „Wie reagiert Ihr Kind, wenn es von Ihnen zu seiner Mutter geht?"
-- „Haben Sie das Gefühl, dass Ihr Kind manchmal in einem Loyalitätskonflikt steckt?"
-- „Was würden Sie ändern, wenn Sie eines an der aktuellen Situation ändern könnten — für das Kind?"
-- „Stört es Sie, wenn das Kind von der Zeit bei der Mutter erzählt?"
+**Ton:** freundlich, aber prüfend — möchte verstehen, wie der Nutzer über das Kind spricht und ob er das Kind oder den Konflikt in den Vordergrund stellt. Fragt konkret nach Alltagsdetails, Bindungen und Kooperationsbereitschaft. Ist nicht neutral zwischen den Eltern — er ist auf der Seite des Kindes.
+
+**Gesprächsstruktur:** Der VB arbeitet sich durch Themenfelder — Alltag, Bindungen, Übergaben, Kommunikation, Lösungsvorschläge. Fragen kommen sachlich, manchmal überraschend direkt.
+
+**Typische Fragen (aus `references/verfahrensbeistand.md`, Abschnitt "20 typische Fragen"):**
+
+*Alltag & Versorgung:*
+- „Beschreiben Sie mir einen normalen Tag mit [Kind] — von morgens bis abends."
+- „Wer bringt [Kind] zur Kita/Schule, wer holt ab — in einer typischen Woche bei Ihnen?"
+- „Gibt es aktuelle Entwicklungsthemen — Arzttermine, Förderung, irgendetwas Besonderes?"
+
+*Bindung & Beziehung:*
+- „Was macht [Kind] bei Ihnen am liebsten — was ist gerade sein/ihr Lieblingsding?"
+- „Wie reagiert [Kind], wenn es von Ihnen zur Mutter geht — und zurück?"
+- „Haben Sie das Gefühl, dass [Kind] manchmal in einem Loyalitätskonflikt steckt? Woran merken Sie das?"
+- „Was sagt [Kind] über die aktuelle Situation — und wie gehen Sie damit um, ohne Druck auszuüben?"
+
+*Übergaben & Kommunikation:*
+- „Wie laufen Übergaben ab — würden Sie das als konfliktarm oder eher schwierig beschreiben?"
+- „Wie kommunizieren Sie mit der Kindsmutter — direkt, über eine App, über Dritte?"
+- „Was würde die Kommunikation für [Kind] besser machen?"
+
+*Lösungen:*
+- „Was schlagen Sie konkret vor — Zeiten, Übergabeorte, Ferienregelung?"
+- „Was wäre für Sie ein No-Go — und warum?"
+- „Wären Sie bereit, Beratung zu nutzen, wenn das dem Kind hilft?"
+
+**Was der VB dabei bewertet** (aus `references/verfahrensbeistand.md`):
+- Kindfokus: Spricht der Nutzer über das Kind oder über den Konflikt?
+- Bindungstoleranz: Fördert er die Beziehung des Kindes zur Mutter?
+- Kooperationsfähigkeit: Konkrete Beispiele oder nur Behauptungen?
+- Alltagskompetenz: Verlässliche Strukturen?
+- Reflexionsfähigkeit: Offen für Unterstützung?
 
 **Verhaltensregel für den Nutzer:**
 - Vom Kind sprechen, nicht vom Konflikt
 - Keine schlechten Aussagen über die Mutter, auch wenn die Frage dazu einlädt
-- Zeigen, dass man das Kind zum anderen Elternteil ermutigt (Bindungstoleranz)
+- Kooperation mit konkreten Beispielen belegen — nicht nur behaupten
+- Lösungsvorschläge immer konkret: Zeiten, Orte, Kommunikationsweg
+- Gespräch führen als könne alles im Bericht auftauchen — **weil es das kann**
 
 **Bewertungskriterien:**
 - Hat der Nutzer vom Kind gesprochen oder von sich?
-- War die Antwort auf die Mutter respektvoll?
+- War die Antwort zur Mutter sachlich und respektvoll?
 - Klang die Bindungstoleranz echt oder aufgesetzt?
+- Waren Lösungsvorschläge konkret oder vage?
+- Kooperation durch Beispiele belegt?
 
 ---
 
