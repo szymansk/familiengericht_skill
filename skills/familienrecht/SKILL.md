@@ -1,6 +1,6 @@
 ---
 name: familienrecht
-description: "Skill für die Erstellung und Prüfung von familienrechtlichen Schriftsätzen — Erwiderungen, Anträge, Stellungnahmen — in Verfahren zu Umgang und Sorgerecht. Immer verwenden wenn der Nutzer über ein Familiengericht, Jugendamt, Verfahrensbeistand, Kindesmutter oder -vater spricht, Betreuungszeiten oder Wechselmodell erwähnt, oder wenn er Texte für ein Familiengerichtsverfahren schreiben, prüfen oder vorbereiten möchte. Auch bei emotionalen Schilderungen rund um Trennung und Kind — dieser Skill begleitet den Nutzer als strategischer Partner, nicht nur als Schreibwerkzeug. Trigger-Begriffe: Erwiderung, Antrag, Umgang, Sorgerecht, Wechselmodell, Familiengericht, Verfahrensbeistand, Kindeswohl, Betreuungsmodell, Elternvereinbarung, Cochemer Modell, Jugendamt, Kindsvater, Kindsmutter, Training, Verhandlung üben."
+description: "Skill für die Erstellung und Prüfung von familienrechtlichen Schriftsätzen — Erwiderungen, Anträge, Stellungnahmen — in Verfahren zu Umgang und Sorgerecht. Erstellt auf Anfrage druckbare Gesprächs-Onepager zur Vorbereitung auf Termine mit Verfahrensbeistand, Jugendamt, Anwältin oder Gericht. Immer verwenden wenn der Nutzer über ein Familiengericht, Jugendamt, Verfahrensbeistand, Kindesmutter oder -vater spricht, Betreuungszeiten oder Wechselmodell erwähnt, einen Termin oder ein Gespräch mit Verfahrensbeteiligten erwähnt, oder wenn er Texte für ein Familiengerichtsverfahren schreiben, prüfen oder vorbereiten möchte. Auch bei emotionalen Schilderungen rund um Trennung und Kind — dieser Skill begleitet den Nutzer als strategischer Partner, nicht nur als Schreibwerkzeug. Trigger-Begriffe: Erwiderung, Antrag, Umgang, Sorgerecht, Wechselmodell, Familiengericht, Verfahrensbeistand, Kindeswohl, Betreuungsmodell, Elternvereinbarung, Cochemer Modell, Jugendamt, Kindsvater, Kindsmutter, Training, Verhandlung üben, Onepager, Gespräch vorbereiten, Termin mit."
 ---
 
 # Familienrecht-Skill für Claude Code
@@ -62,6 +62,77 @@ Ablauf:
 6. `erwiderung/erwiderung.md` lesen → Stand des Schriftsatzes (Abschnitt-Übersicht, offene Lücken)
 7. `kontext.md` komplett neu schreiben mit destilliertem Inhalt — Datum im Header aktualisieren
 8. Committen: `Kontext-Scan: kontext.md aktualisiert`
+
+### Modus 4: Gesprächs-Onepager
+
+Erstellt einen druckbaren, einseitigen Vorbereitungszettel für ein konkretes Gespräch — persönlich, präzise, auf Basis der Verfahrensdokumente.
+
+**Explizite Aktivierung:** „Erstelle einen Onepager für das Gespräch mit [Name]", „Onepager [Name]"
+
+**Proaktiver Hinweis:** Sobald der Nutzer einen bevorstehenden Termin mit Verfahrensbeistand, Jugendamt, Anwältin oder Gericht erwähnt (auch indirekt: „ich treffe morgen den VB", „nächste Woche JA-Gespräch"), einmalig anbieten:
+> „Soll ich dir einen Onepager für das Gespräch vorbereiten? Der passt auf eine Seite und enthält deine Kernbotschaften, konkrete Beispiele und die wichtigsten Do's & Don'ts."
+
+Ablehnung wird respektiert und nicht wiederholt.
+
+**Dateiname:** `vorbereitung/[name]-gespraech-onepager.md` — `[name]` = Nachname des Gesprächspartners in Kleinbuchstaben
+
+**Erzeugungsprozess:**
+1. Falls nicht bekannt fragen: Gesprächspartner (Name, Rolle), Datum des Termins, Name des Nutzers
+2. `sachverhalt/fakten.md` lesen → Kernargumente, Belege-Inventar, Parteien
+3. `sachverhalt/entscheidungen.md` lesen → strategische Leitlinie
+4. `sachverhalt/timeline.md` lesen → konkrete Ereignisse für Gedächtnisanker
+5. `erwiderung/erwiderung.md` lesen → Hauptargumente
+6. `erwiderung/nur-muendlich.md` lesen → mündliche Punkte, Redevorschläge
+7. Onepager erzeugen (Format s.u.) → in `vorbereitung/[name]-gespraech-onepager.md` ablegen
+8. Committen: `Onepager: [Name]-Gespräch [Datum]`
+
+**Format (verbindlich, kein YAML-Frontmatter, bleibt druckbar):**
+
+```markdown
+# Gespräch mit [Titel+Name] — Onepager
+*[Datum] · Vorbereitung [Name des Nutzers]*
+
+---
+
+## Kernbotschaften
+
+> **„[Übergeordneter strategischer Leitsatz — persönlich formuliert]"**
+
+1. **[Erste Botschaft, fett]** — konkretes Beispiel oder Beleg, gerne mit wörtlichem Zitat *in kursiv*
+
+2. **[Zweite Botschaft]** — Kontext, was das belegt
+
+3. **[Dritte Botschaft]** — ggf. 4.–5. Punkt wenn nötig
+
+---
+
+## Do's & Don'ts
+
+| Do ✓ | Don't ✗ |
+|------|---------|
+| **[Kurzformel]** — Erklärung + konkretes Beispiel aus den Dokumenten | [Was stattdessen vermieden werden soll — mit Begründung] |
+| … (6–8 Zeilen) | … |
+
+---
+
+## Gedächtnisanker — Beispiele auf Abruf
+
+| Thema | Konkretes Beispiel |
+|-------|-------------------|
+| [Thema aus Timeline/Belegen] | [Fertiger Satz oder Zitat, sofort verwendbar] |
+| … (6–8 Zeilen) | … |
+
+---
+
+*[Strategischer Abschlusssatz — personalisiert auf Kind und Situation]*
+```
+
+**Inhaltliche Leitlinien:**
+- Konkret und persönlich — keine Allgemeinplätze, echte Namen, echte Ereignisse, echte Daten aus den Dokumenten
+- Kernbotschaften sind keine Argumente, sondern **Haltungen** — was der Nutzer ausstrahlen soll, nicht was er beweisen will
+- Do's & Don'ts mit Beispielen aus dem konkreten Verfahren, nicht generisch
+- Gedächtnisanker = fertige Sätze, die der Nutzer wörtlich sagen kann, wenn das Thema aufkommt
+- Abschlusssatz personalisiert: Kind beim Namen nennen, Kernziel des Verfahrens
 
 ---
 
@@ -321,3 +392,4 @@ Commit-Nachrichten kurz und beschreibend: `Sachverhalt: Betreuungsrealität erg�
 10. **PDF-Generierung nur via `generate-pdf.py`** (Pandoc+XeLaTeX) — niemals LibreOffice, Chrome oder andere Tools vorschlagen. Fehlen die Deps: `setup.sh` ausführen.
 11. **`kontext.md` nach jeder inhaltlichen Änderung aktualisieren** — sie muss immer den tatsächlichen Stand widerspiegeln; veraltete kontext.md ist wertlos.
 12. **`belege/` niemals eigenständig verändern** — nur bei explizitem wiederholtem Import durch den Nutzer, und nur nach Diff-Anzeige und ausdrücklicher Bestätigung.
+13. **Gesprächs-Onepager proaktiv anbieten** — sobald ein Termin mit VB, JA, Anwältin oder Gericht erwähnt wird, einmalig anbieten; nicht wiederholen wenn abgelehnt.
