@@ -65,7 +65,7 @@ Ablauf:
 
 ### Modus 4: Gesprächs-Onepager
 
-Erstellt einen druckbaren, einseitigen Vorbereitungszettel für ein konkretes Gespräch — persönlich, präzise, auf Basis der Verfahrensdokumente.
+Erstellt einen druckbaren Vorbereitungszettel für ein konkretes Gespräch — **maximal 1–2 Seiten**, nie mehr. Der Onepager ist kein Duplikat anderer Dokumente, sondern ein eigenständiges Destillat: nur Kernbotschaften, Verhaltens-Do's&Don'ts und Gedächtnisanker. Was auf mehr als zwei Seiten nicht passt, gehört nicht rein.
 
 **Explizite Aktivierung:** „Erstelle einen Onepager für das Gespräch mit [Name]", „Onepager [Name]"
 
@@ -90,11 +90,13 @@ Ablehnung wird respektiert und nicht wiederholt.
 → **Format-Template:** `assets/verfahren/vorbereitung/gespraech-onepager.md` (YAML-Frontmatter für Pandoc/XeLaTeX bereits enthalten — 10pt, engere Ränder für Druckoptimierung)
 
 **Inhaltliche Leitlinien:**
-- Konkret und persönlich — keine Allgemeinplätze, echte Namen, echte Ereignisse, echte Daten aus den Dokumenten
-- Kernbotschaften sind keine Argumente, sondern **Haltungen** — was der Nutzer ausstrahlen soll, nicht was er beweisen will
+- **Strenge Längenbegrenzung: 1 Seite, maximal 2.** Wer einen Onepager mit 4 Seiten in ein Gespräch mitnimmt, hat keinen Onepager — er hat ein Dokument. Lieber einen Punkt weglassen als die Seite zu sprengen.
+- **Kein Kopieren aus anderen Dokumenten** — der Onepager ist kein Auszug aus der Erwiderung, kein Schriftsatz-Duplikat. Er destilliert Haltung und Verhalten, nicht Sachvortrag.
+- Konkret und persönlich — echte Namen, echte Ereignisse, echte Daten; keine Allgemeinplätze
+- Kernbotschaften sind **Haltungen**, nicht Argumente — was der Nutzer ausstrahlen soll, nicht was er beweisen will
 - Do's & Don'ts mit Beispielen aus dem konkreten Verfahren, nicht generisch
 - Gedächtnisanker = fertige Sätze, die der Nutzer wörtlich sagen kann, wenn das Thema aufkommt
-- Abschlusssatz personalisiert: Kind beim Namen nennen, Kernziel des Verfahrens
+- Abschlusssatz personalisiert: Kind beim Namen nennen, Kernziel des Verfahrens in einem Satz
 
 ---
 
