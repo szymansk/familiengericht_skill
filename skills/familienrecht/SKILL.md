@@ -83,49 +83,11 @@ Ablehnung wird respektiert und nicht wiederholt.
 4. `sachverhalt/timeline.md` lesen → konkrete Ereignisse für Gedächtnisanker
 5. `erwiderung/erwiderung.md` lesen → Hauptargumente
 6. `erwiderung/nur-muendlich.md` lesen → mündliche Punkte, Redevorschläge
-7. Onepager erzeugen (Format s.u.) → in `vorbereitung/[name]-gespraech-onepager.md` ablegen
-8. Committen: `Onepager: [Name]-Gespräch [Datum]`
+7. Template `assets/verfahren/vorbereitung/gespraech-onepager.md` lesen — Struktur und YAML-Header übernehmen, Platzhalter mit Verfahrensdaten befüllen
+8. Fertigen Onepager in `vorbereitung/[name]-gespraech-onepager.md` ablegen
+9. Committen: `Onepager: [Name]-Gespräch [Datum]`
 
-**Format (verbindlich, kein YAML-Frontmatter, bleibt druckbar):**
-
-```markdown
-# Gespräch mit [Titel+Name] — Onepager
-*[Datum] · Vorbereitung [Name des Nutzers]*
-
----
-
-## Kernbotschaften
-
-> **„[Übergeordneter strategischer Leitsatz — persönlich formuliert]"**
-
-1. **[Erste Botschaft, fett]** — konkretes Beispiel oder Beleg, gerne mit wörtlichem Zitat *in kursiv*
-
-2. **[Zweite Botschaft]** — Kontext, was das belegt
-
-3. **[Dritte Botschaft]** — ggf. 4.–5. Punkt wenn nötig
-
----
-
-## Do's & Don'ts
-
-| Do ✓ | Don't ✗ |
-|------|---------|
-| **[Kurzformel]** — Erklärung + konkretes Beispiel aus den Dokumenten | [Was stattdessen vermieden werden soll — mit Begründung] |
-| … (6–8 Zeilen) | … |
-
----
-
-## Gedächtnisanker — Beispiele auf Abruf
-
-| Thema | Konkretes Beispiel |
-|-------|-------------------|
-| [Thema aus Timeline/Belegen] | [Fertiger Satz oder Zitat, sofort verwendbar] |
-| … (6–8 Zeilen) | … |
-
----
-
-*[Strategischer Abschlusssatz — personalisiert auf Kind und Situation]*
-```
+→ **Format-Template:** `assets/verfahren/vorbereitung/gespraech-onepager.md` (YAML-Frontmatter für Pandoc/XeLaTeX bereits enthalten — 10pt, engere Ränder für Druckoptimierung)
 
 **Inhaltliche Leitlinien:**
 - Konkret und persönlich — keine Allgemeinplätze, echte Namen, echte Ereignisse, echte Daten aus den Dokumenten
