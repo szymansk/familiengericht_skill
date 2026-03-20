@@ -33,6 +33,8 @@ header-includes:
 
 4. **[Vierte Botschaft, optional]** — weiterer tragender Punkt
 
+> **Kernbotschaften immer fett** - erklärender text normal
+
 ---
 
 ## Do's & Don'ts
@@ -49,6 +51,7 @@ header-includes:
 | **[Kurzformel, optional]** — Erklärung + Beispiel | [Gegenstück, optional] |
 
 ---
+> pagebreak vor Gedächtnisanker, damit sie ungebrochen auf einer Seite gedruckt werden können.
 
 ## Gedächtnisanker — Beispiele auf Abruf
 
