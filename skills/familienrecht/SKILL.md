@@ -94,6 +94,14 @@ Ablehnung wird respektiert und nicht wiederholt.
 - Gedächtnisanker = fertige Sätze, die der Nutzer wörtlich sagen kann, wenn das Thema aufkommt
 - Abschlusssatz personalisiert: Kind beim Namen nennen, Kernziel des Verfahrens in einem Satz
 
+### Modus 5 — Verfahren-Aufräumen
+
+**Aktivierung:** „aufräumen", „bereinigen", „Nomenklatur prüfen", „cleanup", „Verfahren aufräumen"
+
+Subagent aus `agents/aufraeum.md` spawnen. Eingabe: absoluter Pfad zum Verfahrensordner.
+
+Der Agent läuft vollautomatisch durch alle 11 Schritte (Inventar → Umbenennen → Originale-Check → anlagen.md → Sachverhalt → Vorbereitung → gegenseite/ → Doppelte → output/-Waisen → Commit → Kontext-Scan) und gibt am Ende einen strukturierten Abschlussbericht aus.
+
 ---
 
 ## Leitprinzip: Cochemer Modell
@@ -303,6 +311,7 @@ Für die Sachverhaltsaufnahme kann Claude in einem Intervall laufen, `sachverhal
 | Änderung an `erwiderung.md` | Stand Schriftsatz |
 | Änderung an `anlagen.md` | Anlagen-Übersicht |
 | Neuer Termin / Frist bekannt | Verfahrensdaten → Nächster Termin |
+| Aufräumen abgeschlossen | Wird via Kontext-Scan (Schritt 11 in aufraeum.md) automatisch aktualisiert |
 
 **Format:** Kompakt, keine Fließtexte — nur Tabellen, kurze Stichpunkte, Nummerierungen. `kontext.md` darf nie länger werden als nötig, um vollständig zu sein.
 
