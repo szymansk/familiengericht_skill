@@ -1,8 +1,8 @@
 ---
 title: "Gesprächs-Onepager"
 lang: de-DE
-fontsize: 12pt
-linestretch: 1.2
+fontsize: 11pt
+linestretch: 1.1
 geometry:
   - left=2cm
   - right=1.5cm
