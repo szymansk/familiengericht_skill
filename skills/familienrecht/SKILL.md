@@ -49,19 +49,14 @@ Ablehnung wird respektiert und nicht wiederholt.
 
 ### Modus 3: Kontext-Scan
 
-Scannt das gesamte aktive Verfahren und baut `kontext.md` von Grund auf neu. Alle Quelldateien werden gelesen, wichtige Inhalte destilliert, die Datei vollständig überschrieben. Danach committen.
+Scannt das gesamte aktive Verfahren und baut `kontext.md` von Grund auf neu. Läuft als **Subagent im Hintergrund** — der Hauptkontext bleibt sauber, der Nutzer kann währenddessen weiterarbeiten.
 
 **Aktivierung:** „Kontext aufbauen", „Kontext-Scan", „kontext.md neu erstellen"
 
-Ablauf:
-1. `sachverhalt/fakten.md` lesen → Parteien, Betreuungsmodell, Kernargumente, Behauptungen Gegenseite
-2. `sachverhalt/entscheidungen.md` lesen → Strategische Entscheidungen (nur aktuelle, keine überholten)
-3. `sachverhalt/timeline.md` lesen → 5–7 wichtigste Ereignisse extrahieren
-4. `sachverhalt/offene-fragen.md` lesen → Offene Punkte
-5. `erwiderung/anlagen.md` lesen → Anlagen-Übersicht
-6. `erwiderung/erwiderung.md` lesen → Stand des Schriftsatzes (Abschnitt-Übersicht, offene Lücken)
-7. `kontext.md` komplett neu schreiben mit destilliertem Inhalt — Datum im Header aktualisieren
-8. Committen: `Kontext-Scan: kontext.md aktualisiert`
+**Ausführung:** Subagent spawnen mit den Instruktionen aus `agents/kontext-scan.md`. Übergeben:
+- Absoluter Pfad zum Verfahrensordner (z.B. `/Users/…/verfahren/3-f-24-26`)
+
+Der Agent liest alle Quelldateien, schreibt `kontext.md` neu und committet. Er meldet am Ende welche Dateien gelesen wurden, was fehlte und welche Lücken aufgefallen sind.
 
 ### Modus 4: Gesprächs-Onepager
 
@@ -194,21 +189,14 @@ Wenn der Nutzer anweist, eine MD-Datei für einen Anhang zu erzeugen (z. B. Reis
 
 ## Neue Dokumente importieren
 
-Wenn eine DOCX-, PDF- oder andere Datei eingebracht wird:
+Wenn eine DOCX-, PDF- oder andere Datei eingebracht wird, läuft der Import als **Subagent** — der vollständige Ablauf (Umbenennen, OCR, MD ablegen, anlagen.md, kontext.md, commit) läuft isoliert und meldet am Ende Ergebnis + OCR-Unsicherheiten.
 
-1. **Umbenennen** nach Konvention `YYYYMMDD_[AZ]_[VON]_[AN]_[Beschreibung].[ext]` — Datum/Absender/Empfänger mit Nutzer klären, Original in `belege/originale/` ablegen
-2. **Einreichungsart klären** — wenn unklar, fragen:
-   > „Soll dieses Dokument als Original eingereicht werden (z.B. amtliches Schreiben, unterschriebener Vertrag), oder reicht eine Kopie als Ausdruck?"
-   - **Original** → Typ `Original` in `anlagen.md`, Deckblatt wird beim Export automatisch generiert
-   - **Kopie** → Typ `Kopie`, kein Deckblatt nötig
-3. **OCR / Konvertieren** — **KRITISCH, da Fehler vor Gericht fatale Folgen haben:**
-   - **Bildbasierte PDFs, Scans, Fotos** → **Ausschließlich Vision des aktuell aktiven LLM** (Read-Tool auf die Datei) — niemals externe OCR-Tools, niemals MarkItDown für gescannte Dokumente. Das Modell liest das Bild direkt und transkribiert exakt.
-   - **Text-PDFs / DOCX** (maschinenlesbar) → MarkItDown (`.venv` aktivieren) ist zulässig, da kein OCR-Fehlerrisiko.
-   - Nach der Transkription: Nutzer auf auffällige Stellen hinweisen, die visuell unklar waren (Durchstreichungen, Handschriften, schlechte Scanqualität).
-4. **MD ablegen** mit gleichem Basisnamen in `belege/whatsapp/`, `belege/emails/`, `belege/voicenotes/` oder `belege/dokumente/`
-5. **Eintragen** in `erwiderung/anlagen.md` mit Typ, Titel und Dateipfad
-6. **`belege/`-Datei ab jetzt nicht mehr anfassen** — alle weiteren Arbeiten am Inhalt erfolgen über das Hauptdokument
-7. **`kontext.md` aktualisieren** — Anlagen-Übersicht und ggf. Behauptungen der Gegenseite auf aktuellem Stand halten
+**Ausführung:** Subagent spawnen mit den Instruktionen aus `agents/dokument-import.md`. Übergeben:
+- `DATEI`: Absoluter Pfad zur zu importierenden Datei
+- `VERFAHREN`: Absoluter Pfad zum Verfahrensordner
+- Bekannte Metadaten (Datum, Absender, Empfänger) — wenn vorhanden, mitgeben; wenn nicht, klärt der Agent selbst nach
+
+Der Agent stoppt eigenständig und fragt, wenn Metadaten unklar sind oder die Einreichungsart nicht erkennbar ist. Bei OCR-Unsicherheiten (Handschrift, schlechte Qualität) meldet er diese explizit.
 
 ---
 
