@@ -100,6 +100,34 @@ Fehlende Originale in eine Liste aufnehmen → am Ende im Abschlussbericht ausge
 
 ---
 
+### Schritt 4b — Belegprüfung interne Dokumente
+
+Folgende Dateien lesen und auf unbelegte Aussagen prüfen:
+- `{verfahren}/sachverhalt/fakten.md`
+- `{verfahren}/sachverhalt/timeline.md`
+- `{verfahren}/sachverhalt/offene-fragen.md`
+- `{verfahren}/sachverhalt/entscheidungen.md`
+- `{verfahren}/erwiderung/nur-muendlich.md`
+- `{verfahren}/vorbereitung/verhandlung.md`
+- Alle `{verfahren}/vorbereitung/*-gespraech-onepager.md`
+- `{verfahren}/kontext.md`
+
+**Was als unbelegt gilt:** Eine Aussage ist unbelegt, wenn sie eine Behauptung über Verhalten, ein Ereignis, eine Aussage einer Person oder ein sachliches Faktum enthält — UND kein `[n]`-Marker direkt danach steht.
+
+**Nicht prüfen:** Reine Strukturelemente (Überschriften, Aktenzeichen, Tabellenspalten), Platzhalter (`[…]`), Aussagen die bereits `[UNBELEGT]` tragen.
+
+Unbelegte Aussagen → als ⚠️ in `{verfahren}/sachverhalt/offene-fragen.md` ergänzen:
+
+```
+| Datei | Aussage (gekürzt) | Fehlt |
+|-------|------------------|-------|
+| sachverhalt/fakten.md | „Der Vater erscheint pünktlich…" | Beleg [n] |
+```
+
+Kein automatisches Ergänzen von Zitaten — nur melden.
+
+---
+
 ### Schritt 5 — Sachverhalt aktualisieren
 
 Dateien in `{verfahren}/sachverhalt/` lesen und gezielt aktualisieren:
@@ -230,6 +258,11 @@ Der Kontext-Scan läuft als letzter Schritt und committet `kontext.md` separat.
   | Datei | Fehlende Quell-MD |
   |-------|------------------|
   | …     | …                |
+
+⚠️ Unbelegte Aussagen (N):
+  | Datei | Aussage | Fehlt |
+  |-------|---------|-------|
+  | …     | …       | Beleg [n] |
 
 ⚠️ gegenseite/-Stubs:
   | Datei | Status |

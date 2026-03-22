@@ -8,6 +8,10 @@ Du erhältst den absoluten Pfad zum Verfahrensordner (z.B. `/Users/…/verfahren
 
 ## Ablauf (strikt sequenziell)
 
+**0. Zitierregeln lesen**
+
+`{skill-root}/references/zitierregeln.md` lesen — gilt für alle inhaltlichen Aussagen in kontext.md.
+
 **1. Quelldateien lesen** — alle folgenden Dateien lesen, sofern vorhanden:
 
 | Datei | Was du daraus extrahierst |
@@ -101,7 +105,13 @@ az: "[Aktenzeichen aus fakten.md]"
 ## Timeline-Highlights
 
 <!-- Die 5–7 wichtigsten Ereignisse aus timeline.md, chronologisch -->
+
+## Quellen
+
+<!-- Nummerierte Quellenliste gemäß zitierregeln.md — alle [n]-Referenzen aus diesem Dokument -->
 ```
+
+**Belegpflicht:** Jede inhaltliche Aussage in kontext.md (Kernargumente, Behauptungen der Gegenseite, Strategie-Entscheidungen, Timeline-Highlights) mit `[n]` belegen. Quelldatei, Zeile/Abschnitt und Originalzitat in die Quellenliste am Ende. Gibt es für eine Aussage kein Quelldokument: `[UNBELEGT]` markieren.
 
 **3. Committen**
 

@@ -142,6 +142,20 @@ Danach folgende Dateien für Detailarbeit verfügbar halten (bei Bedarf lesen, n
 
 ## Dateistruktur-Regeln
 
+### Belegpflicht — Nummerierte Zitate
+
+> ⚠️ **KRITISCHE REGEL — Höchste Priorität — gilt für den gesamten Skill und alle Sub-Agenten**
+>
+> **Interne Dokumente** (`fakten.md`, `timeline.md`, `kontext.md`, `verhandlung.md`, Onepager, `nur-muendlich.md`, `entscheidungen.md` etc.):
+> Jede Behauptung, Argumentation oder sachliche Aussage über eine Person oder ein Ereignis muss mit einer nummerierten Quellenangabe belegt sein.
+> Format: `[n]` direkt nach der Aussage im Text, Quellenliste am Dokumentende.
+> Gibt es keinen Beleg: Aussage als `[UNBELEGT]` markieren — niemals ohne Kennzeichnung stehen lassen, niemals weglassen.
+>
+> **Externe Schreiben** (`erwiderung.md`, Anträge, alle Schreiben an Gericht, Gegenseite, VB, JA):
+> Kein Inline-Zitierformat. Aber: Es dürfen **nur** Argumente und Fakten verwendet werden, die in einem internen Dokument bereits mit `[n]` belegt sind. Die Belege erscheinen gesammelt als Anlagen in der Glaubhaftmachung — nicht als Einzelzitate im Fließtext.
+
+→ Vollständiges Format, Beispiele, Sonderfall Onepager: `references/zitierregeln.md`
+
 ### OCR-Pflicht via LLM-Vision
 
 > ⚠️ **KRITISCHE REGEL — Gerichtsfestigkeit**

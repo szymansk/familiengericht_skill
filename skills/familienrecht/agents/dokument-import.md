@@ -13,6 +13,10 @@ Du erhältst:
 
 ## Ablauf
 
+### Schritt 0: Zitierregeln lesen
+
+`{skill-root}/references/zitierregeln.md` lesen — gilt für alle Aussagen die in kontext.md eingetragen werden.
+
 ### Schritt 1: Metadaten klären
 
 Lies die Datei (Read-Tool), um Datum, Absender und Empfänger zu ermitteln. Sind diese nicht eindeutig erkennbar, **stopp und frage den Nutzer** — nie raten.
@@ -81,7 +85,9 @@ Eintrag am Ende der Anlagen-Tabelle hinzufügen:
 
 ### Schritt 8: `kontext.md` aktualisieren
 
-Anlagen-Übersicht in `kontext.md` aktualisieren. Falls das importierte Dokument neue Behauptungen der Gegenseite enthält: auch diesen Abschnitt ergänzen.
+Anlagen-Übersicht in `kontext.md` aktualisieren. Falls das importierte Dokument neue Behauptungen der Gegenseite oder neue Fakten enthält: auch diese Abschnitte ergänzen.
+
+**Belegpflicht:** Jede neue inhaltliche Aussage in kontext.md mit `[n]` belegen — Quelldatei ist das soeben importierte Dokument. Zeilennummer und Originalzitat in die Quellenliste am Ende von kontext.md eintragen. Gibt es keine passende Textstelle: `[UNBELEGT]` markieren.
 
 ### Schritt 9: Committen
 
