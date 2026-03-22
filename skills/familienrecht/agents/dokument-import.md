@@ -90,23 +90,6 @@ git -C {git-root} add "{VERFAHREN}/belege/" "{VERFAHREN}/erwiderung/anlagen.md" 
 git -C {git-root} commit -m "Import: {kurzer-dokumentname}"
 ```
 
-### Schritt 10: `.claudeprompt/CLAUDE.md` aktualisieren
-
-Falls die importierte MD-Datei in einem belege/-Unterordner abgelegt wurde (`belege/dokumente/`, `belege/emails/`, `belege/whatsapp/`, `belege/voicenotes/`):
-
-1. `{VERFAHREN}/.claudeprompt/CLAUDE.md` lesen
-2. Prüfen ob eine `@`-Zeile für die neue Datei bereits vorhanden ist
-3. Falls nicht: die Zeile am Ende des dynamischen Blocks einfügen (relativer Pfad, z.B. `@belege/emails/20260210_3f2426_KB_KV_KiTa-Email.md`)
-4. Committen:
-   ```bash
-   git -C {git-root} add "{VERFAHREN}/.claudeprompt/CLAUDE.md"
-   git -C {git-root} commit -m "Kontext: .claudeprompt/CLAUDE.md — {kurzer-dokumentname} ergänzt"
-   ```
-
-Falls `.claudeprompt/CLAUDE.md` nicht existiert (z.B. älteres Verfahren vor diesem Feature): Datei mit dem vollständigen statischen Block anlegen, dann die neue `@`-Zeile hinzufügen.
-
----
-
 ## Abschlussmeldung
 
 Ausgeben:
