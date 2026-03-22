@@ -189,6 +189,52 @@ Falls keine Änderungen vorhanden (git meldet „nothing to commit"): Schritt ü
 
 ---
 
+### Schritt 10a — .claudeprompt/CLAUDE.md aktualisieren
+
+Alle `.md`-Dateien in folgenden Ordnern auflisten (`.gitkeep` überspringen):
+- `{verfahren}/belege/dokumente/`
+- `{verfahren}/belege/emails/`
+- `{verfahren}/belege/whatsapp/`
+- `{verfahren}/belege/voicenotes/`
+
+`.claudeprompt/CLAUDE.md` neu schreiben mit:
+
+1. **Fester Block** (immer identisch — statische Dateien):
+   ```
+   # Verfahrens-Kontext — {Aktenzeichen aus fakten.md}
+
+   > Diese Datei wird automatisch vom Skill gepflegt — nicht manuell bearbeiten.
+   > Enthält alle relevanten Verfahrensdokumente außer Originalbelegen (belege/originale/).
+
+   @kontext.md
+   @sachverhalt/fakten.md
+   @sachverhalt/timeline.md
+   @sachverhalt/entscheidungen.md
+   @sachverhalt/offene-fragen.md
+   @sachverhalt/notizen.md
+   @sachverhalt/kalender.md
+   @erwiderung/erwiderung.md
+   @erwiderung/anlagen.md
+   @erwiderung/nur-muendlich.md
+   @vorbereitung/verhandlung.md
+   @gegenseite/antrag.md
+   @gegenseite/protokoll-km.md
+   ```
+
+2. **Dynamischer Block** (nur wenn Dateien vorhanden): Für jede gefundene `.md`-Datei in den belege/-Unterordnern eine `@`-Zeile einfügen (relativer Pfad ab Verfahrensordner, z.B. `@belege/dokumente/20260210_3f2426_KB_KV_KiTa-Email.md`).
+
+`belege/originale/` darf **niemals** in die CLAUDE.md eingeschlossen werden.
+
+Falls `.claudeprompt/` nicht existiert: Ordner anlegen.
+
+Datei in denselben Commit wie Schritt 10 stagen:
+```bash
+git -C {git-root} add {verfahren}/.claudeprompt/CLAUDE.md
+```
+(Falls Schritt 10 bereits committed: separater Mini-Commit `"Setup: .claudeprompt/CLAUDE.md aktualisiert"`)
+
+---
+
 ### Schritt 11 — Kontext-Scan spawnen
 
 Subagent aus `{skill-root}/agents/kontext-scan.md` spawnen.

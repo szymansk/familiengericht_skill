@@ -110,6 +110,11 @@ cat > "$TARGET/output/.gitignore" <<'EOF'
 !.gitkeep
 EOF
 
+# ── .claudeprompt/CLAUDE.md anlegen ─────────────────────────────────────────
+
+mkdir -p "$TARGET/.claudeprompt"
+replace "$TEMPLATES/.claudeprompt/CLAUDE.md" "$TARGET/.claudeprompt/CLAUDE.md"
+
 # ── .venv in Root-.gitignore sicherstellen ────────────────────────────────────
 
 ROOT_GITIGNORE="$(pwd)/.gitignore"
