@@ -62,9 +62,11 @@ Quellenliste am **Ende des Dokuments** (eigener Abschnitt):
 
 | Feld | Format | Beispiel |
 |------|--------|---------|
-| Datei | Relativer Pfad ab Verfahrensordner | `belege/emails/20260210_3f2426_KB_KV_KiTa-Email.md` |
-| Textstelle | Zeilennummer (`Z. n`) oder Abschnitt (`Abschnitt X`) | `Z. 8` oder `Abschnitt 3` |
-| Originalzitat | Wörtlich, in Anführungszeichen | `„Herr Berger erscheint stets pünktlich."` |
+| Datei | Relativer Pfad ab Verfahrensordner — immer die `.md`-Datei, nicht das Original-PDF | `belege/emails/20260210_3f2426_KB_KV_KiTa-Email.md` |
+| Zeilennummer | **Pflicht:** `Z. n` — die exakte Zeile in der referenzierten `.md`-Datei | `Z. 8` |
+| Originalzitat | Wörtlich aus der `.md`-Datei, in Anführungszeichen | `„Herr Berger erscheint stets pünktlich."` |
+
+**Zeilennummer ist immer Pflicht** — kein Ersatz durch Abschnittsbezeichnungen. Die Zeilennummer bezieht sich auf die `.md`-Datei in `belege/`, nicht auf Seitenzahlen des Original-PDFs. Das Read-Tool zeigt Zeilennummern direkt an — diese übernehmen.
 
 ### Sonderfall Onepager
 
