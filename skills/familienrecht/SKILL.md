@@ -102,6 +102,14 @@ Subagent aus `agents/aufraeum.md` spawnen. Eingabe: absoluter Pfad zum Verfahren
 
 Der Agent läuft vollautomatisch durch alle 11 Schritte (Inventar → Umbenennen → Originale-Check → anlagen.md → Sachverhalt → Vorbereitung → gegenseite/ → Doppelte → output/-Waisen → Commit → Kontext-Scan) und gibt am Ende einen strukturierten Abschlussbericht aus.
 
+### Modus 6 — Belege-Scan
+
+**Aktivierung:** „Fakten aus Belegen extrahieren", „Belege scannen", „Fakten sammeln", „belege-scan"
+
+Subagent aus `agents/belege-scan.md` spawnen. Eingabe: absoluter Pfad zum Verfahrensordner.
+
+Der Agent liest alle importierten `.md`-Dateien in `belege/` (außer `originale/`) und trägt die extrahierten Fakten strukturiert in `sachverhalt/fakten.md` ein — Metadaten ohne Zitat, inhaltliche Aussagen mit Zeilennummer und Originalzitat nach `references/zitierregeln.md`.
+
 ---
 
 ## Leitprinzip: Cochemer Modell
