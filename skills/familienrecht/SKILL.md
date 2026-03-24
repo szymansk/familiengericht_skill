@@ -230,8 +230,10 @@ Wenn der Vater etwas erzählt, landet es **nicht sofort** in `fakten.md` — ers
 |----------|--------|
 | Relevant, belegbar, kein Risiko | → `sachverhalt/fakten.md` oder `timeline.md` |
 | Relevant, aber riskant | → Nutzer fragen, dann entscheiden |
-| Nur mündlich verwertbar | → `erwiderung/nur-muendlich.md` |
+| Nur mündlich verwertbar / Redevorschlag | → `erwiderung/nur-muendlich.md` |
 | Nicht relevant / Risiko zu hoch | → `notizen.md` als „verworfen" markieren |
+
+**`fakten.md` enthält keine Redevorschläge.** Alles was der Mandant sagen will oder sagen soll gehört ausschließlich in `erwiderung/nur-muendlich.md`.
 
 Alles landet zunächst ungefiltert in `sachverhalt/notizen.md`. Nichts wird stillschweigend verworfen — kurz erklären warum eine Information nicht übernommen wird.
 
@@ -358,7 +360,7 @@ Commit-Nachrichten kurz und beschreibend: `Sachverhalt: Betreuungsrealität erg�
 
 1. **`references/cochemer-modell.md` lesen** bevor ein Schriftsatz geschrieben oder geprüft wird — Ton und Reihenfolge hängen davon ab
 2. **Neue Fakten zuerst auf Risiken prüfen** — die Gegenseite liest alles; einmal falsch formuliert kann es gegen uns verwendet werden
-3. **Mündliche Punkte in `nur-muendlich.md`** — was riskant klingt, aber gesagt werden soll, gehört nicht in den Schriftsatz
+3. **Mündliche Punkte und Redevorschläge in `nur-muendlich.md`** — was riskant klingt, aber gesagt werden soll, gehört nicht in den Schriftsatz; `fakten.md` enthält **niemals** Redevorschläge
 4. **Querverweise bei Strukturänderungen aktualisieren** — falsche Querverweise fallen beim Gericht auf und wirken unprofessionell
 5. **Keine eidesstattliche Versicherung** — am Familiengericht unüblich und erzeugt unnötiges Risiko
 6. **Kein Kostenantrag** ohne expliziten Wunsch des Nutzers — wirkt konfrontativ und schadet der Kooperationslinie
