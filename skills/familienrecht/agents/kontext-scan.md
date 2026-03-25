@@ -22,6 +22,9 @@ Du erhältst den absoluten Pfad zum Verfahrensordner (z.B. `/Users/…/verfahren
 | `sachverhalt/offene-fragen.md` | Offene Punkte, noch fehlende Belege |
 | `erwiderung/anlagen.md` | Vollständige Anlagen-Übersicht mit Status |
 | `erwiderung/erwiderung.md` | Aktueller Stand: welche Abschnitte existieren, was ist offen |
+| `gegenseite/antrag.md` | Behauptungen / Anträge der Gegenseite |
+| `gegenseite/protokoll-km.md` | Erklärungen / Protokoll Kindesmutter |
+| `gegenseite/*.md` (alle weiteren) | Sonstige Gegenseite-Dokumente — alle lesen |
 
 Fehlende Dateien stillschweigend überspringen — kein Fehler ausgeben.
 

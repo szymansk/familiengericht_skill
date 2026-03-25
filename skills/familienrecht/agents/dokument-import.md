@@ -40,6 +40,40 @@ cp "{DATEI}" "{VERFAHREN}/belege/originale/{neuer-dateiname}"
 
 Originaldatei **nicht löschen** — nur kopieren.
 
+### Schritt 3b: Gegenseite-Erkennung
+
+Prüfen ob das Dokument von der Gegenseite stammt (Absender = Kindesmutter / gegnerischer Anwalt / Jugendamt als Gegenseite-Quelle):
+
+Falls Gegenseite-Dokument: passende Datei in `{VERFAHREN}/gegenseite/` anlegen oder ergänzen:
+
+| Dokumenttyp | Zieldatei |
+|-------------|-----------|
+| Schriftsatz / Antrag / Erwiderung Gegenseite | `gegenseite/antrag.md` |
+| Erklärung / Protokoll / Notiz Kindesmutter | `gegenseite/protokoll-km.md` |
+| Sonstiges Gegenseite-Dokument | `gegenseite/{YYYYMMDD-beschreibung}.md` |
+
+Struktur der gegenseite/-Datei:
+```
+# [Dokumenttyp] — [Datum]
+
+**Von:** [Absender] | **An:** [Empfänger] | **AZ:** [Aktenzeichen]
+**Quelle:** → belege/dokumente/{dateiname}.md
+
+## Kernbehauptungen
+
+- [Behauptung 1] [n]
+- [Behauptung 2] [n]
+
+## Quellen
+
+[n] belege/dokumente/{dateiname}.md, Z. nn:
+    „Exaktes Zitat"
+```
+
+**Belegpflicht:** Jede Kernbehauptung mit `[n]`-Verweis auf die OCR-MD-Datei in `belege/` belegen (Zeilennummer aus Read-Tool-Ausgabe).
+
+Falls kein Gegenseite-Dokument: Schritt überspringen.
+
 ### Schritt 4: Einreichungsart klären (falls nicht bekannt)
 
 Falls nicht aus dem Dokument erkennbar, fragen:
@@ -83,18 +117,22 @@ Eintrag am Ende der Anlagen-Tabelle hinzufügen:
 | [nächste Anlage-Nr.] | [Titel/Beschreibung] | [Original/Kopie] | [Pfad zur belege/-Datei] |
 ```
 
-### Schritt 8: `kontext.md` aktualisieren
+### Schritt 8: Kontext-Scan anstoßen
 
-Anlagen-Übersicht in `kontext.md` aktualisieren. Falls das importierte Dokument neue Behauptungen der Gegenseite oder neue Fakten enthält: auch diese Abschnitte ergänzen.
+`{skill-root}/agents/kontext-scan.md` als Sub-Agent spawnen — Eingabe: `{VERFAHREN}`.
 
-**Belegpflicht:** Jede neue inhaltliche Aussage in kontext.md mit `[n]` belegen — Quelldatei ist das soeben importierte Dokument. Zeilennummer und Originalzitat in die Quellenliste am Ende von kontext.md eintragen. Gibt es keine passende Textstelle: `[UNBELEGT]` markieren.
+Der Kontext-Scan-Agent liest alle sachverhalt/-, gegenseite/-, erwiderung/- und anlagen-Dateien (inkl. der soeben angelegten gegenseite/-Datei falls vorhanden) und schreibt `kontext.md` vollständig neu — mit Belegpflicht nach zitierregeln.md. Kein manuelles Bearbeiten von kontext.md durch diesen Agenten.
 
 ### Schritt 9: Committen
 
 ```bash
-git -C {git-root} add "{VERFAHREN}/belege/" "{VERFAHREN}/erwiderung/anlagen.md" "{VERFAHREN}/kontext.md"
+git -C {git-root} add "{VERFAHREN}/belege/" "{VERFAHREN}/erwiderung/anlagen.md"
+# gegenseite/-Datei wenn angelegt:
+git -C {git-root} add "{VERFAHREN}/gegenseite/" 2>/dev/null || true
 git -C {git-root} commit -m "Import: {kurzer-dokumentname}"
 ```
+
+`kontext.md` wird vom Kontext-Scan-Agent in Schritt 8 committet — nicht hier.
 
 ## Abschlussmeldung
 

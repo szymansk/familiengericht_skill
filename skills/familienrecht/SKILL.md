@@ -32,6 +32,14 @@ Dieser Skill hilft, das Anliegen wirkungsvoll vor Gericht zu vertreten — aber 
 Erstellung, Prüfung und Überarbeitung von Schriftsätzen. Aktiviert sich automatisch.
 > Das Vorgehen des Schreibmodus ist in Section *5-Phasen-Workflow* beschrieben
 
+**Voraussetzung vor jedem externen Schriftsatz/Brief (Gericht, VB, JA, Gegenseite):**
+
+1. `kontext.md` lesen — liegt sie vor?
+2. Wurden seit dem letzten Kontext-Scan neue Dokumente importiert oder Fakten extrahiert ohne dass kontext.md danach neu aufgebaut wurde? → Kontext-Scan (Modus 3) zuerst durchführen.
+3. Erst wenn kontext.md den vollständigen Sachverhalt widerspiegelt (alle Belege, Gegenseite-Positionen, offene Fragen, aktuelle Strategie) → mit dem Schreiben beginnen.
+
+Faustregel: Gibt es Belege oder Gegenseite-Dokumente die noch nicht in kontext.md sichtbar sind → Stopp, Kontext-Scan anstoßen.
+
 ### Modus 2: Trainingsmodus
 
 Verhandlungsvorbereitung durch Rollenspiel. Der Skill nimmt reihum die Rollen von Richterin, Gegenanwältin, Verfahrensbeistand und Jugendamt ein. Feedback kommt gesammelt nach 3–4 Fragen — außer bei sofortigem Korrekturbedarf (Angriff auf Gegenseite, gefährliche Formulierungen).
@@ -164,6 +172,21 @@ Danach folgende Dateien für Detailarbeit verfügbar halten (bei Bedarf lesen, n
 > Kein Inline-Zitierformat. Aber: Es dürfen **nur** Argumente und Fakten verwendet werden, die in einem internen Dokument bereits mit `[n]` belegt sind. Die Belege erscheinen gesammelt als Anlagen in der Glaubhaftmachung — nicht als Einzelzitate im Fließtext.
 
 → Vollständiges Format, Beispiele, Sonderfall Onepager: `references/zitierregeln.md`
+
+### Kaskaden-Pflicht — Abgeleitete Dokumente aktuell halten
+
+> ⚠️ **KRITISCHE REGEL**
+>
+> Wenn sich ein Quelldokument ändert, müssen alle davon abgeleiteten Dokumente aktualisiert werden:
+>
+> | Änderung | Automatische Folge |
+> |----------|--------------------|
+> | Neues Dokument importiert (dokument-import) | → kontext-scan spawnen (ersetzt Schritt 8) |
+> | Fakten aus Belegen extrahiert (fakten-sammler) | → kontext-scan spawnen (Schritt 4a) |
+> | `fakten.md`, `timeline.md`, `entscheidungen.md` manuell geändert | → kontext-scan manuell anstoßen (Modus 3) |
+> | Aufräumen abgeschlossen | → kontext-scan (Schritt 11 in aufraeum.md) |
+>
+> `kontext.md` ist immer das letzte Glied in der Kette. Veraltete kontext.md → veralteter Schriftsatz.
 
 ### OCR-Pflicht via LLM-Vision
 
@@ -329,14 +352,15 @@ Für die Sachverhaltsaufnahme kann Claude in einem Intervall laufen, `sachverhal
 
 | Auslöser | Betroffene Felder in kontext.md |
 |----------|--------------------------------|
-| Import neues Dokument | Anlagen-Übersicht, ggf. Behauptungen Gegenseite |
-| Änderung an `fakten.md` | Parteien, Betreuungsmodell, Kernargumente, Behauptungen |
-| Änderung an `entscheidungen.md` | Strategie-Entscheidungen |
-| Änderung an `timeline.md` | Timeline-Highlights |
-| Änderung an `erwiderung.md` | Stand Schriftsatz |
-| Änderung an `anlagen.md` | Anlagen-Übersicht |
-| Neuer Termin / Frist bekannt | Verfahrensdaten → Nächster Termin |
-| Aufräumen abgeschlossen | Wird via Kontext-Scan (Schritt 11 in aufraeum.md) automatisch aktualisiert |
+| Import neues Dokument | **Automatisch** — kontext-scan wird von dokument-import (Schritt 8) automatisch gespawnt |
+| Fakten-Scan abgeschlossen | **Automatisch** — kontext-scan wird von fakten-sammler (Schritt 4a) automatisch gespawnt |
+| Aufräumen abgeschlossen | **Automatisch** — kontext-scan wird von aufraeum.md (Schritt 11) automatisch gespawnt |
+| Änderung an `fakten.md` (manuell) | Manuell: Kontext-Scan (Modus 3) anstoßen |
+| Änderung an `entscheidungen.md` (manuell) | Manuell: Kontext-Scan (Modus 3) anstoßen |
+| Änderung an `timeline.md` (manuell) | Manuell: Kontext-Scan (Modus 3) anstoßen |
+| Änderung an `erwiderung.md` | Stand Schriftsatz — Kontext-Scan anstoßen |
+| Änderung an `anlagen.md` | Anlagen-Übersicht — Kontext-Scan anstoßen |
+| Neuer Termin / Frist bekannt | Verfahrensdaten → Nächster Termin — direkt in kontext.md eintragen |
 
 **Format:** Kompakt, keine Fließtexte — nur Tabellen, kurze Stichpunkte, Nummerierungen. `kontext.md` darf nie länger werden als nötig, um vollständig zu sein.
 

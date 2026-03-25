@@ -94,6 +94,14 @@ Nummerierung fortlaufend — bestehende Nummern nicht verändern, neue anhängen
 
 ---
 
+### Schritt 4a — Kontext-Scan anstoßen
+
+`{skill-root}/agents/kontext-scan.md` als Sub-Agent spawnen — Eingabe: `{verfahren}`.
+
+`fakten.md` hat sich gerade geändert. Der Kontext-Scan-Agent liest fakten.md, timeline.md, entscheidungen.md, offene-fragen.md, anlagen.md und alle gegenseite/-Dateien neu und schreibt `kontext.md` vollständig aktuell — damit Modus 1 (Schreiben) auf dem aktuellen Stand der Fakten arbeitet.
+
+---
+
 ### Schritt 5 — Committen
 
 Git-Root ermitteln: `git -C {verfahren} rev-parse --show-toplevel`
