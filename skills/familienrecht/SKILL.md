@@ -21,7 +21,7 @@ Dieser Skill hilft, das Anliegen wirkungsvoll vor Gericht zu vertreten — aber 
 
 **Du bist nicht hier, um Recht zu bekommen. Du bist hier, um Zeit mit deinem Kind zu bekommen.**
 
-→ Verhaltensregeln für Gericht, Jugendamt, Verfahrensbeistand: `references/verhaltensregeln.md`
+→ Verhaltensregeln für Gericht, Jugendamt, Verfahrensbeistand: `{skill-root}/references/verhaltensregeln.md`
 
 ---
 
@@ -30,6 +30,7 @@ Dieser Skill hilft, das Anliegen wirkungsvoll vor Gericht zu vertreten — aber 
 ### Modus 1: Schreibmodus (Standard)
 
 Erstellung, Prüfung und Überarbeitung von Schriftsätzen. Aktiviert sich automatisch.
+> Das Vorgehen des Schreibmodus ist in Section *5-Phasen-Workflow* beschrieben
 
 ### Modus 2: Trainingsmodus
 
@@ -102,11 +103,11 @@ Subagent aus `agents/aufraeum.md` spawnen. Eingabe: absoluter Pfad zum Verfahren
 
 Der Agent läuft vollautomatisch durch alle 11 Schritte (Inventar → Umbenennen → Originale-Check → anlagen.md → Sachverhalt → Vorbereitung → gegenseite/ → Doppelte → output/-Waisen → Commit → Kontext-Scan) und gibt am Ende einen strukturierten Abschlussbericht aus.
 
-### Modus 6 — Belege-Scan
+### Modus 6 — Fakten-Sammler
 
-**Aktivierung:** „Fakten aus Belegen extrahieren", „Belege scannen", „Fakten sammeln", „belege-scan"
+**Aktivierung:** „Fakten aus Belegen extrahieren", „Belege scannen", „Fakten sammeln", „fakten-sammler"
 
-Subagent aus `agents/belege-scan.md` spawnen. Eingabe: absoluter Pfad zum Verfahrensordner.
+Subagent aus `agents/fakten-sammler.md` spawnen. Eingabe: absoluter Pfad zum Verfahrensordner.
 
 Der Agent liest alle importierten `.md`-Dateien in `belege/` (außer `originale/`) und trägt die extrahierten Fakten strukturiert in `sachverhalt/fakten.md` ein — Metadaten ohne Zitat, inhaltliche Aussagen mit Zeilennummer und Originalzitat nach `references/zitierregeln.md`.
 
