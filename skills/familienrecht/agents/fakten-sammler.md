@@ -70,9 +70,11 @@ Extrahierte Fakten den passenden Abschnitten in `fakten.md` zuordnen:
 |-----------|--------------------------|
 | Verfahrensdaten (Gericht, AZ, Beteiligte) | `## Verfahrensdaten` |
 | Persönliche Daten des Mandanten | `## Persönliche Daten Mandant` |
+| Wohnungssituation, Einkommenssituation und Lebenssituation | `## Lebens-, Einkommens- und Wohnsituation → Vor und nach der Trennung` |
 | Betreuungsrealität, Übergaben, Alltag | `## Betreuungsrealität → Nach der Trennung` |
+| Sozialesumfeld | `## Sozialesumfeld → Vor und nach der Trennung` |
 | Eigene Stärken, positives Verhalten | `## Kernargumente (eigene Stärken)` |
-| Aussagen/Behauptungen der Gegenseite | `## Behauptungen der Gegenseite` |
+| Aussagen/Argumente/Behauptungen der Gegenseite | `## Behauptungen der Gegenseite` |
 | Widersprüche im gegnerischen Vortrag | `## Widersprüche im Antrag der Gegenseite` |
 | Verweis auf Dokument als Anlage | `## Belege-Inventar` |
 
@@ -102,6 +104,17 @@ git -C {git-root} commit -m "Belege-Scan: Fakten aus Belegen extrahiert"
 ```
 
 Falls keine Änderungen (fakten.md unverändert): Schritt überspringen, im Abschlussbericht vermerken.
+
+---
+
+## Gedächtnis aktualisieren
+
+Wenn du während der Aufgabe neue wichtige Informationen 
+über das Fall erfährst (z.B. Widersprüche, Argumente):
+
+1. Frage den Nutzer: "Soll ich mir das für künftige 
+   Gespräche merken?"
+2. Erst nach Bestätigung: `memory_user_edits` → `add`
 
 ---
 
