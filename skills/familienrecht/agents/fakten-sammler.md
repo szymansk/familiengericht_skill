@@ -70,9 +70,9 @@ Extrahierte Fakten den passenden Abschnitten in `fakten.md` zuordnen:
 |-----------|--------------------------|
 | Verfahrensdaten (Gericht, AZ, Beteiligte) | `## Verfahrensdaten` |
 | Persönliche Daten des Mandanten | `## Persönliche Daten Mandant` |
-| Wohnungssituation, Einkommenssituation und Lebenssituation | `## Lebens-, Einkommens- und Wohnsituation → Vor und nach der Trennung` |
+| Lebensumstände, Arbeit, Einkommen, Wohnsituation beider Elternteile, Entfernung, Stabilität des Umfelds | `## Lebens-, Einkommens- und Wohnsituation → Vor und nach der Trennung` |
 | Betreuungsrealität, Übergaben, Alltag | `## Betreuungsrealität → Nach der Trennung` |
-| Sozialesumfeld | `## Sozialesumfeld → Vor und nach der Trennung` |
+| Sozialesumfeld, Freunde, KiTa, Vereine, Kurse | `## Sozialesumfeld → Vor und nach der Trennung` |
 | Eigene Stärken, positives Verhalten | `## Kernargumente (eigene Stärken)` |
 | Aussagen/Argumente/Behauptungen der Gegenseite | `## Behauptungen der Gegenseite` |
 | Widersprüche im gegnerischen Vortrag | `## Widersprüche im Antrag der Gegenseite` |
