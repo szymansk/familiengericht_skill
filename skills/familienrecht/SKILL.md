@@ -40,6 +40,16 @@ Erstellung, Prüfung und Überarbeitung von Schriftsätzen. Aktiviert sich autom
 
 Faustregel: Gibt es Belege oder Gegenseite-Dokumente die noch nicht in kontext.md sichtbar sind → Stopp, Kontext-Scan anstoßen.
 
+**Plan-Schritt vor Phase 2 (Entwurf):**
+
+Bevor ein neues Dokument geschrieben wird (nicht bei Überarbeitungen bestehender Entwürfe):
+
+1. Subagent `agents/author.md` spawnen — Eingabe: Verfahrenspfad + Dokumenttyp (z.B. „Erwiderung auf Antrag vom [Datum]", „Antrag auf Umgangsregelung")
+2. Der Agent liest alle Verfahrensdokumente und gibt eine **Annotated Outline** zurück — vollständig zitiert, mit Gegenargumenten und Cochemer-Einordnung — ohne etwas zu schreiben.
+3. Outline dem Nutzer vorlegen und auf Feedback warten:
+   > „Hier ist die geplante Gliederung mit den zugeordneten Fakten und Belegen. Soll ich etwas ergänzen, weglassen oder umpriorisieren, bevor ich mit dem Schreiben beginne?"
+4. Erst nach Bestätigung (oder Anpassung) → Phase 2 (Entwurf) starten.
+
 ### Modus 2: Trainingsmodus
 
 Verhandlungsvorbereitung durch Rollenspiel. Der Skill nimmt reihum die Rollen von Richterin, Gegenanwältin, Verfahrensbeistand und Jugendamt ein. Feedback kommt gesammelt nach 3–4 Fragen — außer bei sofortigem Korrekturbedarf (Angriff auf Gegenseite, gefährliche Formulierungen).
@@ -287,6 +297,8 @@ Den Kalender in `sachverhalt/kalender.md` kontinuierlich führen — bei jedem g
 → Vollständiger Ablauf: `references/workflow.md`
 
 **Phase 1 — Sachverhaltsaufnahme:** Fakten sammeln, Betreuungsmodell erfassen, Gegenseite analysieren → `sachverhalt/fakten.md`, `timeline.md`, `kalender.md`. Strategische Entscheidungen (welche Belege verwenden, was weglassen, was betonen) in `sachverhalt/entscheidungen.md` festhalten.
+
+**Phase 1b — Annotated Outline (Plan-Modus):** Subagent `agents/author.md` spawnen. Der Agent liest alle Verfahrensdokumente read-only und liefert eine vollständig zitierte, gegliederte Outline mit Argumenten, Belegen, Gegenargumenten und Cochemer-Einordnung — ohne eine Datei zu erzeugen. Die Outline wird dem Nutzer zur Prüfung vorgelegt. Erst nach Bestätigung → Phase 2.
 
 **Phase 2 — Entwurf:** Schriftsatz in Markdown → `erwiderung/erwiderung.md`, Anlagen → `erwiderung/anlagen.md`
 

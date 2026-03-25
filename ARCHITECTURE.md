@@ -15,7 +15,8 @@ skills/familienrecht/
 │   ├── dokument-import.md          ← Agent: Einzeldokument importieren
 │   ├── kontext-scan.md             ← Agent: kontext.md neu aufbauen
 │   ├── aufraeum.md                 ← Agent: Verfahrensordner bereinigen
-│   └── fakten-sammler.md           ← Agent: Fakten aus Belegen extrahieren
+│   ├── fakten-sammler.md           ← Agent: Fakten aus Belegen extrahieren
+│   └── author.md                  ← Agent: Annotated Outline (read-only, Plan-Modus)
 ├── references/                     ← Fachliche Referenzen (read-only)
 │   ├── zitierregeln.md             ← Belegpflicht-Format (KRITISCH)
 │   ├── cochemer-modell.md          ← Ton & Strategie für Schriftsätze
@@ -85,10 +86,11 @@ verfahren/{az-kurz}/
 
 | Agent | Datei | Aktivierung | Schreibt in |
 |-------|-------|-------------|-------------|
-| Dokument-Import | `agents/dokument-import.md` | Neues Dokument übergeben | `belege/`, `anlagen.md`, `kontext.md` |
-| Kontext-Scan | `agents/kontext-scan.md` | Modus 3, Auto-Start, Ende Aufräumen | `kontext.md` |
+| Dokument-Import | `agents/dokument-import.md` | Neues Dokument übergeben | `belege/`, `gegenseite/`, `anlagen.md`, spawnt kontext-scan |
+| Kontext-Scan | `agents/kontext-scan.md` | Modus 3, Auto-Start, Ende Aufräumen, nach Import/Fakten | `kontext.md` |
 | Verfahren-Aufräumen | `agents/aufraeum.md` | Modus 5 | `belege/`, `sachverhalt/`, `anlagen.md`, spawnt kontext-scan |
-| Fakten-Sammler | `agents/fakten-sammler.md` | Modus 6, `/fakten-sammler` | `sachverhalt/fakten.md` |
+| Fakten-Sammler | `agents/fakten-sammler.md` | Modus 6, `/fakten-sammler` | `sachverhalt/fakten.md`, spawnt kontext-scan |
+| Author | `agents/author.md` | Modus 1 Phase 1b (vor Entwurf) | **read-only** — gibt Annotated Outline zurück |
 
 ---
 
@@ -100,7 +102,7 @@ verfahren/{az-kurz}/
 flowchart TD
     USER([Nutzer]) --> SKILL[SKILL.md\nEntry Point]
 
-    SKILL -->|"Modus 1 (Standard)"| M1[Schreiben & Prüfen\nintern, kein Agent]
+    SKILL -->|"Modus 1 (Standard)"| M1[Schreiben & Prüfen]
     SKILL -->|"Modus 2 — Training"| M2[Trainingsmodus\nintern, kein Agent]
     SKILL -->|"Modus 3 — Kontext-Scan\nauch: Auto-Start ohne kontext.md"| KONTEXT
     SKILL -->|"Dokument-Import\nautomatisch bei Datei-Übergabe"| IMPORT
@@ -108,13 +110,18 @@ flowchart TD
     SKILL -->|"Modus 5 — Aufräumen"| AUFRAEUMEN
     SKILL -->|"Modus 6 — /fakten-sammler"| FAKTEN
 
+    M1 -->|"Phase 1b\nAnnotated Outline\nread-only"| AUTHOR
+
     AUFRAEUMEN -->|"Schritt 11\nSub-Subagent"| KONTEXT
+    IMPORT -->|"Schritt 8\nAuto-Kaskade"| KONTEXT
+    FAKTEN -->|"Schritt 4a\nAuto-Kaskade"| KONTEXT
 
     subgraph Agenten
         IMPORT[dokument-import.md]
         KONTEXT[kontext-scan.md]
         AUFRAEUMEN[aufraeum.md]
         FAKTEN[fakten-sammler.md]
+        AUTHOR[author.md\nread-only]
     end
 ```
 
