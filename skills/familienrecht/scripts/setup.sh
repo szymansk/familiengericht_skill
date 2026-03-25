@@ -113,6 +113,41 @@ echo "→ Installiere npm-Pakete (docx) …"
 (cd "$SCRIPT_DIR" && npm install --silent)
 echo "✓ npm: docx"
 
+# ── 7. Aufräumen (.skillignore) ───────────────────────────────────────────────
+
+SKILL_ROOT="$SCRIPT_DIR/.."
+SKILLIGNORE="$SKILL_ROOT/.skillignore"
+
+if [[ -f "$SKILLIGNORE" ]]; then
+  echo "→ Lösche Dateien gemäß .skillignore …"
+  deleted=0
+  while IFS= read -r pattern || [[ -n "$pattern" ]]; do
+    # Kommentare und leere Zeilen überspringen
+    [[ "$pattern" =~ ^[[:space:]]*# ]] && continue
+    [[ -z "${pattern// }" ]] && continue
+
+    if [[ "$pattern" == /* ]]; then
+      # Absoluter Pfad relativ zum Skill-Root
+      target="$SKILL_ROOT${pattern}"
+      if [[ -e "$target" || -d "$target" ]]; then
+        rm -rf "$target"
+        echo "  ✓ gelöscht: $pattern"
+        ((deleted++)) || true
+      fi
+    else
+      # Rekursive Suche im Skill-Root
+      while IFS= read -r -d '' match; do
+        rm -rf "$match"
+        echo "  ✓ gelöscht: ${match#"$SKILL_ROOT/"}"
+        ((deleted++)) || true
+      done < <(find "$SKILL_ROOT" -name "$pattern" -print0 2>/dev/null)
+    fi
+  done < "$SKILLIGNORE"
+  echo "✓ Aufräumen abgeschlossen ($deleted Einträge gelöscht)"
+else
+  echo "  ⚠ .skillignore nicht gefunden — übersprungen"
+fi
+
 # ── Fertig ────────────────────────────────────────────────────────────────────
 
 echo ""

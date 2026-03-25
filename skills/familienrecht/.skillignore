@@ -1,0 +1,25 @@
+# .skillignore — Dateien und Verzeichnisse die setup.sh beim Aufräumen löscht.
+# Format analog .gitignore: Kommentare mit #, leere Zeilen werden ignoriert.
+# Pfade ohne führenden / werden rekursiv im gesamten Skill-Verzeichnis gesucht.
+# Pfade mit führendem / sind relativ zum Skill-Root (skills/familienrecht/).
+
+# ── Generierte Abhängigkeiten (werden von setup.sh neu erzeugt) ───────────────
+node_modules/
+.venv/
+
+# ── Python-Bytecode ───────────────────────────────────────────────────────────
+__pycache__/
+*.pyc
+*.pyo
+
+# ── Paket-Lockfiles (werden bei setup neu erzeugt) ────────────────────────────
+package-lock.json
+
+# ── macOS-Metadaten ───────────────────────────────────────────────────────────
+.DS_Store
+.AppleDouble
+._*
+
+# ── Windows-Metadaten ─────────────────────────────────────────────────────────
+Thumbs.db
+Desktop.ini
