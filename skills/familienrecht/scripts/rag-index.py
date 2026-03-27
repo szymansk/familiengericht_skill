@@ -25,8 +25,8 @@ from sentence_transformers import SentenceTransformer
 
 # ── Konfiguration ────────────────────────────────────────────────────────────
 
-MODEL_NAME = "BAAI/bge-m3"
-EMBEDDING_DIM = 1024
+MODEL_NAME = "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
+EMBEDDING_DIM = 384
 MAX_CHUNK_WORDS = 400
 OVERLAP_WORDS = 50
 

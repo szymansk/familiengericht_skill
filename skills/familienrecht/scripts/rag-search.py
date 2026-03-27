@@ -17,8 +17,8 @@ from pathlib import Path
 import sqlite_vec
 from sentence_transformers import SentenceTransformer
 
-MODEL_NAME = "BAAI/bge-m3"
-EMBEDDING_DIM = 1024
+MODEL_NAME = "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
+EMBEDDING_DIM = 384
 
 
 def find_db(start: Path) -> Path:
