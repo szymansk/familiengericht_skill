@@ -36,12 +36,19 @@ skills/familienrecht/
 │   ├── sachverhalt/{6 Templates}
 │   ├── erwiderung/{3 Templates}
 │   └── vorbereitung/{2 Templates}
+├── commands/                        ← Slash-Commands (von setup.sh installiert)
+│   ├── outline.md                  ← /outline — Annotated Outline
+│   ├── fakten-sammler.md           ← /fakten-sammler — Fakten extrahieren
+│   ├── rag-index.md                ← /rag-index — RAG-Index aktualisieren
+│   └── rag-search.md               ← /rag-search — Semantische Suche
 └── scripts/
     ├── setup-verfahren.sh          ← Neues Verfahren anlegen
     ├── setup.sh                    ← Pandoc/XeLaTeX/Python installieren
     ├── generate-pdf.py             ← MD → PDF (Pandoc + XeLaTeX)
     ├── generate-docx.js            ← MD → DOCX
-    └── combine-pdf.py              ← Alle PDFs → einreichung.pdf
+    ├── combine-pdf.py              ← Alle PDFs → einreichung.pdf
+    ├── rag-index.py                ← Verfahrensdokumente → sqlite-vec DB
+    └── rag-search.py               ← Semantische Suche gegen RAG-Index
 ```
 
 ---

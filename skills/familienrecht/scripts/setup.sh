@@ -93,11 +93,15 @@ fi
 echo "→ Installiere Python-Pakete …"
 "$VENV/bin/pip" install --upgrade pip --quiet
 "$VENV/bin/pip" install markitdown pypdf pillow --quiet
-echo "✓ Python: markitdown, pypdf, pillow"
+"$VENV/bin/pip" install sqlite-vec sentence-transformers --quiet
+echo "✓ Python: markitdown, pypdf, pillow, sqlite-vec, sentence-transformers"
 
-# .venv in .gitignore sicherstellen
+# .venv und rag-index.db in .gitignore sicherstellen
 if ! grep -qF '.venv/' "$WORK_DIR/.gitignore" 2>/dev/null; then
   printf '\n.venv/\n' >> "$WORK_DIR/.gitignore"
+fi
+if ! grep -qF 'rag-index.db' "$WORK_DIR/.gitignore" 2>/dev/null; then
+  printf '\nrag-index.db\n' >> "$WORK_DIR/.gitignore"
 fi
 
 # ── 6. Node / npm ─────────────────────────────────────────────────────────────

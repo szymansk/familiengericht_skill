@@ -40,6 +40,8 @@ Erstellung, Prüfung und Überarbeitung von Schriftsätzen. Aktiviert sich autom
 
 Faustregel: Gibt es Belege oder Gegenseite-Dokumente die noch nicht in kontext.md sichtbar sind → Stopp, Kontext-Scan anstoßen.
 
+**RAG-Suche:** Wenn `rag-index.db` existiert, kann `/rag-search` genutzt werden, um gezielt Belege zu einer Behauptung zu finden, bevor alle Dateien gelesen werden. Das spart Kontext und ist schneller.
+
 **Plan-Schritt vor Phase 2 (Entwurf):**
 
 Bevor ein neues Dokument geschrieben wird (nicht bei Überarbeitungen bestehender Entwürfe):
@@ -161,7 +163,9 @@ Danach folgende Dateien für Detailarbeit verfügbar halten (bei Bedarf lesen, n
 | `erwiderung/erwiderung.md` | Aktueller Entwurfsstand |
 | `erwiderung/anlagen.md` | Verwendete Belege und Anlagen |
 
-**3. Belege auf Nomenklatur prüfen:** Alle Unterordner von `belege/` scannen. Dateien die nicht dem Format `YYYYMMDD_[AZ]_[VON]_[AN]_[Beschreibung].[ext]` entsprechen, werden gebündelt als Tabelle zur Umbenennung vorgelegt — nie Datei für Datei. Nach Bestätigung umbenennen und committen. `.gitkeep` und versteckte Dateien überspringen.
+**3. RAG-Index prüfen:** Wenn `rag-index.db` im Projektverzeichnis fehlt → Hinweis geben: „Der RAG-Index fehlt. Mit `/rag-index` kannst du alle Verfahrens-Dokumente indizieren, um gezielte Suche zu nutzen." Kein Blocker — der Skill funktioniert auch ohne RAG.
+
+**4. Belege auf Nomenklatur prüfen:** Alle Unterordner von `belege/` scannen. Dateien die nicht dem Format `YYYYMMDD_[AZ]_[VON]_[AN]_[Beschreibung].[ext]` entsprechen, werden gebündelt als Tabelle zur Umbenennung vorgelegt — nie Datei für Datei. Nach Bestätigung umbenennen und committen. `.gitkeep` und versteckte Dateien überspringen.
 
 → Nomenklatur-Details und Erkennungsregeln: `references/dateinamenskonvention.md`
 
