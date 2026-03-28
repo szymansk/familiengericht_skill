@@ -1,5 +1,4 @@
 ---
-name: rag-index
 description: "RAG-Index aktualisieren | Optionen: --verfahren, --reset"
 ---
 

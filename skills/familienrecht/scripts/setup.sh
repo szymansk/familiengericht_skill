@@ -143,7 +143,18 @@ echo "→ Installiere npm-Pakete (docx) …"
 (cd "$SCRIPT_DIR" && npm install --silent)
 echo "✓ npm: docx"
 
-# ── 7. .ragignore anlegen ────────────────────────────────────────────────────
+# ── 7. Slash-Commands installieren (/familienrecht:*) ───────────────────────
+
+COMMANDS_SRC="$SCRIPT_DIR/../commands"
+COMMANDS_DST="$WORK_DIR/.claude/commands/familienrecht"
+
+if [[ -d "$COMMANDS_SRC" ]]; then
+  mkdir -p "$COMMANDS_DST"
+  cp "$COMMANDS_SRC"/*.md "$COMMANDS_DST/" 2>/dev/null || true
+  echo "✓ Slash-Commands installiert → /familienrecht:*"
+fi
+
+# ── 7b. .ragignore anlegen ───────────────────────────────────────────────────
 
 RAGIGNORE="$WORK_DIR/.ragignore"
 

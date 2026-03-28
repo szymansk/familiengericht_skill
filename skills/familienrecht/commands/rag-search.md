@@ -1,5 +1,4 @@
 ---
-name: rag-search
 description: "Semantische Suche | Optionen: --verfahren, --doc-type, --top"
 ---
 

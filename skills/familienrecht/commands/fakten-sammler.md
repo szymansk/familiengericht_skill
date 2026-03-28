@@ -1,5 +1,4 @@
 ---
-name: fakten-sammler
 description: "Fakten aus allen Belegen extrahieren → sachverhalt/fakten.md"
 model: opus
 ---

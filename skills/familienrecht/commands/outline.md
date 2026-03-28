@@ -1,5 +1,4 @@
 ---
-name: outline
 description: "Annotated Outline erstellen (read-only Planungsschritt vor dem Schreiben)"
 ---
 

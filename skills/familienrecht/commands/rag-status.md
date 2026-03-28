@@ -1,5 +1,4 @@
 ---
-name: rag-status
 description: "RAG-Index Status — Verfahren, Dateien, Chunks, DB-Größe"
 ---
 
