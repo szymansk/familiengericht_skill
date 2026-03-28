@@ -47,8 +47,26 @@ EMBEDDING_DIM = 1024
 MAX_CHUNK_WORDS = 400
 OVERLAP_WORDS = 50
 
-EXCLUDED_DIRS = {"originale", "output", ".claudeprompt", ".obsidian", ".smart-env"}
+_DEFAULT_EXCLUDED_DIRS = {"originale", "output", ".claudeprompt", ".obsidian", ".smart-env",
+                          "node_modules", ".venv", "__pycache__", ".git"}
 EXCLUDED_FILES = {".gitkeep", ".gitignore", ".DS_Store"}
+
+
+def _load_ragignore(start: Path) -> set[str]:
+    """Lädt Ausschlüsse aus .ragignore, ergänzt Defaults (ersetzt sie nie)."""
+    for d in (start, Path(__file__).resolve().parent.parent.parent.parent):
+        ragignore = d / ".ragignore"
+        if ragignore.is_file():
+            entries = set()
+            for line in ragignore.read_text().splitlines():
+                line = line.strip()
+                if line and not line.startswith("#"):
+                    entries.add(line)
+            return entries | _DEFAULT_EXCLUDED_DIRS
+    return _DEFAULT_EXCLUDED_DIRS
+
+
+EXCLUDED_DIRS = _load_ragignore(Path.cwd())
 
 # ── Hilfsfunktionen ─────────────────────────────────────────────────────────
 

@@ -1,5 +1,6 @@
 ---
-description: RAG-Index für alle Verfahren aktualisieren (inkrementell)
+name: rag-index
+description: "RAG-Index aktualisieren | Optionen: --verfahren, --reset"
 ---
 
 Führe das Skript `skills/familienrecht/scripts/rag-index.py` aus dem `.venv` aus:

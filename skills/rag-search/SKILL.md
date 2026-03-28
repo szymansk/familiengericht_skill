@@ -1,5 +1,6 @@
 ---
-description: Semantische Suche über alle Verfahrens-Dokumente
+name: rag-search
+description: "Semantische Suche | Optionen: --verfahren, --doc-type, --top"
 ---
 
 Führe `skills/familienrecht/scripts/rag-search.py` aus dem `.venv` aus:

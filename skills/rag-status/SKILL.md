@@ -1,5 +1,6 @@
 ---
-description: RAG-Index Status anzeigen (Verfahren, Dateien, Chunks, DB-Größe)
+name: rag-status
+description: "RAG-Index Status — Verfahren, Dateien, Chunks, DB-Größe"
 ---
 
 Führe `skills/familienrecht/scripts/rag-status.py` aus dem `.venv` aus:

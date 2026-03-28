@@ -143,15 +143,36 @@ echo "→ Installiere npm-Pakete (docx) …"
 (cd "$SCRIPT_DIR" && npm install --silent)
 echo "✓ npm: docx"
 
-# ── 7. Slash-Commands installieren ───────────────────────────────────────────
+# ── 7. .ragignore anlegen ────────────────────────────────────────────────────
 
-COMMANDS_SRC="$SCRIPT_DIR/../commands"
-COMMANDS_DST="$WORK_DIR/.claude/commands"
+RAGIGNORE="$WORK_DIR/.ragignore"
 
-if [[ -d "$COMMANDS_SRC" ]]; then
-  mkdir -p "$COMMANDS_DST"
-  cp "$COMMANDS_SRC"/*.md "$COMMANDS_DST/" 2>/dev/null || true
-  echo "✓ Slash-Commands installiert in .claude/commands/"
+if [[ -f "$RAGIGNORE" ]]; then
+  echo "✓ .ragignore bereits vorhanden"
+else
+  cat > "$RAGIGNORE" << 'RAGEOF'
+# RAG-Indexierung — ausgeschlossene Verzeichnisse
+# (ein Name pro Zeile, wird auf jeder Ebene der Hierarchie geprüft)
+# Standard-Ausschlüsse werden immer angewendet, auch wenn sie hier fehlen.
+
+# Originaldateien (Binärdateien, Inhalt liegt als .md in Nachbarordnern)
+originale
+
+# Generierte Dateien
+output
+
+# Build- und Paketmanager
+node_modules
+.venv
+__pycache__
+
+# IDE / Tools
+.claudeprompt
+.obsidian
+.smart-env
+.git
+RAGEOF
+  echo "✓ .ragignore mit Standard-Ausschlüssen angelegt"
 fi
 
 # ── 8. Aufräumen (.skillignore) ───────────────────────────────────────────────
