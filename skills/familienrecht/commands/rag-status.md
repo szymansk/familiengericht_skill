@@ -2,10 +2,10 @@
 description: "RAG-Index Status — Verfahren, Dateien, Chunks, DB-Größe"
 ---
 
-Führe `skills/familienrecht/scripts/rag-status.py` aus dem `.venv` aus:
+Ermittle den Git-Root und führe das Skript aus:
 
 ```bash
-.venv/bin/python skills/familienrecht/scripts/rag-status.py
+PROJ=$(git rev-parse --show-toplevel) && "$PROJ/.venv/bin/python" "$PROJ/skills/familienrecht/scripts/rag-status.py"
 ```
 
 Zeige die Ausgabe dem Nutzer an.

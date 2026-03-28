@@ -2,10 +2,10 @@
 description: "RAG-Index aktualisieren | Optionen: --verfahren, --reset"
 ---
 
-Führe das Skript `skills/familienrecht/scripts/rag-index.py` aus dem `.venv` aus:
+Ermittle den Git-Root und führe das Skript aus:
 
 ```bash
-.venv/bin/python skills/familienrecht/scripts/rag-index.py $ARGUMENTS
+PROJ=$(git rev-parse --show-toplevel) && "$PROJ/.venv/bin/python" "$PROJ/skills/familienrecht/scripts/rag-index.py" $ARGUMENTS
 ```
 
 Optionale Argumente (aus $ARGUMENTS):

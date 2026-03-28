@@ -2,10 +2,10 @@
 description: "Semantische Suche | Optionen: --verfahren, --doc-type, --top"
 ---
 
-Führe `skills/familienrecht/scripts/rag-search.py` aus dem `.venv` aus:
+Ermittle den Git-Root und führe das Skript aus:
 
 ```bash
-.venv/bin/python skills/familienrecht/scripts/rag-search.py $ARGUMENTS
+PROJ=$(git rev-parse --show-toplevel) && "$PROJ/.venv/bin/python" "$PROJ/skills/familienrecht/scripts/rag-search.py" $ARGUMENTS
 ```
 
 $ARGUMENTS enthält die Suchanfrage und optionale Filter:
