@@ -13,6 +13,7 @@ Aufruf:
 """
 
 import argparse
+import hashlib
 import os
 import re
 import sqlite3
@@ -100,11 +101,23 @@ def classify_doc_type(rel_path: Path) -> str:
     return first_dir
 
 
+LEGAL_SPLIT_PATTERN = re.compile(
+    r"(?:"
+    r"\n#{1,3}\s"               # Markdown-Überschriften
+    r"|\n(?:I{1,3}V?|V)\.\s"   # I. II. III. IV. V.
+    r"|\n\d+\.\s"               # 1. 2. 3.
+    r"|\n§\s*\d+"               # § 1626 etc.
+    r"|\n[a-z]\)\s"             # a) b) c)
+    r"|\n\n+"                   # Absatzgrenzen (Fallback)
+    r")"
+)
+
+
 def chunk_text(
     text: str, line_offset: int
 ) -> list[dict]:
-    """Splittet Text an Absatzgrenzen in Chunks mit Zeilennummern."""
-    paragraphs = re.split(r"\n\n+", text)
+    """Splittet Text an juristischen Strukturgrenzen in Chunks mit Zeilennummern."""
+    paragraphs = LEGAL_SPLIT_PATTERN.split(text)
     chunks = []
     current_words: list[str] = []
     current_line_start = line_offset + 1
@@ -176,14 +189,15 @@ def init_db(db: Path) -> sqlite3.Connection:
     sqlite_vec.load(conn)
     conn.execute(
         """CREATE TABLE IF NOT EXISTS chunks (
-            id          INTEGER PRIMARY KEY AUTOINCREMENT,
-            verfahren   TEXT NOT NULL,
-            source_file TEXT NOT NULL,
-            line_start  INTEGER NOT NULL,
-            line_end    INTEGER NOT NULL,
-            text        TEXT NOT NULL,
-            doc_type    TEXT NOT NULL,
-            mtime       REAL NOT NULL
+            id            INTEGER PRIMARY KEY AUTOINCREMENT,
+            verfahren     TEXT NOT NULL,
+            source_file   TEXT NOT NULL,
+            line_start    INTEGER NOT NULL,
+            line_end      INTEGER NOT NULL,
+            text          TEXT NOT NULL,
+            doc_type      TEXT NOT NULL,
+            mtime         REAL NOT NULL,
+            content_hash  TEXT NOT NULL DEFAULT ''
         )"""
     )
     conn.execute(
@@ -204,16 +218,16 @@ def init_db(db: Path) -> sqlite3.Connection:
 
 
 def file_needs_update(
-    conn: sqlite3.Connection, verfahren: str, rel_path: str, mtime: float
+    conn: sqlite3.Connection, verfahren: str, rel_path: str, content_hash: str
 ) -> bool:
-    """Prüft ob die Datei seit dem letzten Index geändert wurde."""
+    """Prüft ob die Datei seit dem letzten Index geändert wurde (Hash-basiert)."""
     row = conn.execute(
-        "SELECT mtime FROM chunks WHERE verfahren=? AND source_file=? LIMIT 1",
+        "SELECT content_hash FROM chunks WHERE verfahren=? AND source_file=? LIMIT 1",
         (verfahren, rel_path),
     ).fetchone()
     if row is None:
         return True
-    return mtime > row[0]
+    return row[0] != content_hash
 
 
 def delete_file_chunks(
@@ -251,17 +265,20 @@ def index_verfahren(
 
     for md_file in md_files:
         rel_path = str(md_file.relative_to(verfahren_dir))
+
+        # Datei lesen und Hash berechnen
+        raw_text = md_file.read_text(encoding="utf-8", errors="replace")
+        content_hash = hashlib.sha256(raw_text.encode()).hexdigest()
         mtime = os.path.getmtime(md_file)
 
-        if not file_needs_update(conn, verfahren_name, rel_path, mtime):
+        if not file_needs_update(conn, verfahren_name, rel_path, content_hash):
             stats["skipped"] += 1
             continue
 
         # Alte Chunks löschen (Re-Index)
         delete_file_chunks(conn, verfahren_name, rel_path)
 
-        # Datei lesen und chunken
-        text = md_file.read_text(encoding="utf-8", errors="replace")
+        text = raw_text
         text, line_offset = strip_frontmatter(text)
         chunks = chunk_text(text, line_offset)
 
@@ -281,8 +298,8 @@ def index_verfahren(
         for chunk, emb in zip(chunks, embeddings):
             cur = conn.execute(
                 """INSERT INTO chunks
-                   (verfahren, source_file, line_start, line_end, text, doc_type, mtime)
-                   VALUES (?, ?, ?, ?, ?, ?, ?)""",
+                   (verfahren, source_file, line_start, line_end, text, doc_type, mtime, content_hash)
+                   VALUES (?, ?, ?, ?, ?, ?, ?, ?)""",
                 (
                     verfahren_name,
                     rel_path,
@@ -291,6 +308,7 @@ def index_verfahren(
                     chunk["text"],
                     doc_type,
                     mtime,
+                    content_hash,
                 ),
             )
             conn.execute(
