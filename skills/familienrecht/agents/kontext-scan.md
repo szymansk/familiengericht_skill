@@ -125,6 +125,14 @@ git -C {verfahren-wurzel} commit -m "Kontext-Scan: kontext.md aktualisiert"
 
 Den Git-Root aus dem Verfahrenspfad ableiten (ggf. mit `git -C {pfad} rev-parse --show-toplevel`).
 
+**3b. RAG-Index aktualisieren**
+
+Falls `rag-index.db` im Projektverzeichnis existiert:
+
+```bash
+.venv/bin/python {skill-root}/scripts/rag-index.py --verfahren {az-kurz}
+```
+
 **4. Abschlussmeldung**
 
 Kurze Bestätigung ausgeben:

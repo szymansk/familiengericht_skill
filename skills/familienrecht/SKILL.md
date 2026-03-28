@@ -40,7 +40,7 @@ Erstellung, Prüfung und Überarbeitung von Schriftsätzen. Aktiviert sich autom
 
 Faustregel: Gibt es Belege oder Gegenseite-Dokumente die noch nicht in kontext.md sichtbar sind → Stopp, Kontext-Scan anstoßen.
 
-**RAG-Suche:** Wenn `rag-index.db` existiert, kann `/rag-search` genutzt werden, um gezielt Belege zu einer Behauptung zu finden, bevor alle Dateien gelesen werden. Das spart Kontext und ist schneller.
+**RAG-Suche (Schritt 0):** Wenn `rag-index.db` existiert, **vor jedem** Schreiben `/rag-search` mit den zentralen Behauptungen/Argumenten des geplanten Abschnitts nutzen. Die Treffer liefern exakte Dateien + Zeilennummern als Ausgangspunkt — statt alle Dateien sequenziell zu lesen. Das spart Kontext und ist schneller.
 
 **Plan-Schritt vor Phase 2 (Entwurf):**
 

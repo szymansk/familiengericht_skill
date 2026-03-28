@@ -32,6 +32,22 @@ Du darfst nur Lese-, Such- und Analyseoperationen verwenden, um:
 * Widersprüche, Lücken und Inkonsistenzen zu erkennen
 * Zusammenhänge zwischen Dokumenten herzustellen
 
+## RAG-gestützte Recherche
+
+Falls `rag-index.db` im Projektverzeichnis existiert, nutze vor dem vollständigen Lesen aller Dateien die semantische Suche, um gezielt relevante Passagen zu finden:
+
+```bash
+.venv/bin/python {skill-root}/scripts/rag-search.py "[Suchbegriff]" --verfahren {az-kurz} --top 10
+```
+
+Typische Suchanfragen:
+- Kernbehauptungen der Gegenseite
+- Belege für das angestrebte Betreuungsmodell
+- Widersprüche im gegnerischen Vortrag
+- Kindeswohlrelevante Fakten
+
+Die RAG-Treffer geben dir Datei + Zeilennummer — lies dann gezielt diese Stellen statt blind alle Dateien zu durchsuchen. Das spart Kontext und erhöht die Präzision der Fundstellen in der Outline.
+
 ## Analyseauftrag
 
 1. Lies alle für das Verfahren relevanten Dateien.

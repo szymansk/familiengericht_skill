@@ -62,6 +62,26 @@ Quellenliste am Ende von fakten.md:
 
 ---
 
+### Schritt 2b — RAG-Abgleich: Duplikate und Widersprüche
+
+Falls `rag-index.db` im Projektverzeichnis existiert, für jeden neu extrahierten Fakt (Typ B):
+
+1. Semantische Suche mit dem Kerninhalt des Fakts:
+   ```bash
+   .venv/bin/python {skill-root}/scripts/rag-search.py "[Fakt als Suchanfrage]" --verfahren {az-kurz} --top 5
+   ```
+
+2. Treffer auswerten:
+   - **Hohe Ähnlichkeit (Score > 0.5):** Prüfe ob es sich um denselben Fakt handelt → falls ja, als Duplikat markieren und alle Quellen zusammenführen (mehrere `[n]`-Referenzen für denselben Fakt)
+   - **Ähnlich aber widersprüchlich:** Als Widerspruch kennzeichnen mit allen Fundstellen → Eintrag in `## Widersprüche im Antrag der Gegenseite` oder neuer Abschnitt `## Erkannte Widersprüche`
+   - **Niedrige Ähnlichkeit:** Neuer Fakt — normal eintragen
+
+3. Erkannte Duplikate und Widersprüche im Abschlussbericht gesondert auflisten.
+
+Falls `rag-index.db` nicht existiert: Schritt überspringen, Duplikaterkennung entfällt.
+
+---
+
 ### Schritt 3 — fakten.md aktualisieren
 
 Extrahierte Fakten den passenden Abschnitten in `fakten.md` zuordnen:
@@ -112,6 +132,18 @@ git -C {git-root} commit -m "Belege-Scan: Fakten aus Belegen extrahiert"
 ```
 
 Falls keine Änderungen (fakten.md unverändert): Schritt überspringen, im Abschlussbericht vermerken.
+
+---
+
+### Schritt 5b — RAG-Index aktualisieren
+
+Falls `rag-index.db` im Projektverzeichnis existiert:
+
+```bash
+.venv/bin/python {skill-root}/scripts/rag-index.py --verfahren {az-kurz}
+```
+
+Die aktualisierten Fakten werden so sofort für semantische Suche verfügbar.
 
 ---
 

@@ -1,5 +1,6 @@
 ---
 description: Fakten aus allen Belegen extrahieren und in sachverhalt/fakten.md eintragen
+model: opus
 ---
 
 Spawne den Subagent aus `skills/familienrecht/agents/fakten-sammler.md`.

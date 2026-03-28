@@ -134,6 +134,16 @@ git -C {git-root} commit -m "Import: {kurzer-dokumentname}"
 
 `kontext.md` wird vom Kontext-Scan-Agent in Schritt 8 committet — nicht hier.
 
+### Schritt 9b: RAG-Index aktualisieren
+
+Falls `rag-index.db` im Projektverzeichnis existiert:
+
+```bash
+.venv/bin/python {skill-root}/scripts/rag-index.py --verfahren {az-kurz}
+```
+
+Das neu importierte Dokument wird so sofort für semantische Suche verfügbar.
+
 ## Abschlussmeldung
 
 Ausgeben:

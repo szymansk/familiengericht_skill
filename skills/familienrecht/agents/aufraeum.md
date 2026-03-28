@@ -217,6 +217,18 @@ Falls keine Änderungen vorhanden (git meldet „nothing to commit"): Schritt ü
 
 ---
 
+### Schritt 10b — RAG-Index aktualisieren
+
+Falls `rag-index.db` im Projektverzeichnis existiert:
+
+```bash
+.venv/bin/python {skill-root}/scripts/rag-index.py --verfahren {az-kurz}
+```
+
+Umbenannte und geänderte Dateien werden so im Index aktualisiert (SHA256-Hash erkennt Änderungen).
+
+---
+
 ### Schritt 11 — Kontext-Scan spawnen
 
 Subagent aus `{skill-root}/agents/kontext-scan.md` spawnen.
