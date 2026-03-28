@@ -247,6 +247,11 @@ def init_db(db: Path) -> sqlite3.Connection:
         f"""CREATE VIRTUAL TABLE IF NOT EXISTS vec_chunks
             USING vec0(embedding float[{EMBEDDING_DIM}])"""
     )
+    # FTS5 für Keyword-Suche (Hybrid-Suche)
+    conn.execute(
+        """CREATE VIRTUAL TABLE IF NOT EXISTS fts_chunks
+           USING fts5(text, tokenize='unicode61 remove_diacritics 1')"""
+    )
     conn.commit()
     return conn
 
@@ -278,6 +283,7 @@ def delete_file_chunks(
     if ids:
         placeholders = ",".join("?" * len(ids))
         conn.execute(f"DELETE FROM vec_chunks WHERE rowid IN ({placeholders})", ids)
+        conn.execute(f"DELETE FROM fts_chunks WHERE rowid IN ({placeholders})", ids)
         conn.execute(
             f"DELETE FROM chunks WHERE id IN ({placeholders})", ids
         )
@@ -349,6 +355,10 @@ def index_verfahren(
                 "INSERT INTO vec_chunks (rowid, embedding) VALUES (?, ?)",
                 (cur.lastrowid, serialize_f32(emb.tolist())),
             )
+            conn.execute(
+                "INSERT INTO fts_chunks(rowid, text) VALUES (?, ?)",
+                (cur.lastrowid, chunk["text"]),
+            )
             stats["chunks"] += 1
 
         stats["files"] += 1
@@ -378,6 +388,14 @@ def main():
     model = SentenceTransformer(MODEL_NAME)
 
     conn = init_db(db)
+
+    # Prüfe ob FTS5-Tabelle vorhanden (ältere DBs ohne Hybrid-Suche)
+    has_fts = conn.execute(
+        "SELECT name FROM sqlite_master WHERE type='table' AND name='fts_chunks'"
+    ).fetchone()
+    if not has_fts and not args.reset:
+        print("⚠ FTS5-Index fehlt. Mit --reset neu aufbauen für Hybrid-Suche.")
+
 
     # Verfahren ermitteln
     if args.verfahren:
