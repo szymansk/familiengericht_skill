@@ -5,6 +5,9 @@
 /test/verfahren/*/output/*.pdf
 /test/verfahren/*/output/*.docx
 
+# Secrets
+.env
+
 # OS
 .DS_Store
 Thumbs.db
@@ -20,3 +23,5 @@ package-lock.json
 
 # Claude Code workspace settings (lokal, nicht für andere Nutzer)
 .claude/
+skills/.obsidian
+test/verfahren/3-f-24-26/output

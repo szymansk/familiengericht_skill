@@ -11,6 +11,8 @@ geometry:
 mainfont: "Arial"
 header-includes:
   - \usepackage{parskip}
+  - \setlength{\parskip}{6pt}
+  - \setlength{\parindent}{0pt}
 ---
 
 **Thomas Berger**
@@ -59,7 +61,12 @@ Dem Antragsgegner ist es nicht möglich, innerhalb dieser Frist eine vollständi
 
 Eine Fristverlängerung um vier Wochen erscheint angemessen und wird die Verfahrensdauer nicht wesentlich verlängern, da ein Termin zur mündlichen Verhandlung noch nicht bestimmt ist.
 
+\vspace{12pt}
+\needspace{7cm}
+
 Weiterer Sachvortrag bleibt vorbehalten.
+
+\vspace{10pt}
 
 Neukirchen, den 10. Februar 2026
 

@@ -104,6 +104,32 @@ if ! grep -qF 'rag-index.db' "$WORK_DIR/.gitignore" 2>/dev/null; then
   printf '\nrag-index.db\n' >> "$WORK_DIR/.gitignore"
 fi
 
+# ── 5b. HuggingFace Token ─────────────────────────────────────────────────────
+
+ENV_FILE="$WORK_DIR/.env"
+
+# .env in .gitignore sicherstellen
+if ! grep -qF '.env' "$WORK_DIR/.gitignore" 2>/dev/null; then
+  printf '\n.env\n' >> "$WORK_DIR/.gitignore"
+fi
+
+# Prüfe ob HF_TOKEN bereits in .env vorhanden
+if grep -qF 'HF_TOKEN' "$ENV_FILE" 2>/dev/null; then
+  echo "✓ HF_TOKEN bereits in .env vorhanden"
+else
+  echo ""
+  echo "  Das RAG-System benötigt einen HuggingFace-Token für das Embedding-Modell."
+  echo "  Token erstellen: https://huggingface.co/settings/tokens"
+  echo ""
+  read -rp "  HF_TOKEN eingeben (oder Enter zum Überspringen): " hf_token
+  if [[ -n "$hf_token" ]]; then
+    echo "HF_TOKEN='${hf_token}'" >> "$ENV_FILE"
+    echo "✓ HF_TOKEN in .env gespeichert"
+  else
+    echo "  ⚠ Kein Token eingegeben — RAG-Downloads funktionieren nur für öffentliche Modelle"
+  fi
+fi
+
 # ── 6. Node / npm ─────────────────────────────────────────────────────────────
 
 if ! command -v node &>/dev/null; then

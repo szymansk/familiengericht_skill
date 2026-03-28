@@ -21,13 +21,29 @@ import struct
 import sys
 from pathlib import Path
 
+# ── .env laden (HF_TOKEN für HuggingFace-Auth) ──────────────────────────────
+def _load_dotenv():
+    """Lädt KEY='value'-Paare aus .env ins Environment."""
+    for d in (Path.cwd(), Path(__file__).resolve().parent.parent.parent.parent):
+        env_file = d / ".env"
+        if env_file.is_file():
+            for line in env_file.read_text().splitlines():
+                line = line.strip()
+                if not line or line.startswith("#") or "=" not in line:
+                    continue
+                key, _, val = line.partition("=")
+                os.environ.setdefault(key.strip(), val.strip().strip("'\""))
+            break
+
+_load_dotenv()
+
 import sqlite_vec
 from sentence_transformers import SentenceTransformer
 
 # ── Konfiguration ────────────────────────────────────────────────────────────
 
-MODEL_NAME = "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
-EMBEDDING_DIM = 384
+MODEL_NAME = "mixedbread-ai/deepset-mxbai-embed-de-large-v1"
+EMBEDDING_DIM = 1024
 MAX_CHUNK_WORDS = 400
 OVERLAP_WORDS = 50
 
